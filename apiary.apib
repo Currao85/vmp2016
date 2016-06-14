@@ -89,6 +89,12 @@ Return the document's types.
 + Response 200 (application/json)
   + Attributes (DocumentTypes)
 
+### Document Owner DRAFT[GET /documents/owner]
+Return the document's owner.
+
++ Response 200 (application/json)
+  + Attributes (DocumentOwner)
+
 #######################
 # Group Entities
 #######################
@@ -198,6 +204,14 @@ Return the entity's types.
 
 ##DocumentTypes (object)
 + results (array[DocumentType1, DocumentType2, DocumentType3, DocumentType4], required) - array of document types
++ Include PaginationData4
+
+##DocumentOwner (object)
++ results (array, required) - array of document's owner
+    + Mario Rossi (string)
+    + Giovanni Linzi (string)
+    + Alberto Moresco (string)
+    + Anna Baggio (string)
 + Include PaginationData4
 
 ##EntityType1 (enum, optional)
