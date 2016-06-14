@@ -1,0 +1,163 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# VMP
+
+Service Oriented Architecture specified for the VMP project.
+
+#######################
+# Group Documents
+#######################
+
+## Documents Collection [/documents]
+
+### List Documents DRAFT [GET /documents{?searchQuery,page,pageSize,sort,sortOrder}]
+Returns the documents list.
+
++ Parameters
+  + searchQuery: `{function:"vendor",docType: "actplan",owner: 234,insertDate: "2016-02-05",signingDate: "2016-02-05",validityDate: "2016-02-05"}`  (object, required) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: description (optional) - Sorting order
+  + pageSize: 25 (optional, number) - Amount of results to return
+
++ Response 200 (application/json)
+  + Attributes (DocumentSearchResult)
+
+### Upload Document DRAFT [POST]
+Creates a new document.
+
++ Request (multipart/form-data)
+
+    + Attributes (DocumentUploadBody)
+
++ Response 201 (application/json)
+
+    + Attributes (DocumentUploaded)
+
++ Response 400
+    Returned when input does not pass validation.
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+    + Body
+
+#######################
+# Group Entities
+#######################
+
+## Entity [/entity]
+
+### Entity types [GET /entity/types{?searchQuery}]
+Return the entity's types.
+
++ Parameters
+  + searchQuery: `{function:"vendor"}` (SearchQueryFunctionFilter) - json filter
+
++ Response 200 (application/json)
+  + Attributes (EntityTypes)
+
+#######################
+# Data Structures
+#######################
+
+## PaginationData1 (object)
++ paginationData (object, required) - Informations required for pagination
+    + count: 3 (number,required) - total number of resources
+    + pageNum: 1 (number, required) - slice of resources returned
+    + pageSize: 25 (number, required) - size of the slice
+
+## PaginationData4 (object)
++ paginationData (object, required) - Informations required for pagination
+    + count: 4 (number,required) - total number of resources
+    + pageNum: 1 (number, required) - slice of resources returned
+    + pageSize: 25 (number, required) - size of the slice
+
+## DocumentSearchResult (object)
++ results (array[Document1, Document2, Document3], required) - array of revisions
++ Include PaginationData1
+
+## Document1 (object)
++ id: 1
++ name: `New_sup_R&D_L.pdf`
++ docType: `DPL`
++ description: `New supplier R&D legal`
++ owner: `Cesarini Micaela`
++ insertDate: `2016-02-06 10.50.30`
++ signingDate: `2016-02-06`
++ validityDate: `2016-02-06`
+
+## Document2 (object)
++ id: 2
++ name: `Result_SVCS_TSC_NTT_20151103.xls`
++ docType: `IBM Checklist`
++ description: `performance NTT Data Austria`
++ owner: `Panseri Gianluigi`
++ insertDate: `2016-02-08 10.50.30`
++ signingDate: undefined
++ validityDate: undefined
+
+## Document3 (object)
++ id: 3
++ name: `Supplier_questioinnaire_BRUTTI.pdf`
++ docType: `Supplier questioinnaire`
++ description: `Supplier questioinnaire BRUTTI L`
++ owner: `Panseri Gianluigi`
++ insertDate: `2016-02-10 10.50.30`
++ signingDate: `2016-02-10`
++ validityDate: undefined
+
+## DocumentUploadBody (object)
++ entityType: `VM_VND` (EntityType1, optional) - the type of the entity to link the document
++ entityId: 123 (number, optional) - the id of the entity to link the document
++ documentType: `GENDOC`
++ description: `Generic document for vendor`
++ insertDate: `2016-02-06 10.50.30`
++ signingDate: `2016-02-06`
++ validityDate: `2016-02-06`
++ file: `documento`
+
+##DocumentUploaded (object)
++ id: 12
++ entityType: `VM_VND` (EntityType1, optional)
++ entityId: 123 (number, optional)
++ documentType: `GENDOC`
++ description: `Generic document for vendor`
++ insertDate: `2016-02-06 10.50.30`
++ signingDate: `2016-02-06`
++ validityDate: `2016-02-06`
+
+##EntityType1 (enum, optional)
+    + Members
+        + `VM_VND`
+        + `VM_VEMP`
+        + `VM_CNTR`
+        + `VM_CONT`
+
+##EntityVendor (object)
++ id: `VM_VND`
++ description: `Vendor`
+
+##EntityVendorEmployee (object)
++ id: `VM_VEMP`
++ description: `Vendor Employee`
+
+##EntityContract (object)
++ id: `VM_CNTR`
++ description: `Contract ??Management??`
+
+##EntityContact (object)
++ id: `VM_CONT`
++ description: `Contact`
+
+##EntityTypes (object)
++ results (array[EntityVendor, EntityVendorEmployee, EntityContract, EntityContact], required) - array of revisions
++ Include PaginationData4
+
+##SearchQueryFunctionFilter (enum, required)
+    + Members
+        + `{}`
+        + `{function:"vendor"}`
+        + `{function:"vempl"}`
+        + `{function:"contract"}`
+        + `{function:"contact"}`
