@@ -80,6 +80,15 @@ Deletes a document.
 
     + Body
 
+### Document types DRAFT[GET /documents/types{?searchQuery}]
+Return the document's types.
+
++ Parameters
+  + searchQuery: `{function:"vendor"}` (SearchQueryFunctionFilter) - json filter
+
++ Response 200 (application/json)
+  + Attributes (DocumentTypes)
+
 #######################
 # Group Entities
 #######################
@@ -118,7 +127,9 @@ Return the entity's types.
 ## Document1 (object)
 + id: 1
 + name: `New_sup_R&D_L.pdf`
-+ docType: `DPL`
++ docType (object)
+    + id: `DPL`
+    + description: `DPL`
 + description: `New supplier R&D legal`
 + owner: `Cesarini Micaela`
 + insertDate: `2016-02-06 10.50.30`
@@ -128,7 +139,9 @@ Return the entity's types.
 ## Document2 (object)
 + id: 2
 + name: `Result_SVCS_TSC_NTT_20151103.xls`
-+ docType: `IBM Checklist`
++ docType (object)
+    + id: `IBMCHE`
+    + description: `IBM Checklist`
 + description: `performance NTT Data Austria`
 + owner: `Panseri Gianluigi`
 + insertDate: `2016-02-08 10.50.30`
@@ -138,7 +151,9 @@ Return the entity's types.
 ## Document3 (object)
 + id: 3
 + name: `Supplier_questioinnaire_BRUTTI.pdf`
-+ docType: `Supplier questioinnaire`
++ docType (object)
+    + id: `SUPQUE`
+    + description: `Supplier questioinnaire`
 + description: `Supplier questioinnaire BRUTTI L`
 + owner: `Panseri Gianluigi`
 + insertDate: `2016-02-10 10.50.30`
@@ -148,7 +163,7 @@ Return the entity's types.
 ## DocumentUploadBody (object)
 + entityType: `VM_VND` (EntityType1, optional) - the type of the entity to link the document
 + entityId: 123 (number, optional) - the id of the entity to link the document
-+ documentType: `GENDOC`
++ docType: `GENDOC`
 + description: `Generic document for vendor`
 + insertDate: `2016-02-06 10.50.30`
 + signingDate: `2016-02-06`
@@ -159,11 +174,31 @@ Return the entity's types.
 + id: 12
 + entityType: `VM_VND` (EntityType1, optional)
 + entityId: 123 (number, optional)
-+ documentType: `GENDOC`
++ docType: `GENDOC`
 + description: `Generic document for vendor`
 + insertDate: `2016-02-06 10.50.30`
 + signingDate: `2016-02-06`
 + validityDate: `2016-02-06`
+
+##DocumentType1 (object)
++ id: `DPL`
++ description: `DPL`
+
+##DocumentType2 (object)
++ id: `IBMCHE`
++ description: `IBM Checklist`
+
+##DocumentType3 (object)
++ id: `SUPQUE`
++ description: `Supplier questioinnaire`
+
+##DocumentType4 (object)
++ id: `GENDOC`
++ description: `Generic document`
+
+##DocumentTypes (object)
++ results (array[DocumentType1, DocumentType2, DocumentType3, DocumentType4], required) - array of document types
++ Include PaginationData4
 
 ##EntityType1 (enum, optional)
     + Members
@@ -189,7 +224,7 @@ Return the entity's types.
 + description: `Contact`
 
 ##EntityTypes (object)
-+ results (array[EntityVendor, EntityVendorEmployee, EntityContract, EntityContact], required) - array of revisions
++ results (array[EntityVendor, EntityVendorEmployee, EntityContract, EntityContact], required) - array of entity types
 + Include PaginationData4
 
 ##SearchQueryFunctionFilter (enum, required)
