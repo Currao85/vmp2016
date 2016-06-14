@@ -42,13 +42,51 @@ Creates a new document.
     Returned when a generic error occours.
     + Body
 
+###Download Document DRAFT [GET /documents/{id}]
+Returns the document detail for the given id.
+
++ Parameters
+    + id: 123 (number, required) - id of the document
+
++ Response 200 (application/XYZ)
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+    + Body
+
+### Delete document DRAFT[DELETE /documents/{id}]
+Deletes a document.
+
++ Parameters
+    + id: 123 (number, required) - id of the document
+
++ Response 204
+    Returned when the resource is successfully deleted.
+
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
 #######################
 # Group Entities
 #######################
 
 ## Entity [/entity]
 
-### Entity types [GET /entity/types{?searchQuery}]
+### Entity types DRAFT[GET /entity/types{?searchQuery}]
 Return the entity's types.
 
 + Parameters
