@@ -207,6 +207,53 @@ Creates a new vendor employee.
 
     + Body when a generic error occours.
     + Body
+    
+### Update vendor employee [PUT]
+
+Updates a vendor employee.
+
++ Request (application/json)
+
+    + Attributes (ProfileDetail1)
+
++ Response 200 (application/json)
+
+    + Attributes (ProfileDetail1)
+
++ Response 400
+    Returned when input does not pass validation.
+
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+    
+### Delete vendor employee [DELETE]
+
+Deletes the specified vendor employee.
+
++ Request (application/json)
+
+    + Attributes (ProfileDetail1)
+
++ Response 204
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
 
 #######################
 # Data Structures
