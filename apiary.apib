@@ -23,25 +23,6 @@ Returns the documents list.
 + Response 200 (application/json)
   + Attributes (DocumentSearchResult)
 
-### Upload Document DRAFT [POST]
-Creates a new document.
-
-+ Request (multipart/form-data)
-
-    + Attributes (DocumentUploadBody)
-
-+ Response 201 (application/json)
-
-    + Attributes (DocumentUploaded)
-
-+ Response 400
-    Returned when input does not pass validation.
-    + Body
-
-+ Response 500
-    Returned when a generic error occours.
-    + Body
-
 ### Document types DRAFT[GET /documents/types{?searchQuery}]
 Return the document's types.
 
@@ -71,6 +52,51 @@ Return the entity's types.
 
 + Response 200 (application/json)
   + Attributes (EntityTypes)
+
+### Upload Document linking it to an entityType DRAFT [POST /entityTypes/{entityType}/documents]
+Creates a new document linking it to an entityType.
+
++ Parameters
+    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+
++ Request (multipart/form-data)
+
+    + Attributes (DocumentUploadBodyET)
+
++ Response 201 (application/json)
+
+    + Attributes (DocumentUploadedET)
+
++ Response 400
+    Returned when input does not pass validation.
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+    + Body
+
+### Upload Document linking it to an entity DRAFT [POST /entityTypes/{entityType}/entity/{entityId}/documents]
+Creates a new document linking it to an entity.
+
++ Parameters
+    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityId: 123 (number, required) - id of the entity
+
++ Request (multipart/form-data)
+
+    + Attributes (DocumentUploadBodyE)
+
++ Response 201 (application/json)
+
+    + Attributes (DocumentUploadedE)
+
++ Response 400
+    Returned when input does not pass validation.
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+    + Body
 
 ###Download Document linked to an entityType DRAFT [GET /entityTypes/{entityType}/documents/{id}]
 Returns the document detail assigned to an entity type.
@@ -206,8 +232,23 @@ Deletes a document assigned to an entity.
 + signingDate: `2016-02-10`
 + validityDate: undefined
 
-## DocumentUploadBody (object)
-+ entityTypeId: `VM_VND` (EntityType1, required) - the type of the entity to link the document
+## DocumentUploadBodyET (object)
++ docType: `GENDOC`
++ description: `Generic document for vendor`
++ insertDate: `2016-02-06 10.50.30`
++ signingDate: `2016-02-06`
++ validityDate: `2016-02-06`
++ file: `documento`
+
+##DocumentUploadedET (object)
++ id: 12
++ docType: `GENDOC`
++ description: `Generic document for vendor`
++ insertDate: `2016-02-06 10.50.30`
++ signingDate: `2016-02-06`
++ validityDate: `2016-02-06`
+
+## DocumentUploadBodyE (object)
 + entityId: 123 (number, optional) - the id of the entity to link the document
 + docType: `GENDOC`
 + description: `Generic document for vendor`
@@ -216,9 +257,8 @@ Deletes a document assigned to an entity.
 + validityDate: `2016-02-06`
 + file: `documento`
 
-##DocumentUploaded (object)
+##DocumentUploadedE (object)
 + id: 12
-+ entityType (EntityVendor, optional)
 + entityId: 123 (number, optional)
 + docType: `GENDOC`
 + description: `Generic document for vendor`
