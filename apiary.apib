@@ -15,7 +15,7 @@ Service Oriented Architecture specified for the VMP project.
 Returns the documents list.
 
 + Parameters
-  + searchQuery: `{function:"vendor",docTypeId: "GENDOC",owner: 234,insertDate: "2016-02-05",signingDate: "2016-02-05",validityDate: "2016-02-05"}`  (object, required) - json filter
+  + searchQuery: `{entityType:"VMP_VND", entityId:123,docTypeId: "GENDOC",owner: 234,insertDate: "2016-02-05",signingDate: "2016-02-05",validityDate: "2016-02-05"}`  (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
   + sort: description (optional) - Sorting order
   + pageSize: 25 (optional, number) - Amount of results to return
@@ -27,7 +27,7 @@ Returns the documents list.
 Return the document's types.
 
 + Parameters
-  + searchQuery: `{function:"vendor"}` (SearchQueryFunctionFilter) - json filter
+  + searchQuery: `{entityType:"VMP_VND"}` (SearchQueryFunctionFilter) - json filter
 
 + Response 200 (application/json)
   + Attributes (DocumentTypes)
@@ -48,7 +48,7 @@ Return the document's owner.
 Return the entity's types.
 
 + Parameters
-  + searchQuery: `{function:"vendor"}` (SearchQueryFunctionFilter) - json filter
+  + searchQuery: `{entityType:"VMP_VND"}` (SearchQueryFunctionFilter) - json filter
 
 + Response 200 (application/json)
   + Attributes (EntityTypes)
@@ -57,7 +57,7 @@ Return the entity's types.
 Creates a new document linking it to an entityType.
 
 + Parameters
-    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
 
 + Request (multipart/form-data)
 
@@ -79,7 +79,7 @@ Creates a new document linking it to an entityType.
 Creates a new document linking it to an entity.
 
 + Parameters
-    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
     + entityId: 123 (number, required) - id of the entity
 
 + Request (multipart/form-data)
@@ -102,7 +102,7 @@ Creates a new document linking it to an entity.
 Returns the document detail assigned to an entity type.
 
 + Parameters
-    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
     + id: 12 (number, required) - id of the document
 
 + Response 200 (application/XYZ)
@@ -120,7 +120,7 @@ Returns the document detail assigned to an entity type.
 Returns the document detail assigned to an entity.
 
 + Parameters
-    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -139,7 +139,7 @@ Returns the document detail assigned to an entity.
 Deletes a document assigned to an entity type.
 
 + Parameters
-    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
     + id: 12 (number, required) - id of the document
 
 + Response 204
@@ -161,7 +161,7 @@ Deletes a document assigned to an entity type.
 Deletes a document assigned to an entity.
 
 + Parameters
-    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -372,25 +372,25 @@ Deletes the specified vendor employee.
 
 ##EntityType1 (string)
     + Members
-        + `VM_VND`
-        + `VM_VEMP`
-        + `VM_CNTR`
-        + `VM_CONT`
+        + `VMP_VND`
+        + `VMP_VEMP`
+        + `VMP_CNTR`
+        + `VMP_CONT`
 
 ##EntityVendor (object)
-+ id: `VM_VND`
++ id: `VMP_VND`
 + description: `Vendor`
 
 ##EntityVendorEmployee (object)
-+ id: `VM_VEMP`
++ id: `VMP_VEMP`
 + description: `Vendor Employee`
 
 ##EntityContract (object)
-+ id: `VM_CNTR`
++ id: `VMP_CNTR`
 + description: `Contract ??Management??`
 
 ##EntityContact (object)
-+ id: `VM_CONT`
++ id: `VMP_CONT`
 + description: `Contact`
 
 ##EntityTypes (object)
@@ -400,10 +400,10 @@ Deletes the specified vendor employee.
 ##SearchQueryFunctionFilter (enum, required)
     + Members
         + `{}`
-        + `{function:"vendor"}`
-        + `{function:"vempl"}`
-        + `{function:"contract"}`
-        + `{function:"contact"}`
+        + `{entityType:"VMP_VN"}`
+        + `{entityType:"VMP_VEMP"}`
+        + `{entityType:"VMP_CNTR"}`
+        + `{entityType:"VMP_CONT"}`
         
 ## ProfileBase (object)
 + firstName: `MARIO` (required, string) - First name of the profile. Must be between 2 and 50 chars long.
