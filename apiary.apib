@@ -179,6 +179,34 @@ Deletes a document assigned to an entity.
     Returned when a generic error occours.
 
     + Body
+    
+#######################
+# Group Vendor Employees
+#######################
+
+## Employees [/employees]
+
+### Create vendor employee DRAFT [POST]
+Creates a new vendor employee.
+
++ Request (application/json)
+
+    + Attributes (ProfileCreate)
+
++ Response 201 (application/json)
+
+    + Attributes (ProfileDetail1)
+
++ Response 400
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body when a generic error occours.
+    + Body
 
 #######################
 # Data Structures
@@ -332,3 +360,81 @@ Deletes a document assigned to an entity.
         + `{function:"vempl"}`
         + `{function:"contract"}`
         + `{function:"contact"}`
+        
+## ProfileBase (object)
++ firstName: `MARIO` (required, string) - First name of the profile. Must be between 2 and 50 chars long.
++ lastName: `BIANCHI` (required, string) - Last name of the profile. Must be between 2 and 50 chars long.
++ email: `mbianchi@acme.it` (required, string) - Email of the profile. Must be a valid email, as specified in RFC2822.
++ profession: `Senior Developer` (string)
++ businessUnit: `not used?` (string)
++ jobResponsability: `job responsability` (string)
++ altInternetAddress: `firstname.lastname@organization2.com` (string) - Must be a valid email, as specified in RFC2822.
++ notesAddress: `indirizzo_notes@aaaaa.it` (string) - Must be a valid email, as specified in RFC2822.
++ userId: `userid` (required, string) - Username of the profile. This field must match with the field used to authenticate on the application server.
++ employeeType: `MAI` (required, string) - Code of profile type
++ personalCode: `X123456` (required, string)
++ bluePageCode: `L123456` (required, string)
++ hiringDate: `2016-02-28` (required, string) - Hiring date of the profile. The profile can be found through queries only starting from the specified date.
++ managerRole: `true` (boolean)
++ phone (object)
+    + country: `39` (string)
+    + number: `12345678` (string)
++ mobilePhone (object)
+    + country: `39` (string)
+    + number: `1234567` (string)
++ fax (object)
+    + country: `39` (string)
+    + number: `3904912345678` (string)
++ vendor (Vendor1) - Vendor object for vendor employees. Only its `id` is used.
++ functionalManager (object) - Profile of the functional manager. Only its `id` is used.
+    + id: 1 (number)
+
+## ProfileDetail (ProfileBase)
++ Include ProfilesAddresses
++ Include VendorEmployeeInfo
+
+## ProfileCreate (ProfileDetail)
++ dismissDate: `2016-02-28` (required, string) - Dismiss date. Only considered when inserting the profile.
+
+## ProfilesAddresses (object)
++ addresses
+    + preferred (ProfileAddress) - preferred address of the user, if different from business address.
+    + business (ProfileAddress) - business address of the user.
+
+## ProfileAddress
++ street: Via Nizza 15
++ city: Torino
++ country: Italy
++ zip: 12345
++ locationId: 1 (number)
+
+
+## ProfileAddressCountry
++ country: Italy
++ locationId: 1
+
+## Vendor1 (object)
++ id: 1 (required, number)
++ name: `IBM Italia S.p.a.` (required, string)
+
+## ProfileDetail1 (ProfileDetail)
++ empid: 1 (number) - id of the profile
+
+## VendorEmployeeInfo (object)
++ subContractor1: `123` (number, optional) - ID of the first subcontractor.
++ subContractor2: `456` (number, optional) - ID of the second subcontractor.
++ vendorMid: `789` (number, optional)
++ dprid: `aaa` (string, optional)
++ fiscalcode: `AJHC34789PAH` (string, optional)
++ nationality: `Italian` (string, optional)
++ languageId: `italian` (string, optional) 
++ resourceTypeId: `bbb` (string, optional)
++ active: `Y` (string, optional)
++ dismiss: `N` (string, optional)
++ notes: `aaa bbb ccc` (string, optional)
++ networkAccessRequired: `N` (string, optional)
++ accountValidityDate: `2018-06-15ate` (string, optional)
++ badgeRequired: `N` (string, optional)
++ badgeValidityDate: `2016-02-28` (string, optional)
++ assetRequired: `Y` (string, optional)
++ telephonyRequired: `N` (string, optional)
