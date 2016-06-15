@@ -127,7 +127,7 @@ Return the entity's types.
     + pageSize: 25 (number, required) - size of the slice
 
 ## DocumentSearchResult (object)
-+ results (array[Document1], required) - array of revisions
++ results (array[Document1, Document2, Document3], required) - array of revisions
 + Include PaginationData1
 
 ## Document1 (object)
@@ -238,7 +238,7 @@ Return the entity's types.
 + description: `Contact`
 
 ##EntityTypes (object)
-+ results (array[EntityVendor, EntityVendorEmployee, EntityContract, EntityContact], required) - array of entity types
++ results (array[EntityVendor], required) - array of entity types
 + Include PaginationData4
 
 ##SearchQueryFunctionFilter (enum, required)
