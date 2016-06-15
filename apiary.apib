@@ -42,44 +42,6 @@ Creates a new document.
     Returned when a generic error occours.
     + Body
 
-###Download Document DRAFT [GET /documents/{id}]
-Returns the document detail for the given id.
-
-+ Parameters
-    + id: 123 (number, required) - id of the document
-
-+ Response 200 (application/XYZ)
-    + Body
-
-+ Response 404
-    Returned when the required resource cannot be found.
-    + Body
-
-+ Response 500
-    Returned when a generic error occours.
-    + Body
-
-### Delete document DRAFT[DELETE /documents/{id}]
-Deletes a document.
-
-+ Parameters
-    + id: 123 (number, required) - id of the document
-
-+ Response 204
-    Returned when the resource is successfully deleted.
-
-    + Body
-
-+ Response 404
-    Returned when the required resource cannot be found.
-
-    + Body
-
-+ Response 500
-    Returned when a generic error occours.
-
-    + Body
-
 ### Document types DRAFT[GET /documents/types{?searchQuery}]
 Return the document's types.
 
@@ -101,7 +63,7 @@ Return the document's owner.
 
 ## Entity [/entity]
 
-### Entity types DRAFT[GET /entity/types{?searchQuery}]
+### Entity types DRAFT[GET /entityTypes/types{?searchQuery}]
 Return the entity's types.
 
 + Parameters
@@ -109,6 +71,88 @@ Return the entity's types.
 
 + Response 200 (application/json)
   + Attributes (EntityTypes)
+
+###Download Document linked to an entityType DRAFT [GET /entityTypes/{entityType}/documents/{id}]
+Returns the document detail assigned to an entity type.
+
++ Parameters
+    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + id: 12 (number, required) - id of the document
+
++ Response 200 (application/XYZ)
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+    + Body
+
+###Download Document linked to an entity DRAFT [GET /entityTypes/{entityType}/entity/{entityId}/documents/{id}]
+Returns the document detail assigned to an entity.
+
++ Parameters
+    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityId: 123 (number, required) - id of the entity
+    + id: 12 (number, required) - id of the document
+
++ Response 200 (application/XYZ)
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+    + Body
+
+### Delete document linked to an entityType DRAFT[DELETE /entityTypes/{entityType}/documents/{id}]
+Deletes a document assigned to an entity type.
+
++ Parameters
+    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + id: 12 (number, required) - id of the document
+
++ Response 204
+    Returned when the resource is successfully deleted.
+
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Delete document linked to an entity DRAFT[DELETE /entityTypes/{entityType}/entity/{entityId}/documents/{id}]
+Deletes a document assigned to an entity.
+
++ Parameters
+    + entityType: `VM_VND` (EntityType1, required) - id of the entity type
+    + entityId: 123 (number, required) - id of the entity
+    + id: 12 (number, required) - id of the document
+
++ Response 204
+    Returned when the resource is successfully deleted.
+
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
 
 #######################
 # Data Structures
@@ -133,9 +177,8 @@ Return the entity's types.
 ## Document1 (object)
 + id: 1
 + name: `New_sup_R&D_L.pdf`
-+ docType (object)
-    + id: `DPL`
-    + description: `DPL`
++ docType (DocumentType1, required)
++ entityId: 123 (number, optional)
 + description: `New supplier R&D legal`
 + owner: `Cesarini Micaela`
 + insertDate: `2016-02-06 10.50.30`
@@ -145,9 +188,8 @@ Return the entity's types.
 ## Document2 (object)
 + id: 2
 + name: `Result_SVCS_TSC_NTT_20151103.xls`
-+ docType (object)
-    + id: `IBMCHE`
-    + description: `IBM Checklist`
++ docType (DocumentType2, required)
++ entityId: 123 (number, optional)
 + description: `performance NTT Data Austria`
 + owner: `Panseri Gianluigi`
 + insertDate: `2016-02-08 10.50.30`
@@ -157,9 +199,7 @@ Return the entity's types.
 ## Document3 (object)
 + id: 3
 + name: `Supplier_questioinnaire_BRUTTI.pdf`
-+ docType (object)
-    + id: `SUPQUE`
-    + description: `Supplier questioinnaire`
++ docType (DocumentType3, required)
 + description: `Supplier questioinnaire BRUTTI L`
 + owner: `Panseri Gianluigi`
 + insertDate: `2016-02-10 10.50.30`
@@ -167,7 +207,7 @@ Return the entity's types.
 + validityDate: undefined
 
 ## DocumentUploadBody (object)
-+ entityType: `VM_VND` (EntityType1, optional) - the type of the entity to link the document
++ entityTypeId: `VM_VND` (EntityType1, required) - the type of the entity to link the document
 + entityId: 123 (number, optional) - the id of the entity to link the document
 + docType: `GENDOC`
 + description: `Generic document for vendor`
@@ -178,7 +218,7 @@ Return the entity's types.
 
 ##DocumentUploaded (object)
 + id: 12
-+ entityType: `VM_VND` (EntityType1, optional)
++ entityType (EntityVendor, optional)
 + entityId: 123 (number, optional)
 + docType: `GENDOC`
 + description: `Generic document for vendor`
@@ -189,18 +229,22 @@ Return the entity's types.
 ##DocumentType1 (object)
 + id: `DPL`
 + description: `DPL`
++ entityType (EntityVendor)
 
 ##DocumentType2 (object)
 + id: `IBMCHE`
 + description: `IBM Checklist`
++ entityType (EntityVendor)
 
 ##DocumentType3 (object)
 + id: `SUPQUE`
 + description: `Supplier questioinnaire`
++ entityType (EntityVendor)
 
 ##DocumentType4 (object)
 + id: `GENDOC`
 + description: `Generic document`
++ entityType (EntityVendor)
 
 ##DocumentTypes (object)
 + results (array[DocumentType1, DocumentType2, DocumentType3, DocumentType4], required) - array of document types
@@ -214,7 +258,7 @@ Return the entity's types.
     + Anna Baggio (string)
 + Include PaginationData4
 
-##EntityType1 (enum, optional)
+##EntityType1 (string)
     + Members
         + `VM_VND`
         + `VM_VEMP`
