@@ -38,10 +38,6 @@ Return the document's owner.
 + Response 200 (application/json)
   + Attributes (DocumentOwner)
 
-#######################
-# Group Entities
-#######################
-
 ## Entity [/entity]
 
 ### Entity types DRAFT[GET /entityTypes/types{?searchQuery}]
@@ -75,7 +71,7 @@ Creates a new document linking it to an entityType.
     Returned when a generic error occours.
     + Body
 
-### Upload Document linking it to an entity DRAFT [POST /entityTypes/{entityType}/entity/{entityId}/documents]
+### Upload Document linking it to an entity DRAFT [POST /entityTypes/{entityType}/{entityId}/documents]
 Creates a new document linking it to an entity.
 
 + Parameters
@@ -116,7 +112,7 @@ Returns the document detail assigned to an entity type.
     Returned when a generic error occours.
     + Body
 
-###Download Document linked to an entity DRAFT [GET /entityTypes/{entityType}/entity/{entityId}/documents/{id}]
+###Download Document linked to an entity DRAFT [GET /entityTypes/{entityType}/{entityId}/documents/{id}]
 Returns the document detail assigned to an entity.
 
 + Parameters
@@ -157,7 +153,7 @@ Deletes a document assigned to an entity type.
 
     + Body
 
-### Delete document linked to an entity DRAFT[DELETE /entityTypes/{entityType}/entity/{entityId}/documents/{id}]
+### Delete document linked to an entity DRAFT[DELETE /entityTypes/{entityType}/{entityId}/documents/{id}]
 Deletes a document assigned to an entity.
 
 + Parameters
@@ -179,6 +175,120 @@ Deletes a document assigned to an entity.
     Returned when a generic error occours.
 
     + Body
+
+
+#######################
+# Group Vendor
+#######################
+
+## Vendor collection [/verdors{?searchQuery,page,sort,pageSize}]
+
++ Attributes (object)
+  + results (array[Vendor1, Vendor2, Vendor3], required) - array of revisions
+  + Include PaginationData1
+
+### List Vendors [GET]
+Returns the vendors list.
+
++ Parameters
+  + searchQuery: {} (object, required) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: name (optional) - Sorting order
+  + pageSize: 25 (optional, number) - Amount of results to return
+
++ Response 200 (application/json)
+  + Attributes (Vendor collection)
+
+
+### Create Vendor [POST]
+Creates a new vendor.
+
+This action is available only to `VMPADMIN` rolee.
+
+
++ Request (application/json)
+
+    + Attributes (VendorNoId)
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /vendors/123
+
+    + Attributes (Vendor1)
+
++ Response 400
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
+## Vendor [/vendors/{id}]
+
++ Parameters
+  + id: 1 (required) - id of the requested vendor
+
++ Attributes (Vendor1)
+
+### Read Vendor [GET]
+Used to retrieve vendor detail.
+
++ Response 200 (application/json)
+
+    + Attributes (Vendor1)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Update Vendor [PUT /vendors/{id}]
+This action is available only to `VMPADMIN` role.
+
++ Parameters
+    + id: 1 (required, number) - id of the vendor
+
++ Request (application/json)
+  + Attributes (Vendor1)
+
++ Response 200
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Delete Vendor [DELETE]
+This action is available only to `VMPADMIN` role.
+
++ Response 204
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
     
 #######################
 # Group Vendor Employees
@@ -429,7 +539,7 @@ Deletes the specified vendor employee.
 + fax (object)
     + country: `39` (string)
     + number: `3904912345678` (string)
-+ vendor (Vendor1) - Vendor object for vendor employees. Only its `id` is used.
++ vendor (VendorMini1) - Vendor object for vendor employees. Only its `id` is used.
 + functionalManager (object) - Profile of the functional manager. Only its `id` is used.
     + id: 1 (number)
 
@@ -457,7 +567,7 @@ Deletes the specified vendor employee.
 + country: Italy
 + locationId: 1
 
-## Vendor1 (object)
+## VendorMini1 (object)
 + id: 1 (required, number)
 + name: `IBM Italia S.p.a.` (required, string)
 
@@ -482,3 +592,38 @@ Deletes the specified vendor employee.
 + badgeValidityDate: `2016-02-28` (string, optional)
 + assetRequired: `Y` (string, optional)
 + telephonyRequired: `N` (string, optional)
+
+## Vendor1 (object)
++ id: 1 (required, number)
++ name: `IBM Italia S.p.a.` (required, string)
++ address : `5 Dryden Junction`
++ businessContinuity: false
++ city : `Sechelt`
++ countryId : `826`
++ email : `fhuntog@princeton.edu`
++ frameworkContract : false
++ infra : false
++ masterCode : `00001`
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ providedUbis : false
++ riskAssessment : false
++ sched25StatusId : `004`
++ sched30StatusId : `003`
++ schedSondrioId : `005`
++ state : `British Columbia`
++ subContratAut : true
++ tempCode : `00001`
++ vatNumber : `6331103416516883532`
++ vendorTypeId : `6331103416516883532`
+
+
+## Vendor2 (object)
++ id: 2 (required, number)
++ name: `Vendor 2` (required, string)
+
+## Vendor3 (object)
++ id: 3 (required, number)
++ name: `Vendor 3` (required, string)
+
+## VendorNoId (object)
++ name: `Vendor 1` (required, string)
