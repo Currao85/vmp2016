@@ -178,10 +178,10 @@ Deletes a document assigned to an entity.
 
 
 #######################
-# Group Vendor
+# Group Vendor/Subcontractor DRAFTaft Vendor/Subcontracotr
 #######################
 
-## Vendor collection [/verdors{?searchQuery,page,sort,pageSize}]
+## Vendor/Subcontractor collection [/verdors{?searchQuery,page,sort,pageSize}]
 
 + Attributes (object)
   + results (array[Vendor1, Vendor2, Vendor3], required) - array of revisions
@@ -595,35 +595,104 @@ Deletes the specified vendor employee.
 
 ## Vendor1 (object)
 + id: 1 (required, number)
-+ name: `IBM Italia S.p.a.` (required, string)
-+ address : `5 Dryden Junction`
-+ businessContinuity: false
-+ city : `Sechelt`
-+ countryId : `826`
++ tempCode : `00001`
++ masterCode : `4000308`
++ name: `A1 TELEKOM AUSTRIA AG` (required, string)
 + email : `fhuntog@princeton.edu`
-+ frameworkContract : false
-+ infra : false
-+ masterCode : `00001`
++ vatNumber : `ATU13585627`
++ status (VendorStatus1)
++ address : `OBERE DONAUSTRAßE 29`
++ city : `WIEN`
++ state : ``
++ zip : `1020`
++ countryId : `040` 
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
-+ providedUbis : false
-+ riskAssessment : false
++ riskAssessment : false (boolean)
++ businessContinuity: false (boolean)
++ subContratAut : false (boolean)
++ providedUbis : false (boolean)
++ frameworkContract : false (boolean)
 + sched25StatusId : `004`
 + sched30StatusId : `003`
 + schedSondrioId : `005`
-+ state : `British Columbia`
-+ subContratAut : true
-+ tempCode : `00001`
-+ vatNumber : `6331103416516883532`
-+ vendorTypeId : `6331103416516883532`
++ vendorTypeId : `001`
++ infra : false (boolean)
 
 
 ## Vendor2 (object)
 + id: 2 (required, number)
-+ name: `Vendor 2` (required, string)
++ tempCode : `00002`
++ masterCode : `4000477`
++ name: `ADECCO ITALIA SPA` (required, string)
++ email : `example@adecco.com`
++ vatNumber : `13456789445`
++ status (VendorStatus1)
++ address : `Via Tolmezzo 15`
++ city : `Milano`
++ state : ``
++ zip : `20132`
++ countryId : `380` 
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ riskAssessment : false (boolean)
++ businessContinuity: false (boolean)
++ subContratAut : false (boolean)
++ providedUbis : false (boolean)
++ frameworkContract : false (boolean)
++ sched25StatusId : `004`
++ sched30StatusId : `003`
++ schedSondrioId : `005`
++ vendorTypeId : `001`
++ infra : false (boolean)
 
 ## Vendor3 (object)
 + id: 3 (required, number)
-+ name: `Vendor 3` (required, string)
++ tempCode : `00002`
++ masterCode : `4000477`
++ name: `SODEXO` (required, string)
++ email : `example@sodexo.com`
++ vatNumber : `04545678944`
++ status (VendorStatus1)
++ address : `Via Gallarate 15`
++ city : `Milano`
++ state : `MI`
++ zip : `20151`
++ countryId : `380` 
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ riskAssessment : false (boolean)
++ businessContinuity: false (boolean)
++ subContratAut : false (boolean)
++ providedUbis : false (boolean)
++ frameworkContract : false (boolean)
++ sched25StatusId : `004`
++ sched30StatusId : `
++ schedSondrioId : ``
++ vendorTypeId : ``
++ infra : false (boolean)
 
 ## VendorNoId (object)
-+ name: `Vendor 1` (required, string)
++ tempCode : `00001`
++ masterCode : `4000308`
++ name: `A1 TELEKOM AUSTRIA AG` (required, string)
++ email : `fhuntog@princeton.edu`
++ vatNumber : `ATU13585627`
++ status (VendorStatus1)
++ address : `OBERE DONAUSTRAßE 29`
++ city : `WIEN`
++ state : ``
++ zip : `1020`
++ countryId : `040` 
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ riskAssessment : false (boolean)
++ businessContinuity: false (boolean)
++ subContratAut : false (boolean)
++ providedUbis : false (boolean)
++ frameworkContract : false (boolean)
++ sched25StatusId : `004`
++ sched30StatusId : `003`
++ schedSondrioId : `005`
++ vendorTypeId : `001`
++ infra : false (boolean)
+
+## VendorStatus1 (object)
++ id: `001` (required, string)
++ description: `Active`
