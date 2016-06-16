@@ -178,17 +178,17 @@ Deletes a document assigned to an entity.
 
 
 #######################
-# Group Vendor/Subcontractor DRAFTaft Vendor/Subcontracotr
+# Group Vendor/Subcontractor
 #######################
 
 ## Vendor/Subcontractor collection [/verdors{?searchQuery,page,sort,pageSize}]
 
 + Attributes (object)
-  + results (array[Vendor1, Vendor2, Vendor3], required) - array of revisions
+  + results (array[Vendor1, Vendor2, Vendor3], required) - array of vendors/subcontractors
   + Include PaginationData1
 
-### List Vendors [GET]
-Returns the vendors list.
+### List Vendor/Subcontractor [GET]
+Returns the vendors/subcontractors list.
 
 + Parameters
   + searchQuery: {} (object, required) - json filter
@@ -197,11 +197,11 @@ Returns the vendors list.
   + pageSize: 25 (optional, number) - Amount of results to return
 
 + Response 200 (application/json)
-  + Attributes (Vendor collection)
+  + Attributes (Vendor/Subcontractor collection)
 
 
-### Create Vendor [POST]
-Creates a new vendor.
+### Create Vendor/Subcontractor [POST]
+Creates a new vendor/subcontractor.
 
 This action is available only to `VMPADMIN` rolee.
 
@@ -229,15 +229,15 @@ This action is available only to `VMPADMIN` rolee.
     + Body
 
 
-## Vendor [/vendors/{id}]
+## Vendor/Subcontractor [/vendors/{id}]
 
 + Parameters
-  + id: 1 (required) - id of the requested vendor
+  + id: 1 (required) - id of the requested vendor/subcontractor
 
 + Attributes (Vendor1)
 
-### Read Vendor [GET]
-Used to retrieve vendor detail.
+### Read Vendor/Subcontractor [GET]
+Used to retrieve vendor/subcontractor detail.
 
 + Response 200 (application/json)
 
@@ -253,11 +253,11 @@ Used to retrieve vendor detail.
 
     + Body
 
-### Update Vendor [PUT /vendors/{id}]
+### Update Vendor/Subcontractor [PUT /vendors/{id}]
 This action is available only to `VMPADMIN` role.
 
 + Parameters
-    + id: 1 (required, number) - id of the vendor
+    + id: 1 (required, number) - id of the vendor/subcontractor
 
 + Request (application/json)
   + Attributes (Vendor1)
@@ -274,7 +274,7 @@ This action is available only to `VMPADMIN` role.
 
     + Body
 
-### Delete Vendor [DELETE]
+### Delete Vendor/Subcontractor [DELETE]
 This action is available only to `VMPADMIN` role.
 
 + Response 204
@@ -594,18 +594,19 @@ Deletes the specified vendor employee.
 + telephonyRequired: `N` (string, optional)
 
 ## Vendor1 (object)
-+ id: 1 (required, number)
++ id: 1 (number)
 + tempCode : `00001`
++ functionId: `VMP_VND`,`VMP_SUB` (enum,required)
 + masterCode : `4000308`
 + name: `A1 TELEKOM AUSTRIA AG` (required, string)
 + email : `fhuntog@princeton.edu`
-+ vatNumber : `ATU13585627`
-+ status (VendorStatus1)
-+ address : `OBERE DONAUSTRAßE 29`
++ vatNumber : `ATU13585627`  (required, string)
++ status (VendorStatus1)  (required, string)
++ address : `OBERE DONAUSTRAßE 29`  (required, string)
 + city : `WIEN`
-+ state : ``
++ state : 
 + zip : `1020`
-+ countryId : `040` 
++ countryId : `040`  (required, string) 
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
 + riskAssessment : false (boolean)
 + businessContinuity: false (boolean)
@@ -629,7 +630,7 @@ Deletes the specified vendor employee.
 + status (VendorStatus1)
 + address : `Via Tolmezzo 15`
 + city : `Milano`
-+ state : ``
++ state : `MI` (string, optional)
 + zip : `20132`
 + countryId : `380` 
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
