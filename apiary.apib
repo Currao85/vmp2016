@@ -27,7 +27,7 @@ Returns the documents list.
 Return the document's types.
 
 + Parameters
-  + searchQuery: `{entityType:"VMP_VND"}` (SearchQueryFunctionFilter) - json filter
+  + searchQuery: `{entityType:"VMP_VND", docType:"GENDOC"}` (object) - json filter
 
 + Response 200 (application/json)
   + Attributes (DocumentTypes)
@@ -44,7 +44,7 @@ Return the document's owner.
 Return the entity's types.
 
 + Parameters
-  + searchQuery: `{entityType:"VMP_VND"}` (SearchQueryFunctionFilter) - json filter
+  + searchQuery: `{entityType:"VMP_VND"}` (object) - json filter
 
 + Response 200 (application/json)
   + Attributes (EntityTypes)
@@ -181,7 +181,7 @@ Deletes a document assigned to an entity.
 # Group Vendor/Subcontractor
 #######################
 
-## Vendor/Subcontractor collection [/verdors{?searchQuery,page,sort,pageSize}]
+## Vendor/Subcontractor collection [/verdors{?searchQuery,page,sort,pageSize,sortOrder}]
 
 Takes a `searchQuery` parameter object defined as follows
   + function (optional,string) - code of requested function (VMP_VND for Vendors, VMP_SUB from Subcontractors) 
@@ -194,7 +194,17 @@ Returns the vendors/subcontractors list.
 + Parameters
   + searchQuery: {} (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
-  + sort: name (optional) - Sorting order
+  + sort: name (enum[string], optional) - Sorting field
+        + Members
+            + name
+            + mastercode
+            + address
+            + status
+            + vatnumber
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
   + pageSize: 25 (optional, number) - Amount of results to return
 
 + Response 200 (application/json)
@@ -507,14 +517,6 @@ Deletes the specified vendor employee.
 ##EntityTypes (object)
 + results (array[EntityVendor, EntityVendorEmployee, EntityContract, EntityContact], required) - array of entity types
 + Include PaginationData4
-
-##SearchQueryFunctionFilter (enum, required)
-    + Members
-        + `{}`
-        + `{entityType:"VMP_VN"}`
-        + `{entityType:"VMP_VEMP"}`
-        + `{entityType:"VMP_CNTR"}`
-        + `{entityType:"VMP_CONT"}`
         
 ## ProfileBase (object)
 + firstName: `MARIO` (required, string) - First name of the profile. Must be between 2 and 50 chars long.
