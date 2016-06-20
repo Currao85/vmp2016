@@ -15,7 +15,7 @@ Service Oriented Architecture specified for the VMP project.
 Returns the documents list.
 
 + Parameters
-  + searchQuery: `{entityType:"VMP_VND", entityId:123,docTypeId: "GENDOC",owner: 234,insertDate: "2016-02-05",signingDate: "2016-02-05",validityDate: "2016-02-05"}`  (object, required) - json filter
+  + searchQuery: `{function:"VMP_VND", entityId:123,docTypeId: "GENDOC",owner: 234,insertDate: "2016-02-05",signingDate: "2016-02-05",validityDate: "2016-02-05"}`  (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
   + sort: description (optional) - Sorting order
   + pageSize: 25 (optional, number) - Amount of results to return
@@ -27,7 +27,7 @@ Returns the documents list.
 Return the document's types.
 
 + Parameters
-  + searchQuery: `{entityType:"VMP_VND", docType:"GENDOC"}` (object) - json filter
+  + searchQuery: `{function:"VMP_VND", docType:"GENDOC"}` (object) - json filter
 
 + Response 200 (application/json)
   + Attributes (DocumentTypes)
@@ -44,7 +44,7 @@ Return the document's owner.
 Return the entity's types.
 
 + Parameters
-  + searchQuery: `{entityType:"VMP_VND"}` (object) - json filter
+  + searchQuery: `{function:"VMP_VND"}` (object) - json filter
 
 + Response 200 (application/json)
   + Attributes (EntityTypes)
@@ -300,6 +300,131 @@ This action is available only to `VMPADMIN` role.
 
     + Body
 
+
+#######################
+# Group Vendor Contact
+#######################
+
+## Vendor Contact collection [/contacts{?searchQuery,page,sort,pageSize,sortOrder}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + vendorid (optional,string) - vendor id
+  + lname (optional,String) - last name of the contact
+  + companyname (optional,String) - company name of the contact
+
+### List Vendor Contact [GET]
+Returns the vendor contacts list.
+
++ Parameters
+  + searchQuery: {} (object, required) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: name (enum[string], optional) - Sorting field
+        + Members
+            + vendorcode 
+            + lname (default)
+            + email
+            + role
+            + code
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+
++ Response 200 (application/json)
+  + Attributes (VendorContactSearchResult)
+
+
+### Create Vendor Contact [POST]
+Creates a new vendor contact.
+
+This action is available only to `VMPADMIN` rolee.
+
+
++ Request (application/json)
+
+    + Attributes (VendorContactInsert)
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /contacts/123
+
+    + Attributes (VendorContact1)
+
++ Response 400
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
+## Vendor Contact [/vendors/{id}]
+
++ Parameters
+  + id: 1 (required) - id of the requested vendor contact
+
++ Attributes (VendorContact1)
+
+### Read Vendor Contact [GET]
+Used to retrieve vendor contact detail.
+
++ Response 200 (application/json)
+
+    + Attributes (VendorContact1)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Update Vendor Contact [PUT /contacts/{id}]
+This action is available only to `VMPADMIN` role.
+
++ Parameters
+    + id: 1 (required, number) - id of the vendor contact
+
++ Request (application/json)
+  + Attributes (VendorContact1)
+
++ Response 200
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Delete Vendor Contact [DELETE]
+This action is available only to `VMPADMIN` role.
+
++ Response 204
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+    
     
 #######################
 # Group Vendor Employees
@@ -400,6 +525,7 @@ Deletes the specified vendor employee.
 + id: 1
 + name: `New_sup_R&D_L.pdf`
 + docType (DocumentType1, required)
++ function (EntityVendor)
 + entityId: 123 (number, optional)
 + description: `New supplier R&D legal`
 + owner: `Cesarini Micaela`
@@ -411,6 +537,7 @@ Deletes the specified vendor employee.
 + id: 2
 + name: `Result_SVCS_TSC_NTT_20151103.xls`
 + docType (DocumentType2, required)
++ function (EntityVendor)
 + entityId: 123 (number, optional)
 + description: `performance NTT Data Austria`
 + owner: `Panseri Gianluigi`
@@ -420,6 +547,7 @@ Deletes the specified vendor employee.
 + id: 3
 + name: `Supplier_questioinnaire_BRUTTI.pdf`
 + docType (DocumentType3, required)
++ function (EntityVendor)
 + description: `Supplier questioinnaire BRUTTI L`
 + owner: `Panseri Gianluigi`
 + insertDate: `2016-02-10 10.50.30`
@@ -462,22 +590,18 @@ Deletes the specified vendor employee.
 ##DocumentType1 (object)
 + id: `DPL`
 + description: `DPL`
-+ entityType (EntityVendor)
 
 ##DocumentType2 (object)
 + id: `IBMCHE`
 + description: `IBM Checklist`
-+ entityType (EntityVendor)
 
 ##DocumentType3 (object)
 + id: `SUPQUE`
 + description: `Supplier questioinnaire`
-+ entityType (EntityVendor)
 
 ##DocumentType4 (object)
 + id: `GENDOC`
 + description: `Generic document`
-+ entityType (EntityVendor)
 
 ##DocumentTypes (object)
 + results (array[DocumentType1, DocumentType2, DocumentType3, DocumentType4], required) - array of document types
@@ -709,3 +833,87 @@ Deletes the specified vendor employee.
 
 ## VendorStatusInsert (object)
 + id: `001` (required, string)
+
+
+## VendorContact1 (object)
++ id: 1 (number) - vendor contact id
++ firstName : `Fatima` (required, string) - contact first name
++ lastName : `Cross` (required, string) - contact last name
++ companyName: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
++ email : `fhuntog@princeton.edu` - main email
++ email2 : `velit.dui.semper@Nuncsedorci.org` - secondary email
++ phoneNumber : `(556) 566-8629` - phone number
++ role : `Chief Design Engineer`  (required, string) - contact role
++ address : `OBERE DONAUSTRAßE 29`  (required, string) - address
++ city : `WIEN` - city
++ state : ` ` - province or state
++ zip : `1020` - postal code
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
++ vendor (VendorMini2)  (required, object) - vendor object
++ enabled : true (boolean)
+
+
+## VendorContact2 (object)
++ id: 2 (number) - vendor contact id
++ firstName : `Wayne` (required, string) - contact first name
++ lastName : `Nash` (required, string) - contact last name
++ companyName: `Egestas Nunc Sed Institute` (string) - company name
++ email : `enim.nec@dapibusgravidaAliquam.org` - main email
++ email2 : ` ` - secondary email
++ phoneNumber : `(588) 151-2979` - phone number
++ role : `Staff Scientist`  (required, string) - contact role
++ address : `Ap #720-9780 In Ave`  (required, string) - address
++ city : `WIEN` - city
++ state : ` ` - province or state
++ zip : `1020` - postal code
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
++ vendor (VendorMini3)  (required, object) - vendor object
++ enabled : true (boolean)
+
+## VendorContact3 (object)
++ id: 2 (number) - vendor contact id
++ firstName : `Candace` (required, string) - contact first name
++ lastName : `Candace` (required, string) - contact last name
++ companyName: `Arcu Sed Foundation` (required, string) - company name
++ email : `enim.nec@dapibusgravidaAliquam.org` - main email
++ email2 : ` ` - secondary email
++ phoneNumber : `(588) 151-2979` - phone number
++ role : `Staff Scientist`  (required, string) - contact role
++ address : `Ap #720-9780 In Ave`  (required, string) - address
++ city : `WIEN` - city
++ state : ` ` - province or state
++ zip : `1020` - postal code
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
++ vendor (VendorMini2)  (required, object) - vendor object
++ enabled : true (boolean)
+
+## VendorContactInsert (object)
++ firstName : `Fatima` (required, string) - contact first name
++ lastName : `Cross` (required, string) - contact last name
++ companyName: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
++ email : `fhuntog@princeton.edu` - main email
++ email2 : `fhuntog@princeton.edu` - secondary email
++ phoneNumber : `(556) 566-8629` - phone number
++ role : `Chief Design Engineer`  (required, string) - contact role
++ address : `OBERE DONAUSTRAßE 29`  (required, string) - address
++ city : `WIEN` - city
++ state : ` ` - province or state
++ zip : `1020` - postal code
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
++ vendor (VendorMini2)  (required, object) - vendor object
++ enabled : true (boolean)
+
+
+## VendorContactSearchResult (object)
++ results (array[VendorContact1, VendorContact2, VendorContact3], required) - array of Vendor Contacts 
++ Include PaginationData1
+
+## VendorMini2 (object)
++ id: 1 (required, number)
++ name: `IBM Italia S.p.a.` (required, string)
++ mastercode: `000025` 
+
+## VendorMini3 (object)
++ id: 406 (required, number)
++ name: `Meedoo` (required, string)
++ mastercode: `00406`
