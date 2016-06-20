@@ -559,6 +559,32 @@ The list commodity families.
 + Response 200 (application/json)
   + Attributes (Commodity Families collection)
 
+## Contract types collection [/lookup/contracttypes]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 1
+          + description: Master / Base Agreements / Participation Agreement PA Equipment Agreements
+      + (object)
+          + id: 2
+          + description: Statements of Work SOWs Equipment Agreements
+      + (object)
+          + id: 3
+          + description: Statements of Work SOWs Goods Agreements
+      + (object)
+          + id: 4
+          + description: Master / Base Agreements / Participation Agreement PA Participation Agreements
+  + Include PaginationData1
+
+
+### List contract types [GET]
+
+The list contract types.
+
++ Response 200 (application/json)
+  + Attributes (Contract types collection)
+
 
 ## Data Privacy Roles collection [/lookup/dataprivacyroles]
 
