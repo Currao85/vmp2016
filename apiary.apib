@@ -501,6 +501,218 @@ Deletes the specified vendor employee.
 
     + Body
 
+
+#######################
+# Group Lookup Lists
+#######################
+
+## Countries collection [/lookup/countries]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 1
+          + description: Italy
+      + (object)
+          + id: 2
+          + description: Germany
+      + (object)
+          + id: 3
+          + description: Austria
+      + (object)
+          + id: 4
+          + description: Spain
+  + Include PaginationData1
+
+
+### List countries [GET]
+
+The list countries. 
+
++ Response 200 (application/json)
+  + Attributes (Countries collection)
+
+
+## Commodity Families collection [/lookup/commodityfamilies]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 1
+          + description: Family B Site Maintenance
+      + (object)
+          + id: 2
+          + description: Family F Construction
+      + (object)
+          + id: 3
+          + description: Family G Environmental
+      + (object)
+          + id: 4
+          + description: Family H4 Connectivity
+  + Include PaginationData1
+
+
+### List commodity families [GET]
+
+The list commodity families.
+
++ Response 200 (application/json)
+  + Attributes (Commodity Families collection)
+
+
+## Data Privacy Roles collection [/lookup/dataprivacyroles]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 1
+          + description: Incaricato
+      + (object)
+          + id: 2
+          + description: SysAdm
+  + paginationData (object, required) - Informations required for pagination
+        + count: 2 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+### List Data Privacy Roles [GET]
+
+The list data privacy roles.
+
++ Response 200 (application/json)
+  + Attributes ( Data Privacy Roles collection)
+
+
+## Functions collection [/lookup/functions]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: VMP_CONT
+          + description: Contact
+      + (object)
+          + id: VMP_VND
+          + description: Vendor
+      + (object)
+          + id: VMP_CNTR
+          + description: Contract Management 
+  + paginationData (object, required) - Informations required for pagination
+        + count: 3 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List Functions [GET]
+
+The list of functions.
+
++ Response 200 (application/json)
+  + Attributes ( Functions collection)
+
+## Languages collection [/lookup/languages]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 1
+          + description: English
+      + (object)
+          + id: 2
+          + description: French
+      + (object)
+          + id: 3
+          + description: Italian 
+  + paginationData (object, required) - Informations required for pagination
+        + count: 3 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List Languages [GET]
+
+The list of languages.
+
++ Response 200 (application/json)
+  + Attributes ( Languages collection)
+
+
+## Resource Types collection [/lookup/resourcetypes]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 1
+          + description: T&T
+      + (object)
+          + id: 2
+          + description: Vendor
+  + paginationData (object, required) - Informations required for pagination
+        + count: 2 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List Resource Types [GET]
+
+The list of resource types.
+
++ Response 200 (application/json)
+  + Attributes ( Resource Types collection)
+
+
+## Schedule status collection [/lookup/schedulestatus]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 1
+          + description: Approved
+      + (object)
+          + id: 2
+          + description: New entry
+      + (object)
+          + id: 3
+          + description: Under approval
+  + paginationData (object, required) - Informations required for pagination
+        + count: 3 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List Schedule status [GET]
+
+The list of schedule status.
+
++ Response 200 (application/json)
+  + Attributes ( Schedule status collection)
+
+## Vendor status collection [/lookup/vendorstatus]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: A
+          + description: Active
+      + (object)
+          + id: B
+          + description: Blocked
+      + (object)
+          + id: M
+          + description: Marked for deletion
+  + paginationData (object, required) - Informations required for pagination
+        + count: 3 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List Vendor status [GET]
+
+The list of vendor status.
+
++ Response 200 (application/json)
+  + Attributes ( Vendor status collection)
+
+
 #######################
 # Data Structures
 #######################
@@ -734,7 +946,7 @@ Deletes the specified vendor employee.
 + city : `WIEN` - city
 + state : ` ` - province or state
 + zip : `1020` - postal code
-+ countryId : `040`  (required, string)  - country id
++ country (Country1) - country
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + riskAssessment : false (boolean) - risk assessment flag
 + businessContinuity: false (boolean) - business continuity flag
@@ -760,7 +972,7 @@ Deletes the specified vendor employee.
 + city : `Milano`
 + state : `MI` (string, optional)
 + zip : `20132`
-+ countryId : `380`
++ country (Country2) - country
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
 + riskAssessment : false (boolean)
 + businessContinuity: false (boolean)
@@ -785,7 +997,7 @@ Deletes the specified vendor employee.
 + city : `Milano`
 + state : `MI`
 + zip : `20151`
-+ countryId : `380`
++ country (Country2) - country
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
 + riskAssessment : false (boolean)
 + businessContinuity: false (boolean)
@@ -810,7 +1022,7 @@ Deletes the specified vendor employee.
 + city : `WIEN` - city
 + state : ` ` - province or state
 + zip : `1020` - postal code
-+ countryId : `040`  (required, string)  - country id
++ country (Country1) - country
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + riskAssessment : false (boolean) - risk assessment flag
 + businessContinuity: false (boolean) - business continuity flag
@@ -834,7 +1046,6 @@ Deletes the specified vendor employee.
 
 ## VendorStatusInsert (object)
 + id: `001` (required, string)
-
 
 ## VendorContact1 (object)
 + id: 1 (number) - vendor contact id
@@ -903,7 +1114,6 @@ Deletes the specified vendor employee.
 + vendor (VendorMini2)  (required, object) - vendor object
 + enabled : true (boolean)
 
-
 ## VendorContactSearchResult (object)
 + results (array[VendorContact1, VendorContact2, VendorContact3], required) - array of Vendor Contacts
 + Include PaginationData1
@@ -917,3 +1127,11 @@ Deletes the specified vendor employee.
 + id: 406 (required, number)
 + name: `Meedoo` (required, string)
 + mastercode: `00406`
+
+## Country1 (object)
++ id: 040 (required, string)
++ description: `Austria` (string)
+
+## Country2 (object)
++ id: 380 (required, string)
++ description: `Italy` (string)
