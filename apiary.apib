@@ -38,14 +38,14 @@ Return the document's owner.
 + Response 200 (application/json)
   + Attributes (DocumentOwner)
 
-## Entity [/entity]
+## Function [/functions]
 
 
-### Upload Document linking it to an entityType DRAFT [POST /entityTypes/{entityType}/documents]
-Creates a new document linking it to an entityType.
+### Upload Document linking it to an entity type DRAFT [POST /functions/{functionId}/documents]
+Creates a new document linking it to an entity type.
 
 + Parameters
-    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the entity type
 
 + Request (multipart/form-data)
 
@@ -63,11 +63,11 @@ Creates a new document linking it to an entityType.
     Returned when a generic error occours.
     + Body
 
-### Upload Document linking it to an entity DRAFT [POST /entityTypes/{entityType}/{entityId}/documents]
+### Upload Document linking it to an entity DRAFT [POST /functions/{functionId}/{entityId}/documents]
 Creates a new document linking it to an entity.
 
 + Parameters
-    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the entity type
     + entityId: 123 (number, required) - id of the entity
 
 + Request (application/json)
@@ -86,11 +86,11 @@ Creates a new document linking it to an entity.
     Returned when a generic error occours.
     + Body
 
-###Download Document linked to an entityType DRAFT [GET /entityTypes/{entityType}/documents/{id}]
+###Download Document linked to an entity type DRAFT [GET /functions/{functionId}/documents/{id}]
 Returns the document detail assigned to an entity type.
 
 + Parameters
-    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the entity type
     + id: 12 (number, required) - id of the document
 
 + Response 200 (application/XYZ)
@@ -104,11 +104,11 @@ Returns the document detail assigned to an entity type.
     Returned when a generic error occours.
     + Body
 
-###Download Document linked to an entity DRAFT [GET /entityTypes/{entityType}/{entityId}/documents/{id}]
+###Download Document linked to an entity DRAFT [GET /functions/{functionId}/{entityId}/documents/{id}]
 Returns the document detail assigned to an entity.
 
 + Parameters
-    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the entity type
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -123,11 +123,11 @@ Returns the document detail assigned to an entity.
     Returned when a generic error occours.
     + Body
 
-### Delete document linked to an entityType DRAFT[DELETE /entityTypes/{entityType}/documents/{id}]
+### Delete document linked to an entity type DRAFT[DELETE /functions/{functionId}/documents/{id}]
 Deletes a document assigned to an entity type.
 
 + Parameters
-    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the entity type
     + id: 12 (number, required) - id of the document
 
 + Response 204
@@ -145,11 +145,11 @@ Deletes a document assigned to an entity type.
 
     + Body
 
-### Delete document linked to an entity DRAFT[DELETE /entityTypes/{entityType}/{entityId}/documents/{id}]
+### Delete document linked to an entity DRAFT[DELETE /functions/{functionId}/{entityId}/documents/{id}]
 Deletes a document assigned to an entity.
 
 + Parameters
-    + entityType: `VMP_VND` (EntityType1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the entity type
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -758,7 +758,7 @@ The list of vendor status.
 + id: 1
 + name: `New_sup_R&D_L.pdf`
 + docType (DocumentType1, required)
-+ function (EntityVendor)
++ function (FunctionVendor)
 + entityId: 123 (number, optional)
 + description: `New supplier R&D legal`
 + owner: `Cesarini Micaela`
@@ -770,7 +770,7 @@ The list of vendor status.
 + id: 2
 + name: `Result_SVCS_TSC_NTT_20151103.xls`
 + docType (DocumentType2, required)
-+ function (EntityVendor)
++ function (FunctionVendor)
 + entityId: 123 (number, optional)
 + description: `performance NTT Data Austria`
 + owner: `Panseri Gianluigi`
@@ -780,7 +780,7 @@ The list of vendor status.
 + id: 3
 + name: `Supplier_questioinnaire_BRUTTI.pdf`
 + docType (DocumentType3, required)
-+ function (EntityVendor)
++ function (FunctionVendor)
 + description: `Supplier questioinnaire BRUTTI L`
 + owner: `Panseri Gianluigi`
 + insertDate: `2016-02-10 10.50.30`
@@ -849,31 +849,31 @@ The list of vendor status.
     + Anna Baggio (string)
 + Include PaginationData4
 
-##EntityType1 (string)
+##Function1 (string)
     + Members
         + `VMP_VND`
         + `VMP_VEMP`
         + `VMP_CNTR`
         + `VMP_CONT`
 
-##EntityVendor (object)
+##FunctionVendor (object)
 + id: `VMP_VND`
 + description: `Vendor`
 
-##EntityVendorEmployee (object)
+##FunctionVendorEmployee (object)
 + id: `VMP_VEMP`
 + description: `Vendor Employee`
 
-##EntityContract (object)
+##FunctionContract (object)
 + id: `VMP_CNTR`
 + description: `Contract ??Management??`
 
-##EntityContact (object)
+##FunctionContact (object)
 + id: `VMP_CONT`
 + description: `Contact`
 
-##EntityTypes (object)
-+ results (array[EntityVendor, EntityVendorEmployee, EntityContract, EntityContact], required) - array of entity types
+##Functions (object)
++ results (array[FunctionVendor, FunctionVendorEmployee, FunctionContract, FunctionContact], required) - array of entity types (functions)
 + Include PaginationData4
 
 ## ProfileBase (object)
