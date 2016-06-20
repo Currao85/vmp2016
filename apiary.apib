@@ -318,7 +318,7 @@ Returns the vendor contacts list.
 + Parameters
   + searchQuery: {} (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
-  + sort: name (enum[string], optional) - Sorting field
+  + sort: lname (enum[string], optional) - Sorting field
         + Members
             + vendorcode 
             + lname (default)
@@ -364,7 +364,7 @@ This action is available only to `VMPADMIN` rolee.
     + Body
 
 
-## Vendor Contact [/vendors/{id}]
+## Vendor Contact [/contacts/{id}]
 
 + Parameters
   + id: 1 (required) - id of the requested vendor contact
@@ -852,7 +852,6 @@ Deletes the specified vendor employee.
 + vendor (VendorMini2)  (required, object) - vendor object
 + enabled : true (boolean)
 
-
 ## VendorContact2 (object)
 + id: 2 (number) - vendor contact id
 + firstName : `Wayne` (required, string) - contact first name
@@ -871,7 +870,7 @@ Deletes the specified vendor employee.
 + enabled : true (boolean)
 
 ## VendorContact3 (object)
-+ id: 2 (number) - vendor contact id
++ id: 3 (number) - vendor contact id
 + firstName : `Candace` (required, string) - contact first name
 + lastName : `Candace` (required, string) - contact last name
 + companyName: `Arcu Sed Foundation` (required, string) - company name
