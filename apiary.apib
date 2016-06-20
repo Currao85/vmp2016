@@ -38,14 +38,14 @@ Return the document's owner.
 + Response 200 (application/json)
   + Attributes (DocumentOwner)
 
-## Function [/functions]
+## Function &#40Entity Types&#41 [/functions]
 
 
-### Upload Document linking it to an entity type DRAFT [POST /functions/{functionId}/documents]
-Creates a new document linking it to an entity type.
+### Upload Document linking it to a function &#40entity types&#41 DRAFT [POST /functions/{functionId}/documents]
+Creates a new document linking it to a function &#40entity types&#41.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the function &#40entity types&#41
 
 + Request (multipart/form-data)
 
@@ -67,7 +67,7 @@ Creates a new document linking it to an entity type.
 Creates a new document linking it to an entity.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the function &#40entity types&#41
     + entityId: 123 (number, required) - id of the entity
 
 + Request (application/json)
@@ -86,11 +86,11 @@ Creates a new document linking it to an entity.
     Returned when a generic error occours.
     + Body
 
-###Download Document linked to an entity type DRAFT [GET /functions/{functionId}/documents/{id}]
-Returns the document detail assigned to an entity type.
+###Download Document linked to a function &#40entity types&#41 DRAFT [GET /functions/{functionId}/documents/{id}]
+Returns the document detail assigned to a function &#40entity types&#41.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the function &#40entity types&#41
     + id: 12 (number, required) - id of the document
 
 + Response 200 (application/XYZ)
@@ -108,7 +108,7 @@ Returns the document detail assigned to an entity type.
 Returns the document detail assigned to an entity.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the function &#40entity types&#41
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -123,11 +123,11 @@ Returns the document detail assigned to an entity.
     Returned when a generic error occours.
     + Body
 
-### Delete document linked to an entity type DRAFT[DELETE /functions/{functionId}/documents/{id}]
-Deletes a document assigned to an entity type.
+### Delete document linked to a function &#40entity types&#41 DRAFT[DELETE /functions/{functionId}/documents/{id}]
+Deletes a document assigned to a function &#40entity types&#41.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the function &#40entity types&#41
     + id: 12 (number, required) - id of the document
 
 + Response 204
@@ -149,7 +149,7 @@ Deletes a document assigned to an entity type.
 Deletes a document assigned to an entity.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the entity type
+    + functionId: `VMP_VND` (Function1, required) - id of the function &#40entity types&#41
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
