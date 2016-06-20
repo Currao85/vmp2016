@@ -1,4 +1,4 @@
-FORMAT: 1A
+savedFORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
 # VMP
@@ -40,14 +40,6 @@ Return the document's owner.
 
 ## Entity [/entity]
 
-### Entity types DRAFT[GET /entityTypes/types{?searchQuery}]
-Return the entity's types.
-
-+ Parameters
-  + searchQuery: `{function:"VMP_VND"}` (object) - json filter
-
-+ Response 200 (application/json)
-  + Attributes (EntityTypes)
 
 ### Upload Document linking it to an entityType DRAFT [POST /entityTypes/{entityType}/documents]
 Creates a new document linking it to an entityType.
@@ -609,7 +601,10 @@ The list data privacy roles.
   + Attributes ( Data Privacy Roles collection)
 
 
-## Functions collection [/lookup/functions]
+## Functions collection [/lookup/functions{?searchQuery}]
+
++ Parameters
+  + searchQuery: `{function:"VMP_VND"}` (object) - json filter
 
 + Attributes (object)
   + results (array, required) - array of resources
