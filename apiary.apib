@@ -422,7 +422,32 @@ This action is available only to `VMPADMIN` role.
 # Group Vendor Employees
 #######################
 
-## Employees [/employees]
+## Employees [/employees{?searchQuery,page,sort,pageSize,sortOrder}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + vendorid (optional,string) - vendor id
+  + lname (optional,String) - last name of the contact
+  + empid (optional,String) - employee id
+
+### List Vendor Employees [GET]
+Returns the vendor contacts list.
+
++ Parameters
+  + searchQuery: {} (object, required) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: empid (enum[string], optional) - Sorting field
+        + Members
+            + vendorid
+            + empid (default)
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+
++ Response 200 (application/json)
+  + Attributes (ProfileDetail1)
+  
 
 ### Create vendor employee DRAFT [POST]
 Creates a new vendor employee.
@@ -482,6 +507,30 @@ Deletes the specified vendor employee.
     + Attributes (ProfileDetail1)
 
 + Response 204
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+    
+## Employees [/employees/{id}]
+
++ Parameters
+  + id: 1 (required) - id of the requested vendor employee
+
++ Attributes (ProfileDetail1)
+
+### Read Vendor Employees [GET]
+Used to retrieve vendor employee detail.
+
++ Response 200 (application/json)
+
+    + Attributes (ProfileDetail1)
 
 + Response 404
     Returned when the required resource cannot be found.
@@ -932,27 +981,50 @@ The list of vendor status.
 + id: 1 (required, number)
 + name: `IBM Italia S.p.a.` (required, string)
 
-## ProfileDetail1 (ProfileDetail)
-+ empid: 1 (number) - id of the profile
-
 ## VendorEmployeeInfo (object)
 + subContractor1: `123` (number, optional) - ID of the first subcontractor.
++ SubContractor1Name: `aaa` (string, optional)
 + subContractor2: `456` (number, optional) - ID of the second subcontractor.
-+ vendorMid: `789` (number, optional)
-+ dprid: `aaa` (string, optional)
++ SubContractor2Name: `bbb` (string, optional)
+List and Detail Vendor Employee
++ vendorMfirstname: `Mario` (string, optional) - firstname of the vendor manager
++ vendorMlastname: `Rossi` (string, optional) - lastname of the vendor manager
++ dprid: `aaa` (string, optional) - Data privacy role id
 + fiscalcode: `AJHC34789PAH` (string, optional)
 + nationality: `Italian` (string, optional)
 + languageId: `italian` (string, optional)
++ languageDescr: `italian` (string, optional)
 + resourceTypeId: `bbb` (string, optional)
++ resourceTypeDescr: `bbb` (string, optional)
 + active: `Y` (string, optional)
 + dismiss: `N` (string, optional)
 + notes: `aaa bbb ccc` (string, optional)
 + networkAccessRequired: `N` (string, optional)
-+ accountValidityDate: `2018-06-15ate` (string, optional)
++ accountValidityDate: `2018-06-15` (string, optional)
 + badgeRequired: `N` (string, optional)
 + badgeValidityDate: `2016-02-28` (string, optional)
 + assetRequired: `Y` (string, optional)
 + telephonyRequired: `N` (string, optional)
++ isManager: : `false` (boolean)
++ mainManager: : `false` (boolean)
++ startDate: `2018-06-17` (string, optional)
++ endDate: `2098-06-15` (string, optional)
++ employeeType: `N` (string, optional)
++ ouCode: `789` (number, optional)
++ ouName: `aaa` (string, optional)
+
+## ProfileDetail1 (ProfileDetail)
++ empid: 1 (number) - id of the profile
+
+## ProfileDetail2 (ProfileDetail)
++ empid: 2 (number) - id of the profile
+
+## ProfileDetail3 (ProfileDetail)
++ empid: 3 (number) - id of the profile
+
+## VendorEmployeeSearchResult (object)
++ results (array[ProfileDetail1, ProfileDetail1, ProfileDetail1], required) - array of vendor employees
++ Include PaginationData1
 
 ## Vendor1 (object)
 + id: 1 (number) - vendor/subcontractor id
