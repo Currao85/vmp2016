@@ -422,7 +422,7 @@ This action is available only to `VMPADMIN` role.
 # Group Vendor Employees
 #######################
 
-## Employees [/employees{?searchQuery,page,sort,pageSize,sortOrder}]
+## Employees collection [/employees{?searchQuery,page,sort,pageSize,sortOrder}]
 
 Takes a `searchQuery` parameter object defined as follows
   + vendorid (optional,string) - vendor id
@@ -471,6 +471,32 @@ Creates a new vendor employee.
     + Body when a generic error occours.
     + Body
 
+
+    
+## Employees [/employees/{id}]
+
++ Parameters
+  + id: 1 (required) - id of the requested vendor employee
+
++ Attributes (ProfileDetail1)
+
+### Read Vendor Employees [GET]
+Used to retrieve vendor employee detail.
+
++ Response 200 (application/json)
+
+    + Attributes (ProfileDetail1)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
 ### Update vendor employee [PUT]
 
 Updates a vendor employee.
@@ -507,30 +533,6 @@ Deletes the specified vendor employee.
     + Attributes (ProfileDetail1)
 
 + Response 204
-
-+ Response 404
-    Returned when the required resource cannot be found.
-
-    + Body
-
-+ Response 500
-    Returned when a generic error occours.
-
-    + Body
-    
-## Employees [/employees/{id}]
-
-+ Parameters
-  + id: 1 (required) - id of the requested vendor employee
-
-+ Attributes (ProfileDetail1)
-
-### Read Vendor Employees [GET]
-Used to retrieve vendor employee detail.
-
-+ Response 200 (application/json)
-
-    + Attributes (ProfileDetail1)
 
 + Response 404
     Returned when the required resource cannot be found.
