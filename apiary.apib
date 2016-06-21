@@ -787,7 +787,8 @@ The list of vendor status.
 + signingDate: `2016-02-10`
 
 ## DocumentUploadBodyET (object)
-+ docType: `GENDOC`
++ docType
+    + id: 123 (number)
 + description: `Generic document for vendor`
 + insertDate: `2016-02-06 10.50.30`
 + signingDate: `2016-02-06`
@@ -796,14 +797,14 @@ The list of vendor status.
 
 ##DocumentUploadedET (object)
 + id: 12
-+ docType: `GENDOC`
++ docType
+    + id: 123 (number)
 + description: `Generic document for vendor`
 + insertDate: `2016-02-06 10.50.30`
 + signingDate: `2016-02-06`
 + validityDate: `2016-02-06`
 
 ## DocumentUploadBodyE (object)
-+ entityId: 123 (number, required) - the id of the entity to link the document
 + docType
     + id: 123 (number)
 + description: `Generic document for vendor`
@@ -813,7 +814,6 @@ The list of vendor status.
 + file: `documento`
 
 ## DocumentUploadedE (object)
-+ entityId: 123 (number,  required)
 + docType
     + id: 123 (number)
 + description: `Generic document for vendor`
