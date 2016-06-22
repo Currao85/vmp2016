@@ -534,7 +534,7 @@ Deletes the specified vendor employee.
 
 + Request (application/json)
 
-    + Attributes (ProfileDetail1)
+    + Attributes ()
 
 + Response 204
 
@@ -992,32 +992,38 @@ The list of vendor status.
 + SubContractor1Name: `aaa` (string, optional)
 + subContractor2: `456` (number, optional) - ID of the second subcontractor.
 + SubContractor2Name: `bbb` (string, optional)
-List and Detail Vendor Employee
 + vendorMfirstname: `Mario` (string, optional) - firstname of the vendor manager
 + vendorMlastname: `Rossi` (string, optional) - lastname of the vendor manager
 + dprid: `aaa` (string, optional) - Data privacy role id
 + fiscalcode: `AJHC34789PAH` (string, optional)
++ hiringDate: `2016-06-15` (string, optional)
++ endDate: `2098-06-15` (string, optional)
 + nationality: `Italian` (string, optional)
 + languageId: `italian` (string, optional)
 + languageDescr: `italian` (string, optional)
 + resourceTypeId: `bbb` (string, optional)
 + resourceTypeDescr: `bbb` (string, optional)
-+ active: `Y` (string, optional)
-+ dismiss: `N` (string, optional)
++ active: `true` (boolean)
++ dismiss: `false` (boolean)
 + notes: `aaa bbb ccc` (string, optional)
-+ networkAccessRequired: `N` (string, optional)
++ networkAccessRequired: `false` (boolean)
 + accountValidityDate: `2018-06-15` (string, optional)
-+ badgeRequired: `N` (string, optional)
++ badgeRequired: `false` (boolean)
 + badgeValidityDate: `2016-02-28` (string, optional)
-+ assetRequired: `Y` (string, optional)
-+ telephonyRequired: `N` (string, optional)
++ assetRequired: `true` (boolean)
++ telephonyRequired: `false` (boolean)
 + isManager: : `false` (boolean)
 + mainManager: : `false` (boolean)
 + startDate: `2018-06-17` (string, optional)
 + endDate: `2098-06-15` (string, optional)
-+ employeeType: `N` (string, optional)
++ employeeType: `EMP` (string, optional)
 + ouCode: `789` (number, optional)
 + ouName: `aaa` (string, optional)
++ lastUpdate: `2018-06-22` (string, optional)
++ updateBy: `Carlo Carli` (string, optional)
++ vtsReferentLastName: `Fulvio` (string, optional)
++ vtsReferentFirstName: `Simpson` (string, optional)
++ vtsReferentId: `10285` (number, optional)
 
 ## ProfileDetail1 (ProfileDetail)
 + empid: 1 (number) - id of the profile
