@@ -45,14 +45,15 @@ Return the document's owner.
 Creates a new document linking it to a function.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function 
+    + functionId: `VMP_VND` (Function1, required) - id of the function
 
 + Request (multipart/form-data)
 
     + Attributes (DocumentUploadBodyET)
 
 + Response 201 (application/json)
-
+    + Headers
+          Location: http://domain/functions/{functionId}/documents/documents/10
     + Attributes (DocumentUploadedET)
 
 + Response 400
@@ -67,7 +68,7 @@ Creates a new document linking it to a function.
 Creates a new document linking it to an entity.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function 
+    + functionId: `VMP_VND` (Function1, required) - id of the function
     + entityId: 123 (number, required) - id of the entity
 
 + Request (application/json)
@@ -76,6 +77,8 @@ Creates a new document linking it to an entity.
     + Attributes (DocumentUploadBodyE)
 
 + Response 201 (application/json)
+    + Headers
+          Location: http://domain/functions/{functionId}/{entityId}/documents/10
     + Attributes (DocumentUploadedE)
 
 + Response 400
@@ -90,7 +93,7 @@ Creates a new document linking it to an entity.
 Returns the document detail assigned to a function.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function 
+    + functionId: `VMP_VND` (Function1, required) - id of the function
     + id: 12 (number, required) - id of the document
 
 + Response 200 (application/XYZ)
@@ -108,7 +111,7 @@ Returns the document detail assigned to a function.
 Returns the document detail assigned to an entity.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function 
+    + functionId: `VMP_VND` (Function1, required) - id of the function
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -127,7 +130,7 @@ Returns the document detail assigned to an entity.
 Deletes a document assigned to a function.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function 
+    + functionId: `VMP_VND` (Function1, required) - id of the function
     + id: 12 (number, required) - id of the document
 
 + Response 204
@@ -149,7 +152,7 @@ Deletes a document assigned to a function.
 Deletes a document assigned to an entity.
 
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function 
+    + functionId: `VMP_VND` (Function1, required) - id of the function
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -447,7 +450,7 @@ Returns the vendor contacts list.
 
 + Response 200 (application/json)
   + Attributes (ProfileDetail1)
-  
+
 
 ### Create vendor employee DRAFT [POST]
 Creates a new vendor employee.
@@ -472,7 +475,7 @@ Creates a new vendor employee.
     + Body
 
 
-    
+
 ## Employees [/employees/{id}]
 
 + Parameters
@@ -568,7 +571,7 @@ Deletes the specified vendor employee.
 
 ### List countries [GET]
 
-The list countries. 
+The list countries.
 
 + Response 200 (application/json)
   + Attributes (Countries collection)
@@ -665,7 +668,7 @@ The list data privacy roles.
           + description: Vendor
       + (object)
           + id: VMP_CNTR
-          + description: Contract Management 
+          + description: Contract Management
   + paginationData (object, required) - Informations required for pagination
         + count: 3 (number,required) - total number of resources
         + pageNum: 1 (number, required) - slice of resources returned
@@ -691,7 +694,7 @@ The list of functions.
           + description: French
       + (object)
           + id: 3
-          + description: Italian 
+          + description: Italian
   + paginationData (object, required) - Informations required for pagination
         + count: 3 (number,required) - total number of resources
         + pageNum: 1 (number, required) - slice of resources returned
