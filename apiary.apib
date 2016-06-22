@@ -305,9 +305,10 @@ This action is available only to `VMPADMIN` role.
 ## Vendor Contact collection [/contacts{?searchQuery,page,sort,pageSize,sortOrder}]
 
 Takes a `searchQuery` parameter object defined as follows
-  + vendorid (optional,string) - vendor id
-  + lname (optional,String) - last name of the contact
-  + companyname (optional,String) - company name of the contact
+  + code (optional,String) - contact id
+  + name (optional,String) - contact name (last name + fitst name)
+  + vendorcode (optional,string) - vendor id
+  + vendorname (optional,string) - vendor name
 
 ### List Vendor Contact [GET]
 Returns the vendor contacts list.
@@ -318,7 +319,7 @@ Returns the vendor contacts list.
   + sort: lname (enum[string], optional) - Sorting field
         + Members
             + vendorcode
-            + lname (default)
+            + name (default)
             + email
             + role
             + code
@@ -1171,6 +1172,10 @@ List and Detail Vendor Employee
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + vendor (VendorMini2)  (required, object) - vendor object
 + enabled : true (boolean)
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ updateUser : `Alberto Rossi` (string) - update timestamp
+
 
 ## VendorContact2 (object)
 + id: 2 (number) - vendor contact id
@@ -1188,6 +1193,10 @@ List and Detail Vendor Employee
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + vendor (VendorMini3)  (required, object) - vendor object
 + enabled : true (boolean)
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ updateUser : `Alberto Rossi` (string) - update timestamp
+
 
 ## VendorContact3 (object)
 + id: 3 (number) - vendor contact id
@@ -1205,6 +1214,9 @@ List and Detail Vendor Employee
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + vendor (VendorMini2)  (required, object) - vendor object
 + enabled : true (boolean)
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ updateUser : `Alberto Rossi` (string) - update timestamp
 
 ## VendorContactInsert (object)
 + firstName : `Fatima` (required, string) - contact first name
