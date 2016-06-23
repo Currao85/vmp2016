@@ -431,8 +431,16 @@ This action is available only to `VMPADMIN` role.
 ## Employees collection [/employees{?searchQuery,page,sort,pageSize,sortOrder}]
 
 Takes a `searchQuery` parameter object defined as follows
+  + revid (optional, number) - revision of the Employees Department
+  + oucode (optional, string) - id of the employees department
+  + sbc1id (optional, number) - subcontractor1 id
+  + sbc2id (optional, number) - subcontractor2 id
   + vendorid (optional,string) - vendor id
-  + lname (optional,String) - last name of the employee
+  + vendorname (optional, string) - 
+  + lastname (optional,string) - last name of the employee
+  + firstname (optional,string) - first name of the employee
+  + fiscalcode (optional, string) - fiscal code of the employee
+  + userid (optional, string) - user id of the employee
   + empid (optional,String) - employee id
 
 ### List Vendor Employees [GET]
