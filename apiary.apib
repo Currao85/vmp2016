@@ -393,9 +393,10 @@ This action is available only to `VMPADMIN` role.
     + id: 1 (required, number) - id of the vendor contact
 
 + Request (application/json)
-  + Attributes (VendorContact1)
+  + Attributes (VendorContactUpdate)
 
-+ Response 200
++ Response 200 (application/json)
+  + Attributes (VendorContact1)
 
 + Response 404
     Returned when the required resource cannot be found.
@@ -520,7 +521,7 @@ This action is available only to `VMPADMIN` role.
 + Request (application/json)
   + Attributes (VendorContractUpdate)
 
-+ Response 200
++ Response 200 (application/json)
     
     + Attributes (VendorContract2)
 
@@ -1373,6 +1374,9 @@ The list of vendor status.
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + vendor (VendorMini2)  (required, object) - vendor object
 + enabled : true (boolean)
+
+## VendorContactUpdate (VendorContactInsert)
++ id: 1 (number)
 
 ## VendorContactSearchResult (object)
 + results (array[VendorContact1, VendorContact2, VendorContact3], required) - array of Vendor Contacts
