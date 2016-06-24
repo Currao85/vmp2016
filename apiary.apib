@@ -518,9 +518,11 @@ This action is available only to `VMPADMIN` role.
     + id: 1 (required, number) - id of the vendor contract
 
 + Request (application/json)
-  + Attributes (VendorContract1)
+  + Attributes (VendorContractUpdate)
 
 + Response 200
+    
+    + Attributes (VendorContract2ated)
 
 + Response 404
     Returned when the required resource cannot be found.
@@ -1407,7 +1409,7 @@ The list of vendor status.
 + dpa : `0` (string) - dpa 
 + commodityFamilyId : `1` (string) - commodity family id
 + supplierSignatureDate : `2014-03-18 00:00:00` (string) - supplier signature date
-+ vtsSignatureDate `2014-03-18 00:00:00` (string) - vts signature date
++ vtsSignatureDate : `2014-03-18 00:00:00` (string) - vts signature date
 + contractTypeId : `1` (string) - contract type id
 + associatedCountries : 040, 276, 003  (required, array[string]) - associated countries id array
 + vtsDeliveryContractManager : `Alberto Rossi` (string) - vts delivery contract manager
@@ -1431,7 +1433,7 @@ The list of vendor status.
 + dpa : `0` (string)  
 + commodityFamilyId : `2` (string) 
 + supplierSignatureDate : ` ` (string)  
-+ vtsSignatureDate ` ` (string)  
++ vtsSignatureDate : ` ` (string)  
 + contractTypeId : `3` (string)  
 + associatedCountries : 380 (required, array[string])  
 + vtsDeliveryContractManager : ` ` (string)  
@@ -1455,7 +1457,7 @@ The list of vendor status.
 + dpa : `0` (string)  
 + commodityFamilyId : `2` (string) 
 + supplierSignatureDate : ` ` (string)  
-+ vtsSignatureDate ` ` (string)  
++ vtsSignatureDate : ` ` (string)  
 + contractTypeId : `3` (string)  
 + associatedCountries : 380 (required, array[string])  
 + vtsDeliveryContractManager : ` ` (string)  
@@ -1484,6 +1486,27 @@ The list of vendor status.
 + supplierContractResponsible : ` ` (string) 
 + procurementContact : `Antonio Galli`  
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`  
+
+## VendorContractUpdate (object)
++ id: 2 (number) 
++ description : `PA al SEA IBM` (required, string) 
++ effectiveDate : `2014-03-10 00:00:00` (string) 
++ endDate : `2099-12-31 00:00:00` (string) 
++ contractNumber : `AV2014-03` (string)  
++ contractOwner : `Antonio Galli` (string) 
++ contractValue : `0` (string) 
++ vendor (VendorMini1)  (required, object)  
++ dpa : `0` (string)  
++ commodityFamilyId : `2` (string) 
++ supplierSignatureDate : ` ` (string)  
++ vtsSignatureDate ` ` (string)  
++ contractTypeId : `3` (string)  
++ associatedCountries : 040, 276, 003  (required, array[string])contra
++ vtsDeliveryContractManager : ` ` (string)  
++ supplierContractResponsible : ` ` (string) 
++ procurementContact : `Antonio Galli`  
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`  
+
 
 ## VendorContractSearchResult (object)
 + results (array[VendorContract1, VendorContract2, VendorContract3], required) - array of Vendor Contracts
