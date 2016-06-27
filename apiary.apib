@@ -1125,10 +1125,12 @@ The list of vendor status.
 + name: `IBM Italia S.p.a.` (required, string)
 
 ## VendorEmployeeInfo (object)
-+ subContractor1: `123` (number, optional) - ID of the first subcontractor.
-+ SubContractor1Name: `aaa` (string, optional)
-+ subContractor2: `456` (number, optional) - ID of the second subcontractor.
-+ SubContractor2Name: `bbb` (string, optional)
++ subContractor1 (object)
+    + id: `123` (number, optional) - ID of the first subcontractor.
+    + name: `aaa` (string, optional)
++ subContractor2 (object)
+    + id:`456` (number, optional) - ID of the second subcontractor.
+    + name: `bbb` (string, optional)
 + vendorMfirstname: `Mario` (string, optional) - firstname of the vendor manager
 + vendorMlastname: `Rossi` (string, optional) - lastname of the vendor manager
 + dprid: `aaa` (string, optional) - Data privacy role id
@@ -1154,13 +1156,16 @@ The list of vendor status.
 + startDate: `2018-06-17` (string, optional)
 + endDate: `2098-06-15` (string, optional)
 + employeeType: `EMP` (string, optional)
-+ ouCode: `789` (number, optional)
++ ouCode: `789` (string, optional)
 + ouName: `aaa` (string, optional)
 + lastUpdate: `2018-06-22` (string, optional)
 + updateBy: `Carlo Carli` (string, optional)
 + vtsReferentLastName: `Fulvio` (string, optional)
 + vtsReferentFirstName: `Simpson` (string, optional)
 + vtsReferentId: `10285` (number, optional)
++ country (object) - VMP country
+    + id: `030` (string, optional)
+    + descr: `Austria` (string, optional)
 
 ## ProfileDetail1 (ProfileDetail)
 + empid: 1 (number) - id of the profile
