@@ -297,6 +297,22 @@ This action is available only to `VMPADMIN` role.
 
     + Body
 
+### Read Vendor/Subcontractor Employees [GET /employees]
+Used to retrieve vendor/subcontractor employees list.
+
++ Response 200 (application/json)
+
+    + Attributes (VendorEmployeeSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
 
 #######################
 # Group Vendor Contact
@@ -589,7 +605,7 @@ Returns the vendor contacts list.
   + pageSize: 25 (optional, number) - Amount of results to return
 
 + Response 200 (application/json)
-  + Attributes (ProfileDetail1)
+  + Attributes (VendorEmployeeSearchResult)
 
 
 ### Create vendor employee DRAFT [POST]
@@ -1177,7 +1193,7 @@ The list of vendor status.
 + empid: 3 (number) - id of the profile
 
 ## VendorEmployeeSearchResult (object)
-+ results (array[ProfileDetail1, ProfileDetail1, ProfileDetail1], required) - array of vendor employees
++ results (array[ProfileDetail1, ProfileDetail2, ProfileDetail3], required) - array of vendor employees
 + Include PaginationData1
 
 ## Vendor1 (object)
