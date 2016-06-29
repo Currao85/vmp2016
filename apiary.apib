@@ -11,13 +11,12 @@ Service Oriented Architecture specified for the VMP project.
 
 ## Documents Collection [/documents]
 
-### List Documents [GET /documents{?searchQuery,page,pageSize,sort,sortOrder}]
+### List Documents [GET /documents{?searchQuery,page,pageSize}]
 Returns the documents list.
 
 + Parameters
   + searchQuery: `{function:"VMP_VND", entityId:123,docTypeId: "GENDOC",owner: 234,insertDate: "2016-02-05",signingDate: "2016-02-05",validityDate: "2016-02-05"}`  (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
-  + sort: description (optional) - Sorting order
   + pageSize: 25 (optional, number) - Amount of results to return
 
 + Response 200 (application/json)
@@ -440,7 +439,7 @@ This action is available only to `VMPADMIN` role.
 
 
 #######################
-# Group Vendor Contract 
+# Group Vendor Contract
 #######################
 
 ## Vendor Contract collection [/contracts{?searchQuery,page,sort,pageSize,sortOrder}]
@@ -1259,7 +1258,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + subContratAut : false (boolean) - sub contract flag
 + providedUbis : false (boolean) provided by ubis flag
 + frameworkContract : false (boolean) - framework contract flag
-+ sched25Status (ScheduleStatus1) - schedule 25 status 
++ sched25Status (ScheduleStatus1) - schedule 25 status
 + sched30Status (ScheduleStatus2) - schedule 30 status
 + schedSondrio (ScheduleStatus3) - schedule Sondrio
 + vendorType (VendorType1) - vendor type
@@ -1286,7 +1285,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + subContratAut : false (boolean)
 + providedUbis : false (boolean)
 + frameworkContract : false (boolean)
-+ sched25Status (ScheduleStatus1)  
++ sched25Status (ScheduleStatus1)
 + sched30Status (ScheduleStatus2)
 + schedSondrio (ScheduleStatus3)
 + vendorType (VendorType1)
@@ -1342,7 +1341,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + subContratAut : false (boolean) - sub contract flag
 + providedUbis : false (boolean) provided by ubis flag
 + frameworkContract : false (boolean) - framework contract flag
-+ sched25Status (ScheduleStatus1) - schedule 25 status 
++ sched25Status (ScheduleStatus1) - schedule 25 status
 + sched30Status (ScheduleStatus2) - schedule 30 status
 + schedSondrio (ScheduleStatus3) - schedule Sondrio
 + vendorType (VendorType1) - vendor type
@@ -1372,7 +1371,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + subContratAut : false (boolean) - sub contract flag
 + providedUbis : false (boolean) provided by ubis flag
 + frameworkContract : false (boolean) - framework contract flag
-+ sched25Status (ScheduleStatus1) - schedule 25 status 
++ sched25Status (ScheduleStatus1) - schedule 25 status
 + sched30Status (ScheduleStatus2) - schedule 30 status
 + schedSondrio (ScheduleStatus3) - schedule Sondrio
 + vendorType (VendorType1) - vendor type
@@ -1546,10 +1545,10 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + contractValue : `0` (string)
 + vendor (VendorMini1)  (required, object)
 + dpa : `0` (string)
-+ commodityFamily (CommodityFamily2)  (object) 
++ commodityFamily (CommodityFamily2)  (object)
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate : ` ` (string)
-+ contractType (ContractType1)  (object) 
++ contractType (ContractType1)  (object)
 + associatedCountries : 380 (required, array[string])
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
@@ -1568,10 +1567,10 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + contractValue : `0` (string)
 + vendor (VendorMini1)  (required, object)
 + dpa : `0` (string)
-+ commodityFamily (CommodityFamily1)  (object) 
++ commodityFamily (CommodityFamily1)  (object)
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate : ` ` (string)
-+ contractType (ContractType2)  (object) 
++ contractType (ContractType2)  (object)
 + associatedCountries : 380 (required, array[string])
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
@@ -1616,7 +1615,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + commodityFamily (CommodityFamily1)  (object) - commodity family
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate ` ` (string)
-+ contractType (ContractType1)  (object) 
++ contractType (ContractType1)  (object)
 + associatedCountries : 040, 276, 003  (required, array[string])contra
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
