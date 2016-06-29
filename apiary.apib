@@ -11,7 +11,7 @@ Service Oriented Architecture specified for the VMP project.
 
 ## Documents Collection [/documents]
 
-### List Documents DRAFT [GET /documents{?searchQuery,page,pageSize,sort,sortOrder}]
+### List Documents [GET /documents{?searchQuery,page,pageSize,sort,sortOrder}]
 Returns the documents list.
 
 + Parameters
@@ -23,7 +23,7 @@ Returns the documents list.
 + Response 200 (application/json)
   + Attributes (DocumentSearchResult)
 
-### Document types DRAFT[GET /documents/types{?searchQuery}]
+### Document types [GET /documents/types{?searchQuery}]
 Return the document's types.
 
 + Parameters
@@ -32,23 +32,22 @@ Return the document's types.
 + Response 200 (application/json)
   + Attributes (DocumentTypes)
 
-### Document Owner DRAFT[GET /documents/owner]
+### Document Owner [GET /documents/owner]
 Return the document's owner.
 
 + Response 200 (application/json)
   + Attributes (DocumentOwner)
 
-## Function &#40Entity Types&#41 [/functions]
+## Function &#40;Entity Types&#41; [/functions]
 
 
-### Upload Document linking it to a function  DRAFT [POST /functions/{functionId}/documents]
+### Upload Document linking it to a function  [POST /functions/{functionId}/documents]
 Creates a new document linking it to a function.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
 
 + Request (multipart/form-data)
-
     + Attributes (DocumentUploadBodyET)
 
 + Response 201 (application/json)
@@ -64,7 +63,7 @@ Creates a new document linking it to a function.
     Returned when a generic error occours.
     + Body
 
-### Upload Document linking it to an entity DRAFT [POST /functions/{functionId}/{entityId}/documents]
+### Upload Document linking it to an entity [POST /functions/{functionId}/{entityId}/documents]
 Creates a new document linking it to an entity.
 
 + Parameters
@@ -89,7 +88,7 @@ Creates a new document linking it to an entity.
     Returned when a generic error occours.
     + Body
 
-###Download Document linked to a function  DRAFT [GET /functions/{functionId}/documents/{id}]
+### Download Document linked to a function [GET /functions/{functionId}/documents/{id}]
 Returns the document detail assigned to a function.
 
 + Parameters
@@ -107,7 +106,7 @@ Returns the document detail assigned to a function.
     Returned when a generic error occours.
     + Body
 
-###Download Document linked to an entity DRAFT [GET /functions/{functionId}/{entityId}/documents/{id}]
+### Download Document linked to an entity [GET /functions/{functionId}/{entityId}/documents/{id}]
 Returns the document detail assigned to an entity.
 
 + Parameters
@@ -126,7 +125,7 @@ Returns the document detail assigned to an entity.
     Returned when a generic error occours.
     + Body
 
-### Delete document linked to a function  DRAFT[DELETE /functions/{functionId}/documents/{id}]
+### Delete document linked to a function [DELETE /functions/{functionId}/documents/{id}]
 Deletes a document assigned to a function.
 
 + Parameters
@@ -148,7 +147,7 @@ Deletes a document assigned to a function.
 
     + Body
 
-### Delete document linked to an entity DRAFT[DELETE /functions/{functionId}/{entityId}/documents/{id}]
+### Delete document linked to an entity [DELETE /functions/{functionId}/{entityId}/documents/{id}]
 Deletes a document assigned to an entity.
 
 + Parameters
@@ -538,7 +537,7 @@ This action is available only to `VMPADMIN` role.
   + Attributes (VendorContractUpdate)
 
 + Response 200 (application/json)
-    
+
     + Attributes (VendorContract2)
 
 + Response 404
@@ -700,7 +699,7 @@ Deletes the specified vendor employee.
     Returned when a generic error occours.
 
     + Body
-    
+
 ### Dismiss vendor employee [PUT /dismiss]
 
 Dismiss the specified vendor employee.
@@ -968,6 +967,17 @@ The list of vendor status.
 + Response 200 (application/json)
   + Attributes ( Vendor status collection)
 
+#######################
+# Group Users
+#######################
+
+## User Info [/users]
+
+### Get full name [GET /users/fullname]
+Returns full name of logged in user formatted as `<last name> <first name>`
+
+  + Response 200 (text/plain)
+        `Rossi Mario`
 
 #######################
 # Data Structures
@@ -1465,7 +1475,7 @@ The list of vendor status.
 + contractOwner : `Antonio Galli` (string) - contract owner
 + contractValue : `234.000 Euro` (string) - contract value
 + vendor (VendorMini2)  (required, object) - vendor object
-+ dpa : `0` (string) - dpa 
++ dpa : `0` (string) - dpa
 + commodityFamilyId : `1` (string) - commodity family id
 + supplierSignatureDate : `2014-03-18 00:00:00` (string) - supplier signature date
 + vtsSignatureDate : `2014-03-18 00:00:00` (string) - vts signature date
@@ -1481,90 +1491,90 @@ The list of vendor status.
 
 
 ## VendorContract2 (object)
-+ id: 2 (number) 
-+ description : `PA al SEA IBM` (required, string) 
-+ effectiveDate : `2014-03-10 00:00:00` (string) 
-+ endDate : `2099-12-31 00:00:00` (string) 
-+ contractNumber : `AV2014-03` (string)  
-+ contractOwner : `Antonio Galli` (string) 
-+ contractValue : `0` (string) 
-+ vendor (VendorMini1)  (required, object)  
-+ dpa : `0` (string)  
-+ commodityFamilyId : `2` (string) 
-+ supplierSignatureDate : ` ` (string)  
-+ vtsSignatureDate : ` ` (string)  
-+ contractTypeId : `3` (string)  
-+ associatedCountries : 380 (required, array[string])  
-+ vtsDeliveryContractManager : ` ` (string)  
-+ supplierContractResponsible : ` ` (string) 
-+ procurementContact : `Antonio Galli`  
-+ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`  
-+ insertDate : `2016-06-24 16:00:00` (string) 
-+ updateDate : `2016-06-24 16:00:00` (string) 
-+ updateUser : `Alberto Rossi` (string)  
++ id: 2 (number)
++ description : `PA al SEA IBM` (required, string)
++ effectiveDate : `2014-03-10 00:00:00` (string)
++ endDate : `2099-12-31 00:00:00` (string)
++ contractNumber : `AV2014-03` (string)
++ contractOwner : `Antonio Galli` (string)
++ contractValue : `0` (string)
++ vendor (VendorMini1)  (required, object)
++ dpa : `0` (string)
++ commodityFamilyId : `2` (string)
++ supplierSignatureDate : ` ` (string)
++ vtsSignatureDate : ` ` (string)
++ contractTypeId : `3` (string)
++ associatedCountries : 380 (required, array[string])
++ vtsDeliveryContractManager : ` ` (string)
++ supplierContractResponsible : ` ` (string)
++ procurementContact : `Antonio Galli`
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ insertDate : `2016-06-24 16:00:00` (string)
++ updateDate : `2016-06-24 16:00:00` (string)
++ updateUser : `Alberto Rossi` (string)
 
 
 ## VendorContract3 (object)
-+ id: 3 (number) 
-+ description : `Software assistance` (required, string) 
-+ effectiveDate : `2014-03-10 00:00:00` (string) 
-+ endDate : `2099-12-31 00:00:00` (string) 
-+ contractNumber : `SOFT2014-01` (string)  
-+ contractOwner : `Antonio Galli` (string) 
-+ contractValue : `0` (string) 
-+ vendor (VendorMini1)  (required, object)  
-+ dpa : `0` (string)  
-+ commodityFamilyId : `2` (string) 
-+ supplierSignatureDate : ` ` (string)  
-+ vtsSignatureDate : ` ` (string)  
-+ contractTypeId : `3` (string)  
-+ associatedCountries : 380 (required, array[string])  
-+ vtsDeliveryContractManager : ` ` (string)  
-+ supplierContractResponsible : ` ` (string) 
-+ procurementContact : `Antonio Galli`  
-+ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`  
-+ insertDate : `2016-06-24 16:00:00` (string) 
-+ updateDate : `2016-06-24 16:00:00` (string) 
-+ updateUser : `Alberto Rossi` (string)  
++ id: 3 (number)
++ description : `Software assistance` (required, string)
++ effectiveDate : `2014-03-10 00:00:00` (string)
++ endDate : `2099-12-31 00:00:00` (string)
++ contractNumber : `SOFT2014-01` (string)
++ contractOwner : `Antonio Galli` (string)
++ contractValue : `0` (string)
++ vendor (VendorMini1)  (required, object)
++ dpa : `0` (string)
++ commodityFamilyId : `2` (string)
++ supplierSignatureDate : ` ` (string)
++ vtsSignatureDate : ` ` (string)
++ contractTypeId : `3` (string)
++ associatedCountries : 380 (required, array[string])
++ vtsDeliveryContractManager : ` ` (string)
++ supplierContractResponsible : ` ` (string)
++ procurementContact : `Antonio Galli`
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ insertDate : `2016-06-24 16:00:00` (string)
++ updateDate : `2016-06-24 16:00:00` (string)
++ updateUser : `Alberto Rossi` (string)
 
 ## VendorContractInsert (object)
-+ description : `PA al SEA IBM` (required, string) 
-+ effectiveDate : `2014-03-10 00:00:00` (string) 
-+ endDate : `2099-12-31 00:00:00` (string) 
-+ contractNumber : `AV2014-03` (string)  
-+ contractOwner : `Antonio Galli` (string) 
-+ contractValue : `0` (string) 
-+ vendor (VendorMini1)  (required, object)  
-+ dpa : `0` (string)  
-+ commodityFamilyId : `2` (string) 
-+ supplierSignatureDate : ` ` (string)  
-+ vtsSignatureDate ` ` (string)  
-+ contractTypeId : `3` (string)  
++ description : `PA al SEA IBM` (required, string)
++ effectiveDate : `2014-03-10 00:00:00` (string)
++ endDate : `2099-12-31 00:00:00` (string)
++ contractNumber : `AV2014-03` (string)
++ contractOwner : `Antonio Galli` (string)
++ contractValue : `0` (string)
++ vendor (VendorMini1)  (required, object)
++ dpa : `0` (string)
++ commodityFamilyId : `2` (string)
++ supplierSignatureDate : ` ` (string)
++ vtsSignatureDate ` ` (string)
++ contractTypeId : `3` (string)
 + associatedCountries : 040, 276, 003  (required, array[string])contra
-+ vtsDeliveryContractManager : ` ` (string)  
-+ supplierContractResponsible : ` ` (string) 
-+ procurementContact : `Antonio Galli`  
-+ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`  
++ vtsDeliveryContractManager : ` ` (string)
++ supplierContractResponsible : ` ` (string)
++ procurementContact : `Antonio Galli`
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
 
 ## VendorContractUpdate (object)
-+ id: 2 (number) 
-+ description : `PA al SEA IBM` (required, string) 
-+ effectiveDate : `2014-03-10 00:00:00` (string) 
-+ endDate : `2099-12-31 00:00:00` (string) 
-+ contractNumber : `AV2014-03` (string)  
-+ contractOwner : `Antonio Galli` (string) 
-+ contractValue : `0` (string) 
-+ vendor (VendorMini1)  (required, object)  
-+ dpa : `0` (string)  
-+ commodityFamilyId : `2` (string) 
-+ supplierSignatureDate : ` ` (string)  
-+ vtsSignatureDate ` ` (string)  
-+ contractTypeId : `3` (string)  
++ id: 2 (number)
++ description : `PA al SEA IBM` (required, string)
++ effectiveDate : `2014-03-10 00:00:00` (string)
++ endDate : `2099-12-31 00:00:00` (string)
++ contractNumber : `AV2014-03` (string)
++ contractOwner : `Antonio Galli` (string)
++ contractValue : `0` (string)
++ vendor (VendorMini1)  (required, object)
++ dpa : `0` (string)
++ commodityFamilyId : `2` (string)
++ supplierSignatureDate : ` ` (string)
++ vtsSignatureDate ` ` (string)
++ contractTypeId : `3` (string)
 + associatedCountries : 040, 276, 003  (required, array[string])contra
-+ vtsDeliveryContractManager : ` ` (string)  
-+ supplierContractResponsible : ` ` (string) 
-+ procurementContact : `Antonio Galli`  
-+ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`  
++ vtsDeliveryContractManager : ` ` (string)
++ supplierContractResponsible : ` ` (string)
++ procurementContact : `Antonio Galli`
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
 
 
 ## VendorContractSearchResult (object)
