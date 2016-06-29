@@ -700,6 +700,33 @@ Deletes the specified vendor employee.
     Returned when a generic error occours.
 
     + Body
+    
+### Dismiss vendor employee [PUT /dismiss]
+
+Dismiss the specified vendor employee.
+
++ Request (application/json)
+
+    + Attributes (DismissDate)
+
++ Response 200 (application/json)
+
+    + Attributes (ProfileDetail1)
+
++ Response 400
+    Returned when input does not pass validation.
+
+    + Body
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
 
 
 #######################
@@ -1197,6 +1224,9 @@ The list of vendor status.
 ## VendorEmployeeSearchResult (object)
 + results (array[ProfileDetail1, ProfileDetail2, ProfileDetail3], required) - array of vendor employees
 + Include PaginationData1
+
+## DismissDate (object)
++ date: `2018-06-22` (string, optional) - dismiss date
 
 ## Vendor1 (object)
 + id: 1 (number) - vendor/subcontractor id
