@@ -1511,6 +1511,19 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + id: 380 (required, string)
 + description: `Italy` (string)
 
+## Country3 (object)
++ id: 276 (required, string)
++ description: `Germany` (string)
+
+## Country1Mini (object)
++ id: 040 (required, string)
+
+## Country2Mini (object)
++ id: 380 (required, string)
+
+## Country3Mini (object)
++ id: 276 (required, string)
+
 
 ## VendorContract1 (object)
 + id: 1 (number) - vendor contract id
@@ -1526,7 +1539,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : `2014-03-18 00:00:00` (string) - supplier signature date
 + vtsSignatureDate : `2014-03-18 00:00:00` (string) - vts signature date
 + contractType (ContractType1)  (object) - contract type object
-+ associatedCountries : 040, 276, 003  (required, array[string]) - associated countries id array
++ associatedCountries (array[Country1,Country2,Country3]) - associated countries array
 + vtsDeliveryContractManager : `Alberto Rossi` (string) - vts delivery contract manager
 + supplierContractResponsible : `John White` (string) - supplier contract responsible
 + procurementContact : `Antonio Galli` - procurement contact
@@ -1549,7 +1562,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate : ` ` (string)
 + contractType (ContractType1)  (object)
-+ associatedCountries : 380 (required, array[string])
++ associatedCountries (array[Country1]) 
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
 + procurementContact : `Antonio Galli`
@@ -1571,7 +1584,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate : ` ` (string)
 + contractType (ContractType2)  (object)
-+ associatedCountries : 380 (required, array[string])
++ associatedCountries (array[Country1]) 
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
 + procurementContact : `Antonio Galli`
@@ -1593,7 +1606,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : `2014-03-18 00:00:00` (string) - supplier signature date
 + vtsSignatureDate : `2014-03-18 00:00:00` (string) - vts signature date
 + contractType (ContractType1)  (object) - contract type object
-+ associatedCountries : 040, 276, 003  (required, array[string]) - associated countries id array
++ associatedCountries (array[Country1,Country2,Country3]) - associated countries array
 + vtsDeliveryContractManager : `Alberto Rossi` (string) - vts delivery contract manager
 + supplierContractResponsible : `John White` (string) - supplier contract responsible
 + procurementContact : `Antonio Galli` - procurement contact
@@ -1616,7 +1629,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate ` ` (string)
 + contractType (ContractType1)  (object)
-+ associatedCountries : 040, 276, 003  (required, array[string])contra
++ associatedCountries (array[Country1Mini,Country2Mini,Country3Mini]) - associated countries array
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
 + procurementContact : `Antonio Galli`
@@ -1636,7 +1649,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate ` ` (string)
 + contractTypeId : `3` (string)
-+ associatedCountries : 040, 276, 003  (required, array[string])contra
++ associatedCountries (array[Country1Mini,Country2Mini,Country3Mini]) - associated countries array
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
 + procurementContact : `Antonio Galli`
