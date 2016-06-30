@@ -233,6 +233,32 @@ This action is available only to `VMPADMIN` rolee.
     Returned when a generic error occours.
 
     + Body
+    
+##  Vendor Chain [/verdors/chain{?searchQuery,page,sort,pageSize,sortOrder,report}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + code (optional,string) - vendor code
+  + name (optional,string) - vendor name
+    
+
+### List Vendor Chain [GET]
+Returns the vendor chain list.
+
++ Parameters
+  + searchQuery: {} (object, optional) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: name (enum[string], optional) - Sorting field
+        + Members
+            + name
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+  + report:  `VNDCHN` (optional, string) - Vendor chain xlsx report
+
++ Response 200 (application/json)
+  + Attributes (VendorChainResult)
 
 
 ## Vendor/Subcontractor [/vendors/{id}]
@@ -569,7 +595,7 @@ This action is available only to `VMPADMIN` role.
 # Group Vendor Employees
 #######################
 
-## Employees collection [/employees{?searchQuery,page,sort,pageSize,sortOrder}]
+## Employees collection [/employees{?searchQuery,page,sort,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + revId (optional, number) - revision of the Employees Department
@@ -601,6 +627,7 @@ Returns the vendor contacts list.
             + asc
             + desc
   + pageSize: 25 (optional, number) - Amount of results to return
+  + report:  `VNDEMP` (optional, string) - Vendor chain xlsx report
 
 + Response 200 (application/json)
   + Attributes (VendorEmployeeSearchResult)
@@ -1179,13 +1206,15 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## VendorEmployeeInfo (object)
 + subContractor1 (object)
     + id: `123` (number, optional) - ID of the first subcontractor.
-    + name: `aaa` (string, optional)
+    + name: `A` (string, optional)
 + subContractor2 (object)
     + id:`456` (number, optional) - ID of the second subcontractor.
-    + name: `bbb` (string, optional)
+    + name: `Abataa` (string, optional)
 + vendorMfirstname: `Mario` (string, optional) - firstname of the vendor manager
 + vendorMlastname: `Rossi` (string, optional) - lastname of the vendor manager
-+ dprid: `aaa` (string, optional) - Data privacy role id
++ dataPrivacyRole (object)
+    + id: `003` (string, optional) - Data privacy role id
+    + description: `SysAdm` (string, optional) - Data privacy role description
 + fiscalcode: `AJHC34789PAH` (string, optional)
 + hiringDate: `2016-06-15` (string, optional)
 + endDate: `2098-06-15` (string, optional)
@@ -1194,8 +1223,8 @@ Returns full name of logged in user formatted as `<last name> <first name>`
     + id: `italian` (string, optional)
     + description: `italian` (string, optional)
 + resourceType (object)
-    + id: `bbb` (string, optional)
-    + description: `bbb` (string, optional)
+    + id: `001` (string, optional)
+    + description: `vendor` (string, optional)
 + active: `true` (boolean)
 + dismiss: `false` (boolean)
 + notes: `aaa bbb ccc` (string, optional)
@@ -1377,6 +1406,27 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + vendorType (VendorType1) - vendor type
 + infra : false (boolean) - infra flag
 
+## VendorChainResult (object)
++ results (array[VendorChain1, VendorChain2, VendorChain3], required) - array of Vendors/Subcontractors
++ Include PaginationData1
+
+## VendorChain1 (object)
++ id: 1 (number) - vendor id
++ name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
++ subContractor1 (object)
+    + id: 101 (number) - subcontractor1 id
+    + name: `A1 TELEKOM SWEDEN AG` (required, string) - company name
++ subContractor2 (object)
+    + id: 163 (number) - subcontractor2 id
+    + name: `A1 TELEKOM FRANCE AG` (required, string) - company name
+
+## VendorChain2 (VendorChain1)
++ id: 857 (number) - vendor id
++ name: `A1 TELEKOM BULGARY AG` (required, string) - company name
+
+## VendorChain3 (VendorChain1)
++ id: 87 (number) - vendor id
++ name: `A1 TELEKOM HUNGARY AG` (required, string) - company name
 
 ## VendorSearchResult (object)
 + results (array[Vendor1, Vendor2, Vendor3], required) - array of Vendors/Subcontractors
