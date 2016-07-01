@@ -174,7 +174,7 @@ Deletes a document assigned to an entity.
 # Group Vendor/Subcontractor
 #######################
 
-## Vendor/Subcontractor collection [/verdors{?searchQuery,page,sort,pageSize,sortOrder}]
+## Vendor/Subcontractor collection [/verdors{?searchQuery,page,sort,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional,string) - vendor/subcontractor code
@@ -201,6 +201,10 @@ Returns the vendors/subcontractors list.
             + asc
             + desc
   + pageSize: 25 (optional, number) - Amount of results to return
+  + report: VND (enum, optional) - Used to request xlsx report
+        + Members
+            + VND
+            + SUB
 
 + Response 200 (application/json)
   + Attributes (VendorSearchResult)
@@ -369,6 +373,7 @@ Returns the vendor contacts list.
             + desc
   + pageSize: 25 (optional, number) - Amount of results to return
 
+
 + Response 200 (application/json)
   + Attributes (VendorContactSearchResult)
 
@@ -468,7 +473,7 @@ This action is available only to `VMPADMIN` role.
 # Group Vendor Contract
 #######################
 
-## Vendor Contract collection [/contracts{?searchQuery,page,sort,pageSize,sortOrder}]
+## Vendor Contract collection [/contracts{?searchQuery,page,sort,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional,String) - contract id
@@ -494,6 +499,7 @@ Returns the vendor contracts list.
             + asc
             + desc
   + pageSize: 25 (optional, number) - Amount of results to return
+  + report: CTR (enum, optional) - Used to request a xlsx report 
 
 + Response 200 (application/json)
   + Attributes (VendorContractSearchResult)
