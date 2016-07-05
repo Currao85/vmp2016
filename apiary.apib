@@ -1449,17 +1449,17 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + id: 1 (number) - vendor contact id
 + firstName : `Fatima` (required, string) - contact first name
 + lastName : `Cross` (required, string) - contact last name
-+ companyName: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
++ companyName: `A1 TELEKOM AUSTRIA AG` (string) - company name
 + email : `fhuntog@princeton.edu` - main email
 + email2 : `velit.dui.semper@Nuncsedorci.org` - secondary email
 + phoneNumber : `(556) 566-8629` - phone number
-+ role : `Chief Design Engineer`  (required, string) - contact role
-+ address : `OBERE DONAUSTRAßE 29`  (required, string) - address
++ role : `Chief Design Engineer`  (string) - contact role
++ address : `OBERE DONAUSTRAßE 29`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
 + zip : `1020` - postal code
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
-+ vendor (VendorMini2)  (required, object) - vendor object
++ vendor (VendorMini2)  (object) - vendor object
 + enabled : true (boolean)
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
 + updateDate : `2016-06-21 17:30:21` (string) - update timestamp
@@ -1472,13 +1472,13 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + email : `enim.nec@dapibusgravidaAliquam.org` - main email
 + email2 : ` ` - secondary email
 + phoneNumber : `(588) 151-2979` - phone number
-+ role : `Staff Scientist`  (required, string) - contact role
-+ address : `Ap #720-9780 In Ave`  (required, string) - address
++ role : `Staff Scientist`  (string) - contact role
++ address : `Ap #720-9780 In Ave`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
 + zip : `1020` - postal code
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
-+ vendor (VendorMini3)  (required, object) - vendor object
++ vendor (VendorMini3)  (object) - vendor object
 + enabled : true (boolean)
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
 + updateDate : `2016-06-21 17:30:21` (string) - update timestamp
@@ -1488,17 +1488,17 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + id: 3 (number) - vendor contact id
 + firstName : `Candace` (required, string) - contact first name
 + lastName : `Candace` (required, string) - contact last name
-+ companyName: `Arcu Sed Foundation` (required, string) - company name
++ companyName: `Arcu Sed Foundation` (string) - company name
 + email : `enim.nec@dapibusgravidaAliquam.org` - main email
 + email2 : ` ` - secondary email
 + phoneNumber : `(588) 151-2979` - phone number
-+ role : `Staff Scientist`  (required, string) - contact role
-+ address : `Ap #720-9780 In Ave`  (required, string) - address
++ role : `Staff Scientist`  (string) - contact role
++ address : `Ap #720-9780 In Ave`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
 + zip : `1020` - postal code
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
-+ vendor (VendorMini2)  (required, object) - vendor object
++ vendor (VendorMini2)  (object) - vendor object
 + enabled : true (boolean)
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
 + updateDate : `2016-06-21 17:30:21` (string) - update timestamp
@@ -1542,7 +1542,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## VendorContactUpdate (VendorContactInsert)
 + id: 1 (number)
 
-## VendorContactSearchResult (object)
+## VendorContactSearchRes ult (object)
 + results (array[VendorContact1, VendorContact2, VendorContact3], required) - array of Vendor Contacts
 + Include PaginationData1
 
