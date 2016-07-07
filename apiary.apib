@@ -26,7 +26,7 @@ Returns the documents list.
 Return the document's types.
 
 + Parameters
-  + searchQuery: `{function:"VMP_VND", docType:"GENDOC"}` (object) - json filter
+  + searchQuery: `{function:"VMP_VND", docType:"GENDOC", detailable:"Y", docable:"Y"}` (object) - json filter
 
 + Response 200 (application/json)
   + Attributes (DocumentTypes)
@@ -867,7 +867,7 @@ The list data privacy roles.
 ## Functions collection [/lookup/functions{?searchQuery}]
 
 + Parameters
-  + searchQuery: `{function:"VMP_VND"}` (object) - json filter
+  + searchQuery: `{function:"VMP_VND",detailable:"Y",docable:"Y"}` (object) - json filter
 
 + Attributes (object)
   + results (array, required) - array of resources
