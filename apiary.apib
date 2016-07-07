@@ -238,7 +238,7 @@ This action is available only to `VMPADMIN` rolee.
 
     + Body
     
-##  Vendor Chain [/verdors/chain{?searchQuery,page,sort,pageSize,sortOrder,report}]
+##  Vendor Chain [/verdors/chain{?searchQuery,page,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional,string) - vendor code
@@ -251,9 +251,6 @@ Returns the vendor chain list.
 + Parameters
   + searchQuery: {} (object, optional) - json filter
   + page: 1 (optional, number) - The page of results to return
-  + sort: name (enum[string], optional) - Sorting field
-        + Members
-            + name
   + sortOrder: asc (enum, optional) - Sorting order
         + Members
             + asc
