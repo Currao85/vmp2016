@@ -989,12 +989,36 @@ The list of schedule status.
         + pageSize: 25 (number, required) - size of the slice
 
 
-### List Vendor status [GET]
+### List Subcontractor status [GET]
 
-The list of vendor status.
+The list of subcontractor status.
 
 + Response 200 (application/json)
-  + Attributes ( Vendor status collection)
+  + Attributes ( Subcontractor status collection)
+
+## Subcontractor status collection [/lookup/subcontractorstatus]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: A
+          + description: Active
+      + (object)
+          + id: B
+          + description: Inactive
+  + paginationData (object, required) - Informations required for pagination
+        + count: 2 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List Subcontractor status [GET]
+
+The list of subcontractor status.
+
++ Response 200 (application/json)
+  + Attributes ( Subcontractor status collection)
+
 
 #######################
 # Group Users
