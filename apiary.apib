@@ -989,12 +989,12 @@ The list of schedule status.
         + pageSize: 25 (number, required) - size of the slice
 
 
-### List Subcontractor status [GET]
+### List Vendor status [GET]
 
-The list of subcontractor status.
+The list of vendor status.
 
 + Response 200 (application/json)
-  + Attributes ( Subcontractor status collection)
+  + Attributes ( Vendor status collection)
 
 ## Subcontractor status collection [/lookup/subcontractorstatus]
 
@@ -1018,6 +1018,29 @@ The list of subcontractor status.
 
 + Response 200 (application/json)
   + Attributes ( Subcontractor status collection)
+
+## Vendor type collection [/lookup/vendortypes]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 001
+          + description: IBM Vendor
+      + (object)
+          + id: 002
+          + description: New Vendor
+  + paginationData (object, required) - Informations required for pagination
+        + count: 2 (number,required) - total number of resources
+        + pageNum: 1 (number, required) - slice of resources returned
+        + pageSize: 25 (number, required) - size of the slice
+
+
+### List Vendor type [GET]
+
+The list of vendor types.
+
++ Response 200 (application/json)
+  + Attributes ( Vendor type collection)
 
 
 #######################
