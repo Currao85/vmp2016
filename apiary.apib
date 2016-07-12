@@ -1031,8 +1031,8 @@ The list of subcontractor status.
           + description: New Vendor
   + paginationData (object, required) - Informations required for pagination
         + count: 2 (number,required) - total number of resources
-        + pageNum: 1 (number, required) - slice of resources returned
-        + pageSize: 25 (number, required) - size of the slice
+        + pageNum: 0 (number, required) - slice of resources returned
+        + pageSize: 2 (number, required) - size of the slice
 
 
 ### List Vendor type [GET]
@@ -1042,7 +1042,128 @@ The list of vendor types.
 + Response 200 (application/json)
   + Attributes ( Vendor type collection)
 
+## Vendor contact role collection [/lookup/vendorcontactroles]
 
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 001
+          + description: Data Privacy Focal Point
+      + (object)
+          + id: 002
+          + description: Commercial Focal Point
+  + paginationData (object, required) - Informations required for pagination
+        + count: 2 (number,required) - total number of resources
+        + pageNum: 0 (number, required) - slice of resources returned
+        + pageSize: 2 (number, required) - size of the slice
+
+
+### List Vendor contact role [GET]
+
+The list of vendor contact roles.
+
++ Response 200 (application/json)
+  + Attributes (Vendor contact role collection)
+
+## Risk Evaluation collection [/lookup/riskevaluations]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 001
+          + description: high
+      + (object)
+          + id: 002
+          + description: medium
+      + (object)
+          + id: 003
+          + description: low
+  + paginationData (object, required) - Informations required for pagination
+        + count: 3 (number,required) - total number of resources
+        + pageNum: 0 (number, required) - slice of resources returned
+        + pageSize: 3 (number, required) - size of the slice
+
+
+### List risk evaluation [GET]
+
+The list of vendor risk evaluation.
+
++ Response 200 (application/json)
+  + Attributes (Risk Evaluation collection)
+
+## Classification Type collection [/lookup/classtypes]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 001
+          + description: SUB OUTSOURCING
+      + (object)
+          + id: 002
+          + description: SUB CONTRACTING
+  + paginationData (object, required) - Informations required for pagination
+        + count: 2 (number,required) - total number of resources
+        + pageNum: 0 (number, required) - slice of resources returned
+        + pageSize: 2 (number, required) - size of the slice
+
+
+### List classification type [GET]
+
+The list of vendor classification types.
+
++ Response 200 (application/json)
+  + Attributes (Classification Type collection)
+  
+## Classification Service collection [/lookup/classservices]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 001
+          + description: GOODS
+      + (object)
+          + id: 002
+          + description: PROFESSIONAL SERVICE
+  + paginationData (object, required) - Informations required for pagination
+        + count: 2 (number,required) - total number of resources
+        + pageNum: 0 (number, required) - slice of resources returned
+        + pageSize: 2 (number, required) - size of the slice
+
+
+### List classification service [GET]
+
+The list of vendor classification services.
+
++ Response 200 (application/json)
+  + Attributes (Classification Service collection)
+
+## Classification Sow collection [/lookup/classsow]
+
++ Attributes (object)
+  + results (array, required) - array of resources
+      + (object)
+          + id: 001
+          + description: CROSS FUNCTIONAL
+      + (object)
+          + id: 002
+          + description: MAINFRAME
+      + (object)
+          + id: 003
+          + description: MIDDLEWARE
+  + paginationData (object, required) - Informations required for pagination
+        + count: 3 (number,required) - total number of resources
+        + pageNum: 0 (number, required) - slice of resources returned
+        + pageSize: 3 (number, required) - size of the slice
+
+
+### List classification sow [GET]
+
+The list of vendor classification sow.
+
++ Response 200 (application/json)
+  + Attributes (Classification Sow collection)
+
+  
 #######################
 # Group Users
 #######################
