@@ -287,7 +287,7 @@ Used to retrieve vendor/subcontractor detail.
     + Body
 
 ### Update Vendor/Subcontractor [PUT /vendors/{id}]
-This action is available only to `VMPADMIN` role.
+This action is available only to `VMPADMIN`.
 
 + Parameters
     + id: 1 (required, number) - id of the vendor/subcontractor
@@ -350,6 +350,7 @@ Takes a `searchQuery` parameter object defined as follows
   + name (optional,String) - contact name (last name + fitst name)
   + vendorcode (optional,string) - vendor id
   + vendorname (optional,string) - vendor name
+  + enabled (optional,boolean) - select active or inactive contacts
 
 ### List Vendor Contact [GET]
 Returns the vendor contacts list.
@@ -614,6 +615,7 @@ Takes a `searchQuery` parameter object defined as follows
   + fiscalcode (optional, string) - fiscal code of the employee
   + userid (optional, string) - user id of the employee
   + empid (optional,String) - employee id
+  + active (optional,boolean) - select active or inactive employees
 
 ### List Vendor Employees [GET]
 Returns the vendor contacts list.
@@ -756,7 +758,7 @@ Dismiss the specified vendor employee.
 
     + Body
     
-## Users report [/employees{?searchQuery,page,sort,pageSize,sortOrder}]
+## Users report [/employees/users{?searchQuery,page,sort,pageSize,sortOrder}]
 
 Takes a `searchQuery` parameter object defined as follows
   + revId (optional, number) - revision of the Employees Department
@@ -1638,7 +1640,9 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + email : `fhuntog@princeton.edu` - main email
 + email2 : `velit.dui.semper@Nuncsedorci.org` - secondary email
 + phoneNumber : `(556) 566-8629` - phone number
-+ role : `Chief Design Engineer`  (string) - contact role
++ role (object)
+    + id: 001 (string)
+    + description: Data Privacy Focal Point (string)
 + address : `OBERE DONAUSTRAßE 29`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
@@ -1657,7 +1661,9 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + email : `enim.nec@dapibusgravidaAliquam.org` - main email
 + email2 : ` ` - secondary email
 + phoneNumber : `(588) 151-2979` - phone number
-+ role : `Staff Scientist`  (string) - contact role
++ role (object)
+    + id: 001 (string)
+    + description: Data Privacy Focal Point (string)
 + address : `Ap #720-9780 In Ave`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
@@ -1677,7 +1683,9 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + email : `enim.nec@dapibusgravidaAliquam.org` - main email
 + email2 : ` ` - secondary email
 + phoneNumber : `(588) 151-2979` - phone number
-+ role : `Staff Scientist`  (string) - contact role
++ role (object)
+    + id: 001 (string)
+    + description: Data Privacy Focal Point (string)
 + address : `Ap #720-9780 In Ave`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
@@ -1696,7 +1704,9 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + email : `fhuntog@princeton.edu` - main email
 + email2 : `velit.dui.semper@Nuncsedorci.org` - secondary email
 + phoneNumber : `(556) 566-8629` - phone number
-+ role : `Chief Design Engineer`  (string) - contact role
++ role (object)
+    + id: 001 (string)
+    + description: Data Privacy Focal Point (string)
 + address : `OBERE DONAUSTRAßE 29`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
@@ -1715,7 +1725,9 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + email : `fhuntog@princeton.edu` - main email
 + email2 : `fhuntog@princeton.edu` - secondary email
 + phoneNumber : `(556) 566-8629` - phone number
-+ role : `Chief Design Engineer`  (string) - contact role
++ role (object)
+    + id: 001 (string)
+    + description: Data Privacy Focal Point (string)
 + address : `OBERE DONAUSTRAßE 29`  (string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
@@ -1786,7 +1798,8 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + procurementContact : `Antonio Galli` - procurement contact
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
-+ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp    
+
 
 
 ## VendorContract2 (object)
