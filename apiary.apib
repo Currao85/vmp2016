@@ -1468,14 +1468,15 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + masterCode : `4000308` (required, string) - master code
 + name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
 + parentVendor (VendorMini2) - parent vendor for subconstractors
-+ email : `fhuntog@princeton.edu` - email
-+ vatNumber : `ATU13585627`  (required, string) - vat number
-+ status (VendorStatus1)  (required, string) - status object
 + address : `OBERE DONAUSTRAßE 29`  (required, string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
 + zip : `1020` - postal code
 + country (Country1) - country
++ email : `fhuntog@princeton.edu` - email
++ vatNumber : `ATU13585627`  (required, string) - vat number
++ status (VendorStatus1)  (required, string) - status object
++ vendorType (VendorType1) - vendor type
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + riskAssessment : false (boolean) - risk assessment flag
 + businessContinuity: false (boolean) - business continuity flag
@@ -1485,10 +1486,20 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + sched25Status (ScheduleStatus1) - schedule 25 status
 + sched30Status (ScheduleStatus2) - schedule 30 status
 + schedSondrio (ScheduleStatus3) - schedule Sondrio
-+ vendorType (VendorType1) - vendor type
 + infra : false (boolean) - infra flag
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
 + updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : false (boolean) - pcusa flag
++ itcs329 : true (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : true (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
 
 ## Vendor2 (object)
 + id: 2 (required, number)
@@ -1516,6 +1527,17 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + infra : false (boolean)
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
 + updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : false (boolean) - pcusa flag
++ itcs329 : true (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : true (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
 
 ## Vendor3 (object)
 + id: 3 (required, number)
@@ -1543,6 +1565,18 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + infra : false (boolean)
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
 + updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : true (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
+
 
 ## VendorDetail (object)
 + id: 1 (number) - vendor/subcontractor id
@@ -1571,7 +1605,20 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + infra : false (boolean) - infra flag
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
 + updateDate : `2016-06-21 17:30:21` (string) - update timestamp
-+ updateUser : `Alberto Rossi` (string) - last update user full name
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : true (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
++ updateUser : `Gianni Bianchi`  (optional, string) - update user data
++ classService (array[ClassService1, ClassService2, ClassService3], optional) - array of class services
++ classSow (array[ClassSow1, ClassSow2], optional) - array of class sow
 
 
 ## VendorInsert (object)
@@ -1598,6 +1645,19 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + schedSondrio (ScheduleStatus3) - schedule Sondrio
 + vendorType (VendorType1) - vendor type
 + infra : false (boolean) - infra flag
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : true (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
++ updateUser : `Gianni Bianchi`  (optional, string) - update user data
++ classService (array[ClassService1, ClassService2, ClassService3], optional) - array of class services
++ classSow (array[ClassSow1, ClassSow2], optional) - array of class sow
 
 ## VendorChainResult (object)
 + results (array[VendorChain1, VendorChain2, VendorChain3], required) - array of Vendors/Subcontractors
@@ -1924,7 +1984,51 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 
 ## ScheduleStatus3 (object)
 + id: 3 (string)
-+ description : `New Entry` (required, string)
++ description : `To be included` (required, string)
+
+## RiskEvaluation1 (object)
++ id: `001` (string)
++ description : `HIGH` (required, string)
+
+## RiskEvaluation2 (object)
++ id: `002` (string)
++ description : `MEDIUM` (required, string)
+
+## RiskEvaluation3 (object)
++ id: `003` (string)
++ description : `LOW` (required, string)
+
+## ClassType1 (object)
++ id: `001` (string)
++ description : `SUB-OUTSOURCING` (required, string)
+
+## ClassType2 (object)
++ id: `002` (string)
++ description : `SUB-CONTRACTING` (required, string)
+
+## ClassService1 (object)
++ id: `001` (string)
++ description : `GOODS` (required, string)
+
+## ClassService2 (object)
++ id: `002` (string)
++ description : `NETWORKING-SW` (required, string)
+
+## ClassService3 (object)
++ id: `003` (string)
++ description : `PROFESSIONAL SERVICE` (required, string)
+
+## ClassSow1 (object)
++ id: `001` (string)
++ description : `CROSS FUNCTIONAL` (required, string)
+
+## ClassSow2 (object)
++ id: `002` (string)
++ description : `MIDDLEWARE` (required, string)
+
+## ClassSow3 (object)
++ id: `003` (string)
++ description : `I-SERIES` (required, string)
 
 ## VendorType1 (object)
 + id: 1 (string)
