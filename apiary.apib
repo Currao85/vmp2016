@@ -621,7 +621,7 @@ Returns the vendor contacts list.
 + Parameters
   + searchQuery: {} (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
-  + sort: empid (enum[string], optional) - Sorting field
+  + sort: lastname (enum[string], optional) - Sorting field
         + Members
             + vendorid
             + empid (default)
@@ -755,6 +755,41 @@ Dismiss the specified vendor employee.
     Returned when a generic error occours.
 
     + Body
+    
+## Users report [/employees{?searchQuery,page,sort,pageSize,sortOrder}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + revId (optional, number) - revision of the Employees Department
+  + deptcode (optional, string) - id of the employees department
+  + sbc1name (optional, number) - subcontractor1 name
+  + sbc2name (optional, number) - subcontractor2 name
+  + sbc1id (optional, number) - subcontractor1 id
+  + sbc2id (optional, number) - subcontractor2 id
+  + vendorid (optional,number) - vendor id
+  + vendorname (optional, string) - vendor name
+  + lastname (optional,string) - last name of the employee
+  + firstname (optional,string) - first name of the employee
+  + fiscalcode (optional, string) - fiscal code of the employee
+  + userid (optional, string) - user id of the employee
+  + empid (optional,String) - employee id
+
+### Report users [GET]
+Returns the xlsx users list.
+
++ Parameters
+  + searchQuery: {} (object, required) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: lastname (enum[string], optional) - Sorting field
+        + Members
+            + vendorid
+            + empid (default)
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+
++ Response 200 (application/vnd.ms-excel)
 
 
 #######################
