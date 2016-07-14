@@ -625,8 +625,8 @@ Returns the vendor contacts list.
   + page: 1 (optional, number) - The page of results to return
   + sort: lastname (enum[string], optional) - Sorting field
         + Members
-            + vendorid
-            + empid (default)
+            + firstname
+            + lastname (default)
   + sortOrder: asc (enum, optional) - Sorting order
         + Members
             + asc
@@ -783,8 +783,8 @@ Returns the xlsx users list.
   + page: 1 (optional, number) - The page of results to return
   + sort: lastname (enum[string], optional) - Sorting field
         + Members
-            + vendorid
-            + empid (default)
+            + firstname
+            + lastname (default)
   + sortOrder: asc (enum, optional) - Sorting order
         + Members
             + asc
@@ -1799,7 +1799,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## VendorContactUpdate (VendorContactInsert)
 + id: 1 (number)
 
-## VendorContactSearchRes ult (object)
+## VendorContactSearchResult (object)
 + results (array[VendorContact1, VendorContact2, VendorContact3], required) - array of Vendor Contacts
 + Include PaginationData1
 
