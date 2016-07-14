@@ -795,6 +795,132 @@ Returns the xlsx users list.
 
 
 #######################
+# Group Vendor Evaluation
+#######################
+
+## Vendor Evaluation collection [/vendors/{vendorId}/evaluations{?searchQuery,page,sort,pageSize,sortOrder}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + code (optional,String) - evaluation id
+  + vendorcode (optional,string) - vendor id
+  + vendorname (optional,string) - vendor name
+
+### List Vendor Evaluation [GET]
+Returns the vendor evaluation list.
+
++ Parameters
+  + vendorId: 100 (required) - id of the requested vendor 
+  + searchQuery: {} (object) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: evaluationdate (enum[string], optional) - Sorting field
+        + Members
+            + evaluationdate
+            + score
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+
++ Response 200 (application/json)
+  + Attributes (VendorEvaluationSearchResult)
+
+
+### Create Vendor Evaluation [POST]
+Creates a new vendor evaluation.
+
+This action is available only to `VMPADMIN` rolee.
+
+
++ Request (application/json)
+
+    + Attributes (VendorEvaluationInsert)
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: vendors/100/evaluations/1
+
+    + Attributes (VendorEvaluation1)
+
++ Response 400
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
+## Vendor Evaluation [/vendors/{vendorId}/evaluations/{id}]
+
++ Parameters
+  + vendorId: 100 (required) - id of the requested vendor 
+  + id: 1 (required) - id of the requested vendor evaluation
+
++ Attributes (VendorEvaluation1)
+
+### Read Vendor Evaluation [GET]
+Used to retrieve vendor evaluation detail.
+
++ Response 200 (application/json)
+
+    + Attributes (VendorEvaluation1)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Update Vendor Contract [PUT /vendors/{vendorId}/evaluations/{id}]
+This action is available only to `VMPADMIN` role.
+
++ Parameters
+  + vendorId: 100 (required) - id of the requested vendor 
+  + id: 1 (required) - id of the requested vendor evaluation
+
++ Request (application/json)
+  + Attributes (VendorEvaluationUpdate)
+
++ Response 200 (application/json)
+
+    + Attributes (VendorEvaluation1)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Delete Vendor Evaluation [DELETE]
+This action is available only to `VMPADMIN` role.
+
++ Response 204
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
+#######################
 # Group Lookup Lists
 #######################
 
@@ -2044,3 +2170,42 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## ContractType2 (object)
 + id: 2 (string)
 + description : `Statements of Work (SOWs) - Goods Agreements` (string)
+
+
+## VendorEvaluation1 (object)
++ id: 1 (number) - vendor evaluation id
++ vendor (VendorMini2)  (required, object) - vendor object
++ evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
++ evaluationNote : `Note` (string) - evaluation note 
++ evaluationScore : 90 (number) - evaluation score
+
+## VendorEvaluation2 (object)
++ id: 2 (number) 
++ vendor (VendorMini2)  (required, object) 
++ evaluationDate : `2015-03-18 00:00:00` (string) 
++ evaluationNote : `Note2` (string) 
++ evaluationScore : 80 (number) 
+
+## VendorEvaluation3 (object)
++ id: 3 (number) 
++ vendor (VendorMini2)  (required, object) 
++ evaluationDate : `2016-04-18 00:00:00` (string) 
++ evaluationNote : `Note` (string) 
++ evaluationScore : 85 (number) 
+
+## VendorEvaluationInsert (object)
++ vendor (VendorMini2Insert)  (required, object) - vendor object
++ evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
++ evaluationNote : `Note` (string) - evaluation note 
++ evaluationScore : 90 (number) - evaluation score
+
+## VendorEvaluationSearchResult (object)
++ results (array[VendorEvaluation1, VendorEvaluation2, VendorEvaluation3], required) - array of Vendor Evaluations
++ Include PaginationData1
+
+## VendorEvaluationUpdate (object)
++ id: 1 (number) - vendor evaluation id
++ vendor (VendorMini2Insert)  (required, object) - vendor object
++ evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
++ evaluationNote : `Note` (string) - evaluation note 
++ evaluationScore : 90 (number) - evaluation score
