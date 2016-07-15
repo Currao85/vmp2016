@@ -12,10 +12,21 @@ Service Oriented Architecture specified for the VMP project.
 ## Documents Collection [/documents]
 
 ### List Documents [GET /documents{?searchQuery,page,pageSize}]
-Returns the documents list.
+Search documents.
+
+Takes a `searchQuery` parameter object defined as follows
+<ul>
+  <li>function (optional,string) - ...</li>
+  <li>entityId (optional,number) - ...</li>
+  <li>docType (optional,number) - ...</li>
+  <li>owner (optional,number) - ...</li>
+  <li>insertDate (optional,string) - ...</li>
+  <li>signingDate (optional,string) - ...</li>
+  <li>validityDate (optional,string) - ...</li>
+</ul>
 
 + Parameters
-  + searchQuery: `{function:"VMP_VND", entityId:123,docTypeId: "GENDOC",owner: 234,insertDate: "2016-02-05",signingDate: "2016-02-05",validityDate: "2016-02-05"}`  (object, required) - json filter
+  + searchQuery: `{function:"VMP_VND", entityId:123, docType:1, owner:234, insertDate:"2016-02-05", signingDate:"2016-02-05", validityDate:"2016-02-05"}`  (object, required) - json filter
   + page: 1 (optional, number) - The page of results to return
   + pageSize: 25 (optional, number) - Amount of results to return
 
@@ -23,10 +34,20 @@ Returns the documents list.
   + Attributes (DocumentSearchResult)
 
 ### Document types [GET /documents/types{?searchQuery}]
-Return the document's types.
+Search for document's types.
+
+Takes a `searchQuery` parameter object defined as follows
+<ul>
+  <li>function (optional,string) - ...</li>
+  <li>docType (optional,number) - ...</li>
+  <li>detailable (optional,string) - ...</li>
+  <li>docable (optional,string) - ...</li>
+  <li>scope (optional,string) - ...</li>
+  <li>vendortype (optional,string) - ...</li>
+</ul>
 
 + Parameters
-  + searchQuery: `{function:"VMP_VND", docType:"GENDOC", detailable:"Y", docable:"Y"}` (object) - json filter
+    + searchQuery: `{function:"VMP_VND", docType:1, detailable:"Y", docable:"Y", scope:"qualification", vendortype:"002"}` (object, optional) - json filter
 
 + Response 200 (application/json)
   + Attributes (DocumentTypes)
@@ -237,13 +258,13 @@ This action is available only to `VMPADMIN` rolee.
     Returned when a generic error occours.
 
     + Body
-    
+
 ##  Vendor Chain [/verdors/chain{?searchQuery,page,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional,string) - vendor code
   + name (optional,string) - vendor name
-    
+
 
 ### List Vendor Chain [GET]
 Returns the vendor chain list.
@@ -497,7 +518,7 @@ Returns the vendor contracts list.
             + asc
             + desc
   + pageSize: 25 (optional, number) - Amount of results to return
-  + report: CTR (enum, optional) - Used to request a xlsx report 
+  + report: CTR (enum, optional) - Used to request a xlsx report
 
 + Response 200 (application/json)
   + Attributes (VendorContractSearchResult)
@@ -757,7 +778,7 @@ Dismiss the specified vendor employee.
     Returned when a generic error occours.
 
     + Body
-    
+
 ## Users report [/employees/users{?searchQuery,page,sort,pageSize,sortOrder}]
 
 Takes a `searchQuery` parameter object defined as follows
@@ -809,7 +830,7 @@ Takes a `searchQuery` parameter object defined as follows
 Returns the vendor evaluation list.
 
 + Parameters
-  + vendorId: 100 (required) - id of the requested vendor 
+  + vendorId: 100 (required) - id of the requested vendor
   + searchQuery: {} (object) - json filter
   + page: 1 (optional, number) - The page of results to return
   + sort: evaluationdate (enum[string], optional) - Sorting field
@@ -858,7 +879,7 @@ This action is available only to `VMPADMIN` rolee.
 ## Vendor Evaluation [/vendors/{vendorId}/evaluations/{id}]
 
 + Parameters
-  + vendorId: 100 (required) - id of the requested vendor 
+  + vendorId: 100 (required) - id of the requested vendor
   + id: 1 (required) - id of the requested vendor evaluation
 
 + Attributes (VendorEvaluation1)
@@ -884,7 +905,7 @@ Used to retrieve vendor evaluation detail.
 This action is available only to `VMPADMIN` role.
 
 + Parameters
-  + vendorId: 100 (required) - id of the requested vendor 
+  + vendorId: 100 (required) - id of the requested vendor
   + id: 1 (required) - id of the requested vendor evaluation
 
 + Request (application/json)
@@ -1276,7 +1297,7 @@ The list of vendor classification types.
 
 + Response 200 (application/json)
   + Attributes (Classification Type collection)
-  
+
 ## Classification Service collection [/lookup/classservices]
 
 + Attributes (object)
@@ -1326,7 +1347,7 @@ The list of vendor classification sow.
 + Response 200 (application/json)
   + Attributes (Classification Sow collection)
 
-  
+
 #######################
 # Group Users
 #######################
@@ -1629,7 +1650,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## Vendor2 (object)
 + id: 2 (required, number)
 + functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
-+ masterCode : `4000477` (required, string) 
++ masterCode : `4000477` (required, string)
 + name: `ADECCO ITALIA SPA` (required, string)
 + email : `example@adecco.com`
 + vatNumber : `13456789445`
@@ -1979,7 +2000,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + procurementContact : `Antonio Galli` - procurement contact
 + notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
 + insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
-+ updateDate : `2016-06-21 17:30:21` (string) - update timestamp    
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
 
 
 
@@ -1997,7 +2018,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate : ` ` (string)
 + contractType (ContractType1)  (object)
-+ associatedCountries (array[Country1]) 
++ associatedCountries (array[Country1])
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
 + procurementContact : `Antonio Galli`
@@ -2019,7 +2040,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + supplierSignatureDate : ` ` (string)
 + vtsSignatureDate : ` ` (string)
 + contractType (ContractType2)  (object)
-+ associatedCountries (array[Country1]) 
++ associatedCountries (array[Country1])
 + vtsDeliveryContractManager : ` ` (string)
 + supplierContractResponsible : ` ` (string)
 + procurementContact : `Antonio Galli`
@@ -2176,27 +2197,27 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + id: 1 (number) - vendor evaluation id
 + vendor (VendorMini2)  (required, object) - vendor object
 + evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
-+ evaluationNote : `Note` (string) - evaluation note 
++ evaluationNote : `Note` (string) - evaluation note
 + evaluationScore : 90 (number) - evaluation score
 
 ## VendorEvaluation2 (object)
-+ id: 2 (number) 
-+ vendor (VendorMini2)  (required, object) 
-+ evaluationDate : `2015-03-18 00:00:00` (string) 
-+ evaluationNote : `Note2` (string) 
-+ evaluationScore : 80 (number) 
++ id: 2 (number)
++ vendor (VendorMini2)  (required, object)
++ evaluationDate : `2015-03-18 00:00:00` (string)
++ evaluationNote : `Note2` (string)
++ evaluationScore : 80 (number)
 
 ## VendorEvaluation3 (object)
-+ id: 3 (number) 
-+ vendor (VendorMini2)  (required, object) 
-+ evaluationDate : `2016-04-18 00:00:00` (string) 
-+ evaluationNote : `Note` (string) 
-+ evaluationScore : 85 (number) 
++ id: 3 (number)
++ vendor (VendorMini2)  (required, object)
++ evaluationDate : `2016-04-18 00:00:00` (string)
++ evaluationNote : `Note` (string)
++ evaluationScore : 85 (number)
 
 ## VendorEvaluationInsert (object)
 + vendor (VendorMini2Insert)  (required, object) - vendor object
 + evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
-+ evaluationNote : `Note` (string) - evaluation note 
++ evaluationNote : `Note` (string) - evaluation note
 + evaluationScore : 90 (number) - evaluation score
 
 ## VendorEvaluationSearchResult (object)
@@ -2207,5 +2228,5 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + id: 1 (number) - vendor evaluation id
 + vendor (VendorMini2Insert)  (required, object) - vendor object
 + evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
-+ evaluationNote : `Note` (string) - evaluation note 
++ evaluationNote : `Note` (string) - evaluation note
 + evaluationScore : 90 (number) - evaluation score
