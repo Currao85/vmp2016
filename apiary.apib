@@ -18,7 +18,10 @@ Takes a `searchQuery` parameter object defined as follows
 <ul>
   <li>function (optional,string) - ...</li>
   <li>entityId (optional,number) - ...</li>
-  <li>docType (optional,number) - ...</li>
+  <li><strong>vendorType</strong> (optional,string) -
+    <p>find documents with types related to vendor type.<br/>function field must have fixed value `VMP_VND`; entityId filed must have a valid vendor id</p>
+  </li>
+  <li>docType (optional,array) - ...</li>
   <li>owner (optional,number) - ...</li>
   <li>insertDate (optional,string) - ...</li>
   <li>signingDate (optional,string) - ...</li>
