@@ -19,13 +19,16 @@ Takes a `searchQuery` parameter object defined as follows
   <li>function (optional,string) - ...</li>
   <li>entityId (optional,number) - ...</li>
   <li><strong>vendorType</strong> (optional,string) -
-    <p>find documents with types related to vendor type.<br/>function field must have fixed value `VMP_VND`; entityId filed must have a valid vendor id</p>
+    <p>find documents with types related to vendor type.<br/>function field must have fixed value `VMP_VND`; entityId field must have a valid vendor id</p>
   </li>
   <li>docType (optional,array) - ...</li>
   <li>owner (optional,number) - ...</li>
   <li>insertDate (optional,string) - ...</li>
   <li>signingDate (optional,string) - ...</li>
   <li>validityDate (optional,string) - ...</li>
+  <li>active (optional,string) -
+    <p>'N' to get documents that belong to temporary vendor.</p>
+  </li>
 </ul>
 
 + Parameters
@@ -2207,8 +2210,8 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
 + evaluationNote : `Note` (string) - evaluation note
 + evaluationScore : 90 (number) - evaluation score
-+ planDoc (PlanDocument) (optional, object) 
-+ checklistDoc (ChecklistDocument) (optional, object) 
++ planDoc (PlanDocument) (optional, object)
++ checklistDoc (ChecklistDocument) (optional, object)
 
 ## VendorEvaluation2 (object)
 + id: 2 (number)
@@ -2216,8 +2219,8 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + evaluationDate : `2015-03-18 00:00:00` (string)
 + evaluationNote : `Note2` (string)
 + evaluationScore : 80 (number)
-+ planDoc (PlanDocument) (optional, object) 
-+ checklistDoc (ChecklistDocument) (optional, object) 
++ planDoc (PlanDocument) (optional, object)
++ checklistDoc (ChecklistDocument) (optional, object)
 
 ## VendorEvaluation3 (object)
 + id: 3 (number)
@@ -2225,16 +2228,16 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + evaluationDate : `2016-04-18 00:00:00` (string)
 + evaluationNote : `Note` (string)
 + evaluationScore : 85 (number)
-+ planDoc (PlanDocument) (optional, object) 
-+ checklistDoc (ChecklistDocument) (optional, object) 
++ planDoc (PlanDocument) (optional, object)
++ checklistDoc (ChecklistDocument) (optional, object)
 
 ## VendorEvaluationInsert (object)
 + vendor (VendorMini2Insert)  (required, object) - vendor object
 + evaluationDate : `2014-03-18 00:00:00` (string) - evaluation date
 + evaluationNote : `Note` (string) - evaluation note
 + evaluationScore : 90 (number) - evaluation score
-+ planDoc (PlanDocumentInsert) (optional, object) 
-+ checklistDoc (ChecklistDocumentInsert) (optional, object) 
++ planDoc (PlanDocumentInsert) (optional, object)
++ checklistDoc (ChecklistDocumentInsert) (optional, object)
 
 ## VendorEvaluationSearchResult (object)
 + results (array[VendorEvaluation1, VendorEvaluation2, VendorEvaluation3], required) - array of Vendor Evaluations
