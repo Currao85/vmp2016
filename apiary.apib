@@ -208,6 +208,7 @@ Takes a `searchQuery` parameter object defined as follows
   + name (optional,string) - vendor/subcontractor name
   + function (optional,string) - code of requested function (VMP_VND for Vendors, VMP_SUB for Subcontractors)
   + status (optional,String) - vendor/subcontractor status code
+  + dismissed (optional,Boolean) - vendor/subcontractor dismissed status
 
 
 ### List Vendor/Subcontractor [GET]
@@ -264,6 +265,32 @@ This action is available only to `VMPADMIN` rolee.
     Returned when a generic error occours.
 
     + Body
+
+
+##  Vendor Collection Short [/verdors/short{?searchQuery,page,pageSize,sortOrder,report}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + code (optional,string) - vendor/subcontractor code
+  + name (optional,string) - vendor/subcontractor name
+  + function (optional,string) - code of requested function (VMP_VND for Vendors, VMP_SUB for Subcontractors)
+  + status (optional,String) - vendor/subcontractor status code
+  + dismissed (optional,Boolean) - vendor/subcontractor dismissed status
+
+### List Vendor Short [GET]
+Returns the vendor list with minimal info  
+
++ Parameters
+  + searchQuery: {} (object, optional) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+
++ Response 200 (application/json)
+  + Attributes (VendorShortResult)
+
 
 ##  Vendor Chain [/verdors/chain{?searchQuery,page,pageSize,sortOrder,report}]
 
@@ -2242,4 +2269,26 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 
 ## VendorEvaluationSearchResult (object)
 + results (array[VendorEvaluation1, VendorEvaluation2, VendorEvaluation3], required) - array of Vendor Evaluations
++ Include PaginationData1
+
+## VendorShort1 (object)
++ id: 1 (number) - vendor/subcontractor id
++ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000308` (required, string) - master code
++ name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
+
+## VendorShort2 (object)
++ id: 2 (required, number)
++ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000477` (required, string)
++ name: `ADECCO ITALIA SPA` (required, string)
+
+## VendorShort3 (object)
++ id: 3 (required, number)
++ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000477` (required, string)
++ name: `SODEXO` (required, string)
+
+## VendorShortResult (object)
++ results (array[VendorShort1, VendorShort2, VendorShort3], required) - array of Vendors/Subcontractors minimal informations
 + Include PaginationData1
