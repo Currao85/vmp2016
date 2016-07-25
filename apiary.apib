@@ -198,21 +198,21 @@ Deletes a document assigned to an entity.
 
 
 #######################
-# Group Vendor/Subcontractor
+# Group Vendor
 #######################
 
-## Vendor/Subcontractor collection [/verdors{?searchQuery,page,sort,pageSize,sortOrder,report}]
+## Vendor collection [/verdors{?searchQuery,page,sort,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
-  + code (optional,string) - vendor/subcontractor code
-  + name (optional,string) - vendor/subcontractor name
-  + function (optional,string) - code of requested function (VMP_VND for Vendors, VMP_SUB for Subcontractors)
-  + status (optional,String) - vendor/subcontractor status code
-  + dismissed (optional,Boolean) - vendor/subcontractor dismissed status
+  + code (optional,string) - vendor code
+  + name (optional,string) - vendor name
+  + function (optional,string) - code of requested function (VMP_VND for Vendors)
+  + status (optional,String) - vendor status code
+  + dismissed (optional,Boolean) - vendor dismissed status
 
 
-### List Vendor/Subcontractor [GET]
-Returns the vendors/subcontractors list.
+### List Vendor [GET]
+Returns the vendors list.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -238,8 +238,8 @@ Returns the vendors/subcontractors list.
   + Attributes (VendorSearchResult)
 
 
-### Create Vendor/Subcontractor [POST]
-Creates a new vendor/subcontractor.
+### Create Vendor [POST]
+Creates a new vendor.
 
 This action is available only to `VMPADMIN` rolee.
 
@@ -266,18 +266,40 @@ This action is available only to `VMPADMIN` rolee.
 
     + Body
 
+### Create a Temporary Vendor [POST /verdors/temp]
+Creates a new temporary vendor.
+
+This action is available only to `VMPADMIN` rolee.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+  + Attributes (VendorDetail)
+
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
 
 ##  Vendor Collection Short [/verdors/short{?searchQuery,page,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
-  + code (optional,string) - vendor/subcontractor code
-  + name (optional,string) - vendor/subcontractor name
-  + function (optional,string) - code of requested function (VMP_VND for Vendors, VMP_SUB for Subcontractors)
-  + status (optional,String) - vendor/subcontractor status code
-  + dismissed (optional,Boolean) - vendor/subcontractor dismissed status
+  + code (optional,string) - vendor code
+  + name (optional,string) - vendor ame
+  + function (optional,string) - code of requested function (VMP_VND for Vendors)
+  + status (optional,String) - vendor status code
+  + dismissed (optional,Boolean) - vendor dismissed status
 
 ### List Vendor Short [GET]
-Returns the vendor list with minimal info  
+Returns the vendor list with minimal info
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -316,15 +338,15 @@ Returns the vendor chain list.
   + Attributes (VendorChainResult)
 
 
-## Vendor/Subcontractor [/vendors/{id}]
+## Vendor [/vendors/{id}]
 
 + Parameters
-  + id: 1 (required) - id of the requested vendor/subcontractor
+  + id: 1 (required) - id of the requested vendor
 
 + Attributes (VendorDetail)
 
-### Read Vendor/Subcontractor [GET]
-Used to retrieve vendor/subcontractor detail.
+### Read Vendor [GET]
+Used to retrieve vendor detail.
 
 + Response 200 (application/json)
 
@@ -340,11 +362,11 @@ Used to retrieve vendor/subcontractor detail.
 
     + Body
 
-### Update Vendor/Subcontractor [PUT /vendors/{id}]
+### Update Vendor [PUT /vendors/{id}]
 This action is available only to `VMPADMIN`.
 
 + Parameters
-    + id: 1 (required, number) - id of the vendor/subcontractor
+    + id: 1 (required, number) - id of the vendor
 
 + Request (application/json)
   + Attributes (Vendor1)
@@ -361,7 +383,7 @@ This action is available only to `VMPADMIN`.
 
     + Body
 
-### Delete Vendor/Subcontractor [DELETE]
+### Delete Vendor [DELETE]
 This action is available only to `VMPADMIN` role.
 
 + Response 204
@@ -376,8 +398,9 @@ This action is available only to `VMPADMIN` role.
 
     + Body
 
-### Read Vendor/Subcontractor Employees [GET /employees]
-Used to retrieve vendor/subcontractor employees list.
+### Read Vendor Employees [GET /vendors/{id}/employees]
+Used to retrieve vendor employees list.
+It's the same service used by VendorEmployees but results are filtered by this vendor
 
 + Response 200 (application/json)
 
@@ -392,6 +415,270 @@ Used to retrieve vendor/subcontractor employees list.
     Returned when a generic error occours.
 
     + Body
+
+### Read Vendor Contacts [GET /vendors/{id}/contacts]
+Used to retrieve vendor contacts list.
+It's the same service used by VendorContacts but results are filtered by this vendor
+
++ Response 200 (application/json)
+
+    + Attributes (VendorContactSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Read Vendor Contracts [GET /vendors/{id}/contracts]
+Used to retrieve vendor contracts list.
+It's the same service used by VendorContracts but results are filtered by this vendor
+
++ Response 200 (application/json)
+
+    + Attributes (VendorContractSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
+### Read Vendor Evaluations [GET /vendors/{id}/evaluations]
+Used to retrieve vendor evaluations list.
+It's the same service used by Evaluations but results are filtered by this vendor
+
++ Response 200 (application/json)
+
+    + Attributes (VendorEvaluationSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+#######################
+# Group Subcontractor
+#######################
+
+## Subcontractor collection [/subcontractors{?searchQuery,page,sort,pageSize,sortOrder,report}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + code (optional,string) - subcontractor code
+  + name (optional,string) - subcontractor name
+  + function (optional,string) - code of requested function (VMP_SUB for Subcontractors)
+  + status (optional,String) - subcontractor status code
+  + dismissed (optional,Boolean) - subcontractor dismissed status
+
+
+### Subcontractor [GET]
+Returns the subcontractors list.
+
++ Parameters
+  + searchQuery: {} (object, optional) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sort: name (enum[string], optional) - Sorting field
+        + Members
+            + name
+            + code
+            + address
+            + status
+            + vatnumber
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+  + report: VND (enum, optional) - Used to request xlsx report
+        + Members
+            + VND
+            + SUB
+
++ Response 200 (application/json)
+  + Attributes (VendorSearchResult)
+
+
+### Create Subcontractor [POST]
+Creates a new subcontractor.
+
+This action is available only to `VMPADMIN` rolee.
+
+
++ Request (application/json)
+
+    + Attributes (VendorInsert)
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /vendors/123
+
+    + Attributes (VendorDetail)
+
++ Response 400
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+
+##  Vendor Chain [/subcontractors/chain{?searchQuery,page,pageSize,sortOrder,report}]
+
+Takes a `searchQuery` parameter object defined as follows
+  + code (optional,string) - vendor code
+  + name (optional,string) - vendor name
+
+
+### List Vendor Chain [GET]
+Returns the vendor and related subcontractors chain list.
+
++ Parameters
+  + searchQuery: {} (object, optional) - json filter
+  + page: 1 (optional, number) - The page of results to return
+  + sortOrder: asc (enum, optional) - Sorting order
+        + Members
+            + asc
+            + desc
+  + pageSize: 25 (optional, number) - Amount of results to return
+  + report:  `VNDCHN` (optional, string) - Vendor chain xlsx report
+
++ Response 200 (application/json)
+  + Attributes (VendorChainResult)
+
+
+## Subcontractor [/subcontractors/{id}]
+
++ Parameters
+  + id: 1 (required) - id of the requested subcontractor
+
++ Attributes (VendorDetail)
+
+### Read Subcontractor [GET]
+Used to retrieve subcontractor detail.
+
++ Response 200 (application/json)
+
+    + Attributes (VendorDetail)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Update Subcontractor [PUT /subcontractors/{id}]
+This action is available only to `VMPADMIN`.
+
++ Parameters
+    + id: 1 (required, number) - id of the subcontractor
+
++ Request (application/json)
+  + Attributes (Vendor1)
+
++ Response 200
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Delete Subcontractor [DELETE]
+This action is available only to `VMPADMIN` role.
+
++ Response 204
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Read Subcontractors Employees [GET /subcontractors/{id}/employees]
+Used to retrieve subcontractor employees list.
+It's the same service used by VendorEmployees but results are filtered by this subcontractor
+
++ Response 200 (application/json)
+
+    + Attributes (VendorEmployeeSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Read Subcontractors Contacts [GET /subcontractors/{id}/contacts]
+Used to retrieve subcontractor contacts list.
+It's the same service used by VendorContacts but results are filtered by this subcontractor
+
++ Response 200 (application/json)
+
+    + Attributes (VendorContactSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
+### Read Subcontractors Contracts [GET /subcontractors/{id}/contracts]
+Used to retrieve subcontractor contracts list.
+It's the same service used by VendorContracts but results are filtered by this subcontractor
+
++ Response 200 (application/json)
+
+    + Attributes (VendorContractSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
+
 
 #######################
 # Group Vendor Contact
@@ -880,6 +1167,16 @@ Returns the vendor evaluation list.
 
 + Response 200 (application/json)
   + Attributes (VendorEvaluationSearchResult)
+
++ Response 404
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
 
 
 ### Create Vendor Evaluation [POST]
