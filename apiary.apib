@@ -273,11 +273,15 @@ This action is available only to `VMPADMIN` rolee.
 
 + Request (application/json)
 
-+ Response 200 (application/json)
-  + Attributes (VendorDetail)
++ Response 201 (application/json)
 
+    + Headers
 
-+ Response 404
+            Location: /vendors/123
+
+    + Attributes (VendorTemp)
+
++ Response 400
     Returned when the required resource cannot be found.
 
     + Body
@@ -286,7 +290,6 @@ This action is available only to `VMPADMIN` rolee.
     Returned when a generic error occours.
 
     + Body
-
 
 
 ##  Vendor Collection Short [/verdors/short{?searchQuery,page,pageSize,sortOrder,report}]
@@ -2589,3 +2592,36 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## VendorShortResult (object)
 + results (array[VendorShort1, VendorShort2, VendorShort3], required) - array of Vendors/Subcontractors minimal informations
 + Include PaginationData1
+
+## VendorStatusTemp (object)
++ id: `TMP` (required, string) - status code
++ description: `Temporary` - status description
++ disposal: false - disposal status 
+
+## CountryND (object)
++ id: `000` (required, string)
++ description: `ND` (string)
+
+## VendorTemp (object)
++ id: 123 (number) - vendor/subcontractor id
++ functionId: `VMP_VND` (string) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ name: (string) - company name
++ email : (string) - email
++ vatNumber : (string) - vat number
++ status (VendorStatusTemp) - status object
++ address : (string) - address
++ country (CountryND) - country
++ riskAssessment : false (boolean) - risk assessment flag
++ businessContinuity: false (boolean) - business continuity flag
++ frameworkContract : false (boolean) - framework contract flag
++ subContratAut : false (boolean) - sub contract flag
++ infra : false (boolean) - infra flag
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ updateUser : `Gianni Bianchi`  (optional, string) - update user data
++ pcusa : false (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : false (boolean) - mailEncryption flag
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : false (boolean) - classRecurring flag
+
