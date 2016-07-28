@@ -292,7 +292,7 @@ This action is available only to `VMPADMIN` rolee.
     + Body
 
 
-##  Vendor Collection Short [/verdors/short{?searchQuery,page,pageSize,sortOrder,report}]
+##  Vendor collection short [/verdors/short{?searchQuery,page,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional,string) - vendor code
@@ -512,7 +512,7 @@ Returns the subcontractors list.
             + SUB
 
 + Response 200 (application/json)
-  + Attributes (VendorSearchResult)
+  + Attributes (SubContractorSearchResult)
 
 
 ### Create Subcontractor [POST]
@@ -523,7 +523,7 @@ This action is available only to `VMPADMIN` rolee.
 
 + Request (application/json)
 
-    + Attributes (VendorInsert)
+    + Attributes (SubContractorInsert)
 
 + Response 201 (application/json)
 
@@ -531,7 +531,7 @@ This action is available only to `VMPADMIN` rolee.
 
             Location: /vendors/123
 
-    + Attributes (VendorDetail)
+    + Attributes (SubContractorDetail)
 
 + Response 400
     Returned when the required resource cannot be found.
@@ -1923,10 +1923,9 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 
 ## Vendor1 (object)
 + id: 1 (number) - vendor/subcontractor id
-+ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ functionId: `VMP_VND` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
 + masterCode : `4000308` (required, string) - master code
 + name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
-+ parentVendor (VendorMini2) - parent vendor for subconstractors
 + address : `OBERE DONAUSTRAßE 29`  (required, string) - address
 + city : `WIEN` - city
 + state : ` ` - province or state
@@ -1961,7 +1960,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 
 ## Vendor2 (object)
 + id: 2 (required, number)
-+ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ functionId: `VMP_VND` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
 + masterCode : `4000477` (required, string)
 + name: `ADECCO ITALIA SPA` (required, string)
 + email : `example@adecco.com`
@@ -1998,7 +1997,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 
 ## Vendor3 (object)
 + id: 3 (required, number)
-+ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ functionId: `VMP_VND` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
 + masterCode : `4000477` (required, string)
 + name: `SODEXO` (required, string)
 + email : `example@sodexo.com`
@@ -2036,7 +2035,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 
 ## VendorDetail (object)
 + id: 1 (number) - vendor/subcontractor id
-+ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ functionId: `VMP_VND` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
 + masterCode : `4000308` (required, string) - master code
 + name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
 + parentVendor (VendorMini2) - parent vendor for subconstractors
@@ -2077,7 +2076,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 
 
 ## VendorInsert (object)
-+ functionId: `VMP_VND`,`VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ functionId: `VMP_VND` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
 + masterCode : `4000308` (required, string) - master code
 + name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
 + parentVendor (VendorMini2Insert) - parent vendor for subconstractors
@@ -2142,6 +2141,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## VendorStatus1 (object)
 + id: `001` (required, string) - status code
 + description: `Active` - status description
++ disposal: false - status disposal
 
 ## VendorStatusInsert (object)
 + id: `001` (required, string)
@@ -2625,3 +2625,202 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + classFinalSla : false (boolean) - classFinalSla  flag
 + classRecurring : false (boolean) - classRecurring flag
 
+
+## SubContractor1 (object)
++ id: 1 (number) - vendor/subcontractor id
++ functionId: `VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000308` (required, string) - master code
++ name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
++ parentVendor (VendorShort2) - parent vendor for subconstractor
++ address : `OBERE DONAUSTRAßE 29`  (required, string) - address
++ city : `WIEN` - city
++ state : ` ` - province or state
++ zip : `1020` - postal code
++ country (Country1) - country
++ email : `fhuntog@princeton.edu` - email
++ vatNumber : `ATU13585627`  (required, string) - vat number
++ status (VendorStatus1)  (required, string) - status object
++ vendorType (VendorType1) - vendor type
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
++ riskAssessment : false (boolean) - risk assessment flag
++ businessContinuity: false (boolean) - business continuity flag
++ subContratAut : false (boolean) - sub contract flag
++ frameworkContract : false (boolean) - framework contract flag
++ sched25Status (ScheduleStatus1) - schedule 25 status
++ sched30Status (ScheduleStatus2) - schedule 30 status
++ schedSondrio (ScheduleStatus3) - schedule Sondrio
++ infra : false (boolean) - infra flag
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : false (boolean) - pcusa flag
++ itcs329 : true (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : true (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
+
+## SubContractor2 (object)
++ id: 2 (required, number)
++ functionId: `VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000477` (required, string)
++ name: `ADECCO ITALIA SPA` (required, string)
++ parentVendor (VendorShort1) - parent vendor for subconstractor
++ email : `example@adecco.com`
++ vatNumber : `13456789445`
++ status (VendorStatus1)
++ address : `Via Tolmezzo 15`
++ city : `Milano`
++ state : `MI` (string, optional)
++ zip : `20132`
++ country (Country2) - country
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ riskAssessment : false (boolean)
++ businessContinuity: false (boolean)
++ subContratAut : false (boolean)
++ frameworkContract : false (boolean)
++ sched25Status (ScheduleStatus1)
++ sched30Status (ScheduleStatus2)
++ schedSondrio (ScheduleStatus3)
++ vendorType (VendorType1)
++ infra : false (boolean)
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : false (boolean) - pcusa flag
++ itcs329 : true (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : true (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
+
+## SubContractor3 (object)
++ id: 3 (required, number)
++ functionId: `VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000477` (required, string)
++ name: `SODEXO` (required, string)
++ parentVendor (VendorShort1) - parent vendor for subconstractor
++ email : `example@sodexo.com`
++ vatNumber : `04545678944`
++ status (VendorStatus1)
++ address : `Via Gallarate 15`
++ city : `Milano`
++ state : `MI`
++ zip : `20151`
++ country (Country2) - country
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.`
++ riskAssessment : false (boolean)
++ businessContinuity: false (boolean)
++ subContratAut : false (boolean)
++ frameworkContract : false (boolean)
++ sched25StatusId : `004`
++ sched30StatusId : `
++ schedSondrioId : ``
++ vendorTypeId : ``
++ infra : false (boolean)
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : true (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
+
+
+## SubContractorDetail (object)
++ id: 1 (number) - vendor/subcontractor id
++ functionId: `VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000308` (required, string) - master code
++ parentVendor (VendorShort2) - parent vendor for subconstractors
++ name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
++ email : `fhuntog@princeton.edu` - email
++ vatNumber : `ATU13585627`  (required, string) - vat number
++ status (VendorStatus1)  (required, string) - status object
++ address : `OBERE DONAUSTRAßE 29`  (required, string) - address
++ city : `WIEN` - city
++ state : ` ` - province or state
++ zip : `1020` - postal code
++ country (Country1) - country
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
++ riskAssessment : false (boolean) - risk assessment flag
++ businessContinuity: false (boolean) - business continuity flag
++ subContratAut : false (boolean) - sub contract flag
++ frameworkContract : false (boolean) - framework contract flag
++ sched25Status (ScheduleStatus1) - schedule 25 status
++ sched30Status (ScheduleStatus2) - schedule 30 status
++ schedSondrio (ScheduleStatus3) - schedule Sondrio
++ vendorType (VendorType1) - vendor type
++ infra : false (boolean) - infra flag
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ maxContractDate : `2016-06-20 19:30:15` (string) - last contract date timestamp
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : true (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
++ updateUser : `Gianni Bianchi`  (optional, string) - update user data
++ classService (array[ClassService1, ClassService2, ClassService3], optional) - array of class services
++ classSow (array[ClassSow1, ClassSow2], optional) - array of class sow
+
+
+## SubContractorInsert (object)
++ functionId: `VMP_SUB` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
++ masterCode : `4000308` (required, string) - master code
++ name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
++ parentVendor (VendorMini2Insert) - parent vendor for subconstractors
++ email : `fhuntog@princeton.edu` - email
++ vatNumber : `ATU13585627`  (required, string) - vat number
++ status (VendorStatusInsert)  (required, string) - status object
++ address : `OBERE DONAUSTRAßE 29`  (required, string) - address
++ city : `WIEN` - city
++ state : ` ` - province or state
++ zip : `1020` - postal code
++ country (Country1) - country
++ notes : `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.` - notes
++ riskAssessment : false (boolean) - risk assessment flag
++ businessContinuity: false (boolean) - business continuity flag
++ subContratAut : false (boolean) - sub contract flag
++ frameworkContract : false (boolean) - framework contract flag
++ sched25Status (ScheduleStatus1) - schedule 25 status
++ sched30Status (ScheduleStatus2) - schedule 30 status
++ schedSondrio (ScheduleStatus3) - schedule Sondrio
++ vendorType (VendorType1) - vendor type
++ infra : false (boolean) - infra flag
++ riskEvaluation (RiskEvaluation1) - risk evaluation data
++ pcusa : true (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : true (boolean) - mailEncryption flag
++ classRef : `ref`  (optional, string) - classRef value
++ classType (ClassType1) - class type data
++ classNote : `note`  (optional, string) - class Note data
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : true (boolean) - classRecurring flag
++ classSowNote : `note`  (optional, string) - class Sow Note data
++ updateUser : `Gianni Bianchi`  (optional, string) - update user data
++ classService (array[ClassService1, ClassService2, ClassService3], optional) - array of class services
++ classSow (array[ClassSow1, ClassSow2], optional) - array of class sow
+
+
+## SubContractorSearchResult (object)
++ results (array[SubContractor1, SubContractor2, SubContractor3], required) - array of Subcontractors
++ Include PaginationData1
