@@ -488,7 +488,7 @@ Takes a `searchQuery` parameter object defined as follows
   + dismissed (optional,Boolean) - subcontractor dismissed status
 
 
-### Subcontractor [GET]
+### List Subcontractor [GET]
 Returns the subcontractors list.
 
 + Parameters
@@ -938,7 +938,7 @@ Takes a `searchQuery` parameter object defined as follows
   + empid (optional,String) - employee id
   + active (optional,boolean) - select active or inactive employees
 
-### List Vendor Employees [GET]
+### List Vendor Employee [GET]
 Returns the vendor contacts list.
 
 + Parameters
@@ -959,7 +959,7 @@ Returns the vendor contacts list.
   + Attributes (VendorEmployeeSearchResult)
 
 
-### Create vendor employee DRAFT [POST]
+### Create Vendor Employee DRAFT [POST]
 Creates a new vendor employee.
 
 + Request (application/json)
@@ -988,7 +988,7 @@ Creates a new vendor employee.
 + Parameters
   + id: 1 (required) - id of the requested vendor employee
 
-### Read vendor employee [GET]
+### Read Vendor Employee [GET]
 Used to retrieve vendor employee detail.
 
 + Response 200 (application/json)
@@ -1005,7 +1005,7 @@ Used to retrieve vendor employee detail.
 
     + Body
 
-### Update vendor employee [PUT]
+### Update Vendor Employee [PUT]
 
 Updates a vendor employee.
 
@@ -1032,7 +1032,7 @@ Updates a vendor employee.
 
     + Body
 
-### Delete vendor employee [DELETE]
+### Delete Vendor Employee [DELETE]
 
 Deletes the specified vendor employee.
 
@@ -1052,7 +1052,7 @@ Deletes the specified vendor employee.
 
     + Body
 
-### Dismiss vendor employee [PUT /employees/{id}/dismiss]
+### Dismiss Vendor Employee [PUT /employees/{id}/dismiss]
 
 Dismiss the specified vendor employee.
 
@@ -2017,7 +2017,6 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 + functionId: `VMP_VND` (enum[string],required) - function code VMP_VND=Vendors,VMP_SUB=Subcontractors
 + masterCode : `4000308` (required, string) - master code
 + name: `A1 TELEKOM AUSTRIA AG` (required, string) - company name
-+ parentVendor (VendorMini2) - parent vendor for subconstractors
 + email : `fhuntog@princeton.edu` - email
 + vatNumber : `ATU13585627`  (required, string) - vat number
 + status (VendorStatus1)  (required, string) - status object
