@@ -498,12 +498,15 @@ Takes a `searchQuery` parameter object defined as follows
   + code (optional,string) - subcontractor code
   + name (optional,string) - subcontractor name
   + function (optional,string) - code of requested function (VMP_SUB for Subcontractors)
+  + parentid (optional,String) - the id of the parent vendor or subcontractor
   + status (optional,String) - subcontractor status code
   + dismissed (optional,Boolean) - subcontractor dismissed status
 
 
 ### List Subcontractor [GET]
 Returns the subcontractors list.
+
+This action is available only to `VMP_SUBCONTRACTOR_READ` role.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -532,7 +535,7 @@ Returns the subcontractors list.
 ### Create Subcontractor [POST]
 Creates a new subcontractor.
 
-This action is available only to `VMPADMIN` rolee.
+This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 
 
 + Request (application/json)
@@ -567,7 +570,9 @@ This action is available only to `VMPADMIN` rolee.
 + Attributes (VendorDetail)
 
 ### Read Subcontractor [GET]
-Used to retrieve subcontractor detail.
+Retrieves subcontractor details.
+
+This action is available only to `VMP_SUBCONTRACTOR_READ` role.
 
 + Response 200 (application/json)
 
@@ -584,7 +589,9 @@ Used to retrieve subcontractor detail.
     + Body
 
 ### Update Subcontractor [PUT /subcontractors/{id}]
-This action is available only to `VMPADMIN`.
+Updates a subcontractor.
+
+This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 
 + Parameters
     + id: 1 (required, number) - id of the subcontractor
@@ -605,7 +612,9 @@ This action is available only to `VMPADMIN`.
     + Body
 
 ### Delete Subcontractor [DELETE]
-This action is available only to `VMPADMIN` role.
+Deletes a subcontractor.
+
+This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 
 + Response 204
 
@@ -621,7 +630,9 @@ This action is available only to `VMPADMIN` role.
 
 ### Read Subcontractors Employees [GET /subcontractors/{id}/employees]
 Used to retrieve subcontractor employees list.
-It's the same service used by VendorEmployees but results are filtered by this subcontractor
+It's the same service used by VendorEmployees but results are filtered by this subcontractor.
+
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
 
 + Response 200 (application/json)
 
@@ -639,7 +650,9 @@ It's the same service used by VendorEmployees but results are filtered by this s
 
 ### Read Subcontractors Contacts [GET /subcontractors/{id}/contacts]
 Used to retrieve subcontractor contacts list.
-It's the same service used by VendorContacts but results are filtered by this subcontractor
+It's the same service used by VendorContacts but results are filtered by this subcontractor.
+
+This action is available only to `VMP_CONTACT_READ` role.
 
 + Response 200 (application/json)
 
@@ -657,7 +670,9 @@ It's the same service used by VendorContacts but results are filtered by this su
 
 ### Read Subcontractors Contracts [GET /subcontractors/{id}/contracts]
 Used to retrieve subcontractor contracts list.
-It's the same service used by VendorContracts but results are filtered by this subcontractor
+It's the same service used by VendorContracts but results are filtered by this subcontractor.
+
+This action is available only to `VMP_CONTRACT_READ` role.
 
 + Response 200 (application/json)
 
@@ -1705,7 +1720,7 @@ Returns the groups of logged in user formatted as JSON array
 This action does not require authentication.
 
   + Response 200 (text/plain)
-        `['VMP_DPO', 'VMP_PROCUREMENT']`
+        `["VMP_DPO", "VMP_PROCUREMENT"]`
 
 ### Get roles [GET /users/roles]
 Returns the roles of logged in user formatted as JSON array
@@ -1713,7 +1728,7 @@ Returns the roles of logged in user formatted as JSON array
 This action does not require authentication.
 
   + Response 200 (text/plain)
-        `['VMP_VENDOR_WRITE', 'VMP_VENDOR_READ', 'VMP_CONTACT_READ', 'VMP_CONTACT_WRITE']`
+        `["VMP_VENDOR_WRITE", "VMP_VENDOR_READ", "VMP_CONTACT_READ", "VMP_CONTACT_WRITE"]`
 
 #######################
 # Data Structures
