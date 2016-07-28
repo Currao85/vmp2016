@@ -14,21 +14,19 @@ Service Oriented Architecture specified for the VMP project.
 ### List Documents [GET /documents{?searchQuery,page,pageSize}]
 Search documents.
 
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ` roles.
+
 Takes a `searchQuery` parameter object defined as follows
 <ul>
-  <li>function (optional,string) - ...</li>
-  <li>entityId (optional,number) - ...</li>
-  <li><strong>vendorType</strong> (optional,string) -
-    <p>find documents with types related to vendor type.<br/>function field must have fixed value `VMP_VND`; entityId field must have a valid vendor id</p>
-  </li>
-  <li>docType (optional,array) - ...</li>
-  <li>owner (optional,number) - ...</li>
-  <li>insertDate (optional,string) - ...</li>
-  <li>signingDate (optional,string) - ...</li>
-  <li>validityDate (optional,string) - ...</li>
-  <li>active (optional,string) -
-    <p>'N' to get documents that belong to temporary vendor.</p>
-  </li>
+  <li>function (optional,string) - id of the function. If this method is not accessed with `VMP_DOCUMENT_READ` role, this field is mandatory and must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)</li>
+  <li>entityId (optional,number) - id of the requested entity</li>
+  <li>vendorType (optional,string) - to find documents with types related to vendor type function field must have fixed value `VMP_VND`; entityId field must have a valid vendor id</li>
+  <li>docType (optional,array) - id of the document type</li>
+  <li>owner (optional,number) - id of the owner</li>
+  <li>insertDate (optional,string) - insert date of the document</li>
+  <li>signingDate (optional,string) - signing date of the document</li>
+  <li>validityDate (optional,string) - validity date of the document</li>
+  <li>active (optional,string) - 'N' to get documents that belong to temporary vendor</li>
 </ul>
 
 + Parameters
@@ -42,14 +40,16 @@ Takes a `searchQuery` parameter object defined as follows
 ### Document types [GET /documents/types{?searchQuery}]
 Search for document's types.
 
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ` roles.
+
 Takes a `searchQuery` parameter object defined as follows
 <ul>
-  <li>function (optional,string) - ...</li>
-  <li>docType (optional,number) - ...</li>
-  <li>detailable (optional,string) - ...</li>
-  <li>docable (optional,string) - ...</li>
-  <li>scope (optional,string) - ...</li>
-  <li>vendortype (optional,string) - ...</li>
+  <li>function (optional,string) - id of the function</li>
+  <li>docType (optional,number) - id of the document type</li>
+  <li>detailable (optional,string) - Provide 'Y' to retrive only documents that belongs to entity detail pages</li>
+  <li>docable (optional,string) - Provide 'Y' to retrive only documents that belongs to document search page</li>
+  <li>scope (optional,string) - The vendor scope (`actionplan`, `qualification`, `checklist`)</li>
+  <li>vendortype (optional,string) - To find documents with types related to vendor type `function` field must have fixed value `VMP_VND`; entityId field must have a valid vendor ID</li>
 </ul>
 
 + Parameters
@@ -61,14 +61,18 @@ Takes a `searchQuery` parameter object defined as follows
 ### Document Owner [GET /documents/owner]
 Return the document's owner.
 
+This action is available only to `VMP_DOCUMENT_READ` role.
+
 + Response 200 (application/json)
   + Attributes (DocumentOwner)
 
-## Function &#40;Entity Types&#41; [/functions]
+## Function `Entity Types` [/functions]
 
 
 ### Upload Document linking it to a function  [POST /functions/{functionId}/documents]
 Creates a new document linking it to a function.
+
+This action is available only to `VMP_DOCUMENT_WRITE` role.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
@@ -92,8 +96,10 @@ Creates a new document linking it to a function.
 ### Upload Document linking it to an entity [POST /functions/{functionId}/{entityId}/documents]
 Creates a new document linking it to an entity.
 
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE` roles.
+
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function
+    + functionId: `VMP_VND` (Function1, required) - id of the function. If this method is not accessed with `VMP_DOCUMENT_WRITE` role, this field must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)
     + entityId: 123 (number, required) - id of the entity
 
 + Request (application/json)
@@ -117,6 +123,8 @@ Creates a new document linking it to an entity.
 ### Download Document linked to a function [GET /functions/{functionId}/documents/{id}]
 Returns the document detail assigned to a function.
 
+This action is available only to `VMP_DOCUMENT_READ` role.
+
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
     + id: 12 (number, required) - id of the document
@@ -135,8 +143,10 @@ Returns the document detail assigned to a function.
 ### Download Document linked to an entity [GET /functions/{functionId}/{entityId}/documents/{id}]
 Returns the document detail assigned to an entity.
 
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE` roles.
+
 + Parameters
-    + functionId: `VMP_VND` (Function1, required) - id of the function
+    + functionId: `VMP_VND` (Function1, required) - id of the function. If this method is not accessed with `VMP_DOCUMENT_WRITE` role, this field must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)
     + entityId: 123 (number, required) - id of the entity
     + id: 12 (number, required) - id of the document
 
@@ -153,6 +163,8 @@ Returns the document detail assigned to an entity.
 
 ### Delete document linked to a function [DELETE /functions/{functionId}/documents/{id}]
 Deletes a document assigned to a function.
+
+This action is available only to `VMP_DOCUMENT_WRITE` role.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
@@ -175,6 +187,8 @@ Deletes a document assigned to a function.
 
 ### Delete document linked to an entity [DELETE /functions/{functionId}/{entityId}/documents/{id}]
 Deletes a document assigned to an entity.
+
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE` roles.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
@@ -2576,7 +2590,7 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 ## VendorStatusTemp (object)
 + id: `TMP` (required, string) - status code
 + description: `Temporary` - status description
-+ disposal: false - disposal status 
++ disposal: false - disposal status
 
 ## CountryND (object)
 + id: `000` (required, string)
