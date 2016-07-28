@@ -705,6 +705,8 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Contact [GET]
 Returns the vendor contacts list.
 
+This action is available only to `VMP_CONTACT_READ` role.
+
 + Parameters
   + searchQuery: {} (object, optional) - json filter
   + page: 1 (optional, number) - The page of results to return
@@ -729,8 +731,7 @@ Returns the vendor contacts list.
 ### Create Vendor Contact [POST]
 Creates a new vendor contact.
 
-This action is available only to `VMPADMIN` rolee.
-
+This action is available only to `VMP_CONTACT_WRITE` role.
 
 + Request (application/json)
 
@@ -765,6 +766,8 @@ This action is available only to `VMPADMIN` rolee.
 ### Read Vendor Contact [GET]
 Used to retrieve vendor contact detail.
 
+This action is available only to `VMP_CONTACT_READ` role.
+
 + Response 200 (application/json)
 
     + Attributes (VendorContactDetail)
@@ -779,8 +782,10 @@ Used to retrieve vendor contact detail.
 
     + Body
 
-### Update Vendor Contact [PUT /contacts/{id}]
-This action is available only to `VMPADMIN` role.
+### Update Vendor Contact [PUT]
+Used to update a vendor contact.
+
+This action is available only to `VMP_CONTACT_WRITE` role.
 
 + Parameters
     + id: 1 (required, number) - id of the vendor contact
@@ -802,7 +807,9 @@ This action is available only to `VMPADMIN` role.
     + Body
 
 ### Delete Vendor Contact [DELETE]
-This action is available only to `VMPADMIN` role.
+Used to delete a vendor contact.
+
+This action is available only to `VMP_CONTACT_WRITE` role.
 
 + Response 204
 
