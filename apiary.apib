@@ -544,29 +544,6 @@ This action is available only to `VMPADMIN` rolee.
     + Body
 
 
-##  Vendor Chain [/subcontractors/chain{?searchQuery,page,pageSize,sortOrder,report}]
-
-Takes a `searchQuery` parameter object defined as follows
-  + code (optional,string) - vendor code
-  + name (optional,string) - vendor name
-
-
-### List Vendor Chain [GET]
-Returns the vendor and related subcontractors chain list.
-
-+ Parameters
-  + searchQuery: {} (object, optional) - json filter
-  + page: 1 (optional, number) - The page of results to return
-  + sortOrder: asc (enum, optional) - Sorting order
-        + Members
-            + asc
-            + desc
-  + pageSize: 25 (optional, number) - Amount of results to return
-  + report:  `VNDCHN` (optional, string) - Vendor chain xlsx report
-
-+ Response 200 (application/json)
-  + Attributes (VendorChainResult)
-
 
 ## Subcontractor [/subcontractors/{id}]
 
@@ -940,10 +917,10 @@ This action is available only to `VMPADMIN` role.
 
 
 #######################
-# Group Vendor Employees
+# Group Vendor Employee
 #######################
 
-## Employees collection [/employees{?searchQuery,page,sort,pageSize,sortOrder,report}]
+## Vendor Employee collection [/employees{?searchQuery,page,sort,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + revId (optional, number) - revision of the Employees Department
@@ -1006,12 +983,12 @@ Creates a new vendor employee.
 
 
 
-## Employees [/employees/{id}]
+## Vendor Employee [/employees/{id}]
 
 + Parameters
   + id: 1 (required) - id of the requested vendor employee
 
-### Read Vendor Employees [GET]
+### Read vendor employee [GET]
 Used to retrieve vendor employee detail.
 
 + Response 200 (application/json)
