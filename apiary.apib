@@ -839,6 +839,8 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Contract [GET]
 Returns the vendor contracts list.
 
+This action is available only to `VMP_CONTRACT_READ` role.
+
 + Parameters
   + searchQuery: {} (object) - json filter
   + page: 1 (optional, number) - The page of results to return
@@ -863,8 +865,7 @@ Returns the vendor contracts list.
 ### Create Vendor Contract [POST]
 Creates a new vendor contract.
 
-This action is available only to `VMPADMIN` rolee.
-
+This action is available only to `VMP_CONTRACT_WRITE` role.
 
 + Request (application/json)
 
@@ -899,6 +900,8 @@ This action is available only to `VMPADMIN` rolee.
 ### Read Vendor Contract [GET]
 Used to retrieve vendor contract detail.
 
+This action is available only to `VMP_CONTRACT_READ` role.
+
 + Response 200 (application/json)
 
     + Attributes (VendorContractDetail)
@@ -914,7 +917,9 @@ Used to retrieve vendor contract detail.
     + Body
 
 ### Update Vendor Contract [PUT /contracts/{id}]
-This action is available only to `VMPADMIN` role.
+Used to update vendor contract details.
+
+This action is available only to `VMP_CONTRACT_WRITE` role.
 
 + Parameters
     + id: 1 (required, number) - id of the vendor contract
@@ -937,7 +942,9 @@ This action is available only to `VMPADMIN` role.
     + Body
 
 ### Delete Vendor Contract [DELETE]
-This action is available only to `VMPADMIN` role.
+Used to delete a vendor contract.
+
+This action is available only to `VMP_CONTRACT_WRITE` role.
 
 + Response 204
 
@@ -1413,34 +1420,6 @@ This action does not require authentication.
 
 + Response 200 (application/json)
   + Attributes ( Functions collection)
-
-## Languages collection [/lookup/languages]
-
-+ Attributes (object)
-  + results (array, required) - array of resources
-      + (object)
-          + id: 1
-          + description: English
-      + (object)
-          + id: 2
-          + description: French
-      + (object)
-          + id: 3
-          + description: Italian
-  + paginationData (object, required) - Informations required for pagination
-        + count: 3 (number,required) - total number of resources
-        + pageNum: 1 (number, required) - slice of resources returned
-        + pageSize: 25 (number, required) - size of the slice
-
-
-### List Languages [GET]
-
-The list of languages.
-
-This action does not require authentication.
-
-+ Response 200 (application/json)
-  + Attributes ( Languages collection)
 
 
 ## Resource Types collection [/lookup/resourcetypes]
