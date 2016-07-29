@@ -218,15 +218,19 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`
 ## Vendor collection [/verdors{?searchQuery,page,sort,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
-  + code (optional,string) - vendor code
-  + name (optional,string) - vendor name
-  + function (optional,string) - code of requested function (VMP_VND for Vendors)
-  + status (optional,String) - vendor status code
-  + dismissed (optional,Boolean) - vendor dismissed status
+  + code (optional, string) - vendor code
+  + name (optional, string) - vendor name
+  + function (optional, string) - code of requested function (VMP_VND for Vendors)
+  + status (optional, string) - vendor status code
+  + parentid (optional, string) - id of the parent vendor
+  + dismissed (optional, boolean) - vendor dismissed status
+  + statusactive (optional, boolean) - vendor active status
 
 
 ### List Vendor [GET]
 Returns the vendors list.
+
+This action is available only to `VMP_VENDOR_READ` role.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -255,8 +259,7 @@ Returns the vendors list.
 ### Create Vendor [POST]
 Creates a new vendor.
 
-This action is available only to `VMPADMIN` rolee.
-
+This action is available only to `VMP_VENDOR_WRITE` role.
 
 + Request (application/json)
 
@@ -283,7 +286,7 @@ This action is available only to `VMPADMIN` rolee.
 ### Create a Temporary Vendor [POST /verdors/temp]
 Creates a new temporary vendor.
 
-This action is available only to `VMPADMIN` rolee.
+This action is available only to `VMP_VENDOR_WRITE` role.
 
 + Request (application/json)
 
@@ -313,10 +316,14 @@ Takes a `searchQuery` parameter object defined as follows
   + name (optional,string) - vendor ame
   + function (optional,string) - code of requested function (VMP_VND for Vendors)
   + status (optional,String) - vendor status code
+  + parentid (optional, string) - id of the parent vendor
   + dismissed (optional,Boolean) - vendor dismissed status
+  + statusactive (optional, boolean) - vendor active status
 
 ### List Vendor Short [GET]
-Returns the vendor list with minimal info
+Returns the vendor list with minimal info.
+
+This action is available to all authenticated users.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -340,6 +347,8 @@ Takes a `searchQuery` parameter object defined as follows
 
 ### List Vendor Chain [GET]
 Returns the vendor chain list.
+
+This action is available only to `VMP_VENDOR_READ`, `VMP_VENDOR_EMPLOYEE_READ` roles.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -365,6 +374,8 @@ Returns the vendor chain list.
 ### Read Vendor [GET]
 Used to retrieve vendor detail.
 
+This action is available only to `VMP_VENDOR_READ` role.
+
 + Response 200 (application/json)
 
     + Attributes (VendorDetail)
@@ -380,7 +391,9 @@ Used to retrieve vendor detail.
     + Body
 
 ### Update Vendor [PUT /vendors/{id}]
-This action is available only to `VMPADMIN`.
+Used to update vendor details.
+
+This action is available only to `VMP_VENDOR_WRITE` role.
 
 + Parameters
     + id: 1 (required, number) - id of the vendor
@@ -401,7 +414,9 @@ This action is available only to `VMPADMIN`.
     + Body
 
 ### Delete Vendor [DELETE]
-This action is available only to `VMPADMIN` role.
+Used to delete vendors.
+
+This action is available only to `VMP_VENDOR_WRITE` role.
 
 + Response 204
 
@@ -417,7 +432,9 @@ This action is available only to `VMPADMIN` role.
 
 ### Read Vendor Employees [GET /vendors/{id}/employees]
 Used to retrieve vendor employees list.
-It's the same service used by VendorEmployees but results are filtered by this vendor
+It's the same service used by VendorEmployees but results are filtered by this vendor.
+
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
 
 + Response 200 (application/json)
 
@@ -435,7 +452,9 @@ It's the same service used by VendorEmployees but results are filtered by this v
 
 ### Read Vendor Contacts [GET /vendors/{id}/contacts]
 Used to retrieve vendor contacts list.
-It's the same service used by VendorContacts but results are filtered by this vendor
+It's the same service used by VendorContacts but results are filtered by this vendor.
+
+This action is available only to `VMP_CONTACT_READ` role.
 
 + Response 200 (application/json)
 
@@ -453,7 +472,9 @@ It's the same service used by VendorContacts but results are filtered by this ve
 
 ### Read Vendor Contracts [GET /vendors/{id}/contracts]
 Used to retrieve vendor contracts list.
-It's the same service used by VendorContracts but results are filtered by this vendor
+It's the same service used by VendorContracts but results are filtered by this vendor.
+
+This action is available only to `VMP_CONTRACT_READ` role.
 
 + Response 200 (application/json)
 
@@ -472,7 +493,9 @@ It's the same service used by VendorContracts but results are filtered by this v
 
 ### Read Vendor Evaluations [GET /vendors/{id}/evaluations]
 Used to retrieve vendor evaluations list.
-It's the same service used by Evaluations but results are filtered by this vendor
+It's the same service used by Evaluations but results are filtered by this vendor.
+
+This action is available only to `VMP_VENDOR_READ` role.
 
 + Response 200 (application/json)
 
