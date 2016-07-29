@@ -1188,6 +1188,8 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Evaluation [GET]
 Returns the vendor evaluation list.
 
+This action is available only to `VMP_VENDOR_READ` role.
+
 + Parameters
   + vendorId: 100 (required) - id of the requested vendor
   + searchQuery: {} (object) - json filter
@@ -1220,8 +1222,7 @@ Returns the vendor evaluation list.
 ### Create Vendor Evaluation [POST]
 Creates a new vendor evaluation.
 
-This action is available only to `VMPADMIN` rolee.
-
+This action is available only to `VMP_VENDOR_WRITE` role.
 
 + Request (application/json)
 
@@ -1257,6 +1258,8 @@ This action is available only to `VMPADMIN` rolee.
 ### Read Vendor Evaluation [GET]
 Used to retrieve vendor evaluation detail (active vendor).
 
+This action is available only to `VMP_VENDOR_READ` role.
+
 + Response 200 (application/json)
 
     + Attributes (VendorEvaluation1)
@@ -1273,7 +1276,9 @@ Used to retrieve vendor evaluation detail (active vendor).
 
 
 ### Delete Vendor Evaluation [DELETE]
-This action is available only to `VMPADMIN` role.
+Used to delete a vendor evaluation.
+
+This action is available only to `VMP_VENDOR_WRITE` role.
 
 + Response 204
 
