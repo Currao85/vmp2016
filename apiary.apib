@@ -82,7 +82,9 @@ This action is available only to `VMP_DOCUMENT_WRITE` role.
 
 + Response 201 (application/json)
     + Headers
-          Location: http://domain/functions/{functionId}/documents/documents/10
+
+            Location: http://domain/functions/{functionId}/documents/documents/10
+
     + Attributes (DocumentUploadedET)
 
 + Response 400
@@ -104,12 +106,16 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`
 
 + Request (application/json)
     + Headers
-        Content-Type: multipart/form-data
+
+            Content-Type: multipart/form-data
+
     + Attributes (DocumentUploadBodyE)
 
 + Response 201 (application/json)
     + Headers
-          Location: http://domain/functions/{functionId}/{entityId}/documents/10
+
+            Location: http://domain/functions/{functionId}/{entityId}/documents/10
+
     + Attributes (DocumentUploadedE)
 
 + Response 400
@@ -215,7 +221,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`
 # Group Vendor
 #######################
 
-## Vendor collection [/verdors{?searchQuery,page,sort,pageSize,sortOrder,report}]
+## Vendor collection [/vendors{?searchQuery,page,sort,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional, string) - vendor code
@@ -283,7 +289,7 @@ This action is available only to `VMP_VENDOR_WRITE` role.
 
     + Body
 
-### Create a Temporary Vendor [POST /verdors/temp]
+### Create a Temporary Vendor [POST /vendors/temp]
 Creates a new temporary vendor.
 
 This action is available only to `VMP_VENDOR_WRITE` role.
@@ -309,7 +315,7 @@ This action is available only to `VMP_VENDOR_WRITE` role.
     + Body
 
 
-##  Vendor collection short [/verdors/short{?searchQuery,page,pageSize,sortOrder,report}]
+##  Vendor collection short [/vendors/short{?searchQuery,page,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional,string) - vendor code
@@ -338,7 +344,7 @@ This action is available to all authenticated users.
   + Attributes (VendorShortResult)
 
 
-##  Vendor Chain [/verdors/chain{?searchQuery,page,pageSize,sortOrder,report}]
+##  Vendor Chain [/vendors/chain{?searchQuery,page,pageSize,sortOrder,report}]
 
 Takes a `searchQuery` parameter object defined as follows
   + code (optional,string) - vendor code
@@ -1131,7 +1137,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
     + Body
 
 ### Dismiss Vendor Employee [PUT /employees/{id}/dismiss]
-Dismiss the specified vendor employee.
+Used in Vendor Employee Disposal area to update vendor employee details.
 
 This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
 
@@ -1741,7 +1747,8 @@ Returns full name of logged in user formatted as `<last name> <first name>`
 This action does not require authentication.
 
   + Response 200 (text/plain)
-        `Rossi Mario`
+
+            `Rossi Mario`
 
 ### Get groups [GET /users/groups]
 Returns the groups of logged in user formatted as JSON array
@@ -1749,7 +1756,8 @@ Returns the groups of logged in user formatted as JSON array
 This action does not require authentication.
 
   + Response 200 (text/plain)
-        `["VMP_DPO", "VMP_PROCUREMENT"]`
+
+            `["VMP_DPO", "VMP_PROCUREMENT"]`
 
 ### Get roles [GET /users/roles]
 Returns the roles of logged in user formatted as JSON array
@@ -1757,7 +1765,8 @@ Returns the roles of logged in user formatted as JSON array
 This action does not require authentication.
 
   + Response 200 (text/plain)
-        `["VMP_VENDOR_WRITE", "VMP_VENDOR_READ", "VMP_CONTACT_READ", "VMP_CONTACT_WRITE"]`
+
+            `["VMP_VENDOR_WRITE", "VMP_VENDOR_READ", "VMP_CONTACT_READ", "VMP_CONTACT_WRITE"]`
 
 #######################
 # Data Structures
