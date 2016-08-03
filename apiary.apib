@@ -52,6 +52,17 @@ Takes a `searchQuery` parameter object defined as follows
   <li>vendortype (optional,string) - To find documents with types related to vendor type `function` field must have fixed value `VMP_VND`; entityId field must have a valid vendor ID</li>
 </ul>
 
+Valid filters are:
+<ol>
+  <li>function + docType</li>
+  <li>function + docable</li>
+  <li>function + detailable</li>
+  <li>scope</li>
+  <li>docable</li>
+  <li>vendorType</li>
+  <li>docType</li>
+</ol>
+
 + Parameters
     + searchQuery: `{function:"VMP_VND", docType:1, detailable:"Y", docable:"Y", scope:"qualification", vendortype:"002"}` (object, optional) - json filter
 
