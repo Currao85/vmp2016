@@ -1,4 +1,4 @@
-savedFORMAT: 1A
+FORMAT: 1A
 HOST: http://emp.vts.it/vts-vmp-rest-api
 
 # VMP
@@ -17,17 +17,15 @@ Search documents.
 This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ` roles.
 
 Takes a `searchQuery` parameter object defined as follows
-<ul>
-  <li>function (optional,string) - id of the function. If this method is not accessed with `VMP_DOCUMENT_READ` role, this field is mandatory and must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)</li>
-  <li>entityId (optional,number) - id of the requested entity</li>
-  <li>vendorType (optional,string) - to find documents with types related to vendor type function field must have fixed value `VMP_VND`; entityId field must have a valid vendor id</li>
-  <li>docType (optional,array) - id of the document type</li>
-  <li>owner (optional,number) - id of the owner</li>
-  <li>insertDate (optional,string) - insert date of the document</li>
-  <li>signingDate (optional,string) - signing date of the document</li>
-  <li>validityDate (optional,string) - validity date of the document</li>
-  <li>active (optional,string) - 'N' to get documents that belong to temporary vendor</li>
-</ul>
+* function (optional,string) - id of the function. If this method is not accessed with `VMP_DOCUMENT_READ` role, this field is mandatory and must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)
+* entityId (optional,number) - id of the requested entity
+* vendorType (optional,string) - to find documents with types related to vendor type function field must have fixed value `VMP_VND`; entityId field must have a valid vendor id
+* docType (optional,array) - id of the document type
+* owner (optional,number) - id of the owner
+* insertDate (optional,string) - insert date of the document
+* signingDate (optional,string) - signing date of the document
+* validityDate (optional,string) - validity date of the document
+* active (optional,string) - 'N' to get documents that belong to temporary vendor
 
 + Parameters
   + searchQuery: `{function:"VMP_VND", entityId:123, docType:1, owner:234, insertDate:"2016-02-05", signingDate:"2016-02-05", validityDate:"2016-02-05"}`  (object, required) - json filter
@@ -43,25 +41,23 @@ Search for document's types.
 This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ` roles.
 
 Takes a `searchQuery` parameter object defined as follows
-<ul>
-  <li>function (optional,string) - id of the function</li>
-  <li>docType (optional,number) - id of the document type</li>
-  <li>detailable (optional,string) - Provide 'Y' to retrive only documents that belongs to entity detail pages</li>
-  <li>docable (optional,string) - Provide 'Y' to retrive only documents that belongs to document search page</li>
-  <li>scope (optional,string) - The vendor scope (`actionplan`, `qualification`, `checklist`)</li>
-  <li>vendortype (optional,string) - To find documents with types related to vendor type `function` field must have fixed value `VMP_VND`; entityId field must have a valid vendor ID</li>
-</ul>
+* function (optional,string) - id of the function
+* docType (optional,number) - id of the document type
+* detailable (optional,string) - Provide 'Y' to retrive only documents that belongs to entity detail pages
+* docable (optional,string) - Provide 'Y' to retrive only documents that belongs to document search page
+* scope (optional,string) - The vendor scope (`actionplan`, `qualification`, `checklist`)
+* vendortype (optional,string) - To find documents with types related to vendor type `function` field must have fixed value `VMP_VND`; entityId field must have a valid vendor ID
 
 Valid filters are:
-<ol>
-  <li>function + docType</li>
-  <li>function + docable</li>
-  <li>function + detailable</li>
-  <li>scope</li>
-  <li>docable</li>
-  <li>vendorType</li>
-  <li>docType</li>
-</ol>
+
+1. function + docType
+2. function + docable
+3. function + detailable
+4. scope
+5. docable
+6. vendorType
+7. docType
+
 
 + Parameters
     + searchQuery: `{function:"VMP_VND", docType:1, detailable:"Y", docable:"Y", scope:"qualification", vendortype:"002"}` (object, optional) - json filter
