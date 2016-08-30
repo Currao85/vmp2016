@@ -596,7 +596,30 @@ This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 
     + Body
 
+### Create a Temporary Subcontractor [POST /subcontractors/temp]
+Creates a new temporary and incomplete subcontractor.
 
+This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /vendors/123
+
+    + Attributes (SubcontractorTemp)
+
++ Response 400
+    Returned when the required resource cannot be found.
+
+    + Body
+
++ Response 500
+    Returned when a generic error occours.
+
+    + Body
 
 ## Subcontractor [/subcontractors/{id}]
 
@@ -2735,6 +2758,28 @@ This action does not require authentication.
 + classFinalSla : false (boolean) - classFinalSla  flag
 + classRecurring : false (boolean) - classRecurring flag
 
+## SubcontractorTemp (object)
++ id: 123 (number) - subcontractor id
++ functionId: `VMP_SUB` (string) - function code VMP_SUB=Subcontractors
++ name: (string) - company name
++ email : (string) - email
++ vatNumber : (string) - vat number
++ status (VendorStatusTemp) - status object
++ address : (string) - address
++ country (CountryND) - country
++ riskAssessment : false (boolean) - risk assessment flag
++ businessContinuity: false (boolean) - business continuity flag
++ frameworkContract : false (boolean) - framework contract flag
++ subContratAut : false (boolean) - sub contract flag
++ infra : false (boolean) - infra flag
++ insertDate : `2016-06-20 16:23:34` (string) - insert timestamp
++ updateDate : `2016-06-21 17:30:21` (string) - update timestamp
++ updateUser : `Gianni Bianchi`  (optional, string) - update user data
++ pcusa : false (boolean) - pcusa flag
++ itcs329 : false (boolean) - itcs329  flag
++ mailEncryption : false (boolean) - mailEncryption flag
++ classFinalSla : false (boolean) - classFinalSla  flag
++ classRecurring : false (boolean) - classRecurring flag
 
 ## SubContractor1 (object)
 + id: 1 (number) - vendor/subcontractor id
