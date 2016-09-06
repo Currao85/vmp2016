@@ -14,7 +14,8 @@ Service Oriented Architecture specified for the VMP project.
 ### List Documents [GET /documents{?searchQuery,page,pageSize}]
 Search documents.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ` roles.
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ`,
+`DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_CONTACT_READ`, `DPP_CONTRACT_READ`, `DPP_DOCUMENT_READ`, `DPP_SUBCONTRACTOR_READ`, `DPP_SERVICE_RECIPIENT_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 Takes a `searchQuery` parameter object defined as follows
 * function (optional,string) - id of the function. If this method is not accessed with `VMP_DOCUMENT_READ` role, this field is mandatory and must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)
@@ -38,7 +39,8 @@ Takes a `searchQuery` parameter object defined as follows
 ### Document types [GET /documents/types{?searchQuery}]
 Search for document's types.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ` roles.
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ`,
+`DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_CONTACT_READ`, `DPP_CONTRACT_READ`, `DPP_DOCUMENT_READ`, `DPP_SUBCONTRACTOR_READ`, `DPP_SERVICE_RECIPIENT_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 Takes a `searchQuery` parameter object defined as follows
 * function (optional,string) - id of the function (`VMP_CNTR`, `VMP_CONT`, `VMP_SUB`, `VMP_VEMP`, `VMP_VND`)
@@ -68,7 +70,8 @@ Valid filters are:
 ### Document Owner [GET /documents/owner]
 Return the document's owner.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ` roles.
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ`,
+`DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_CONTACT_READ`, `DPP_CONTRACT_READ`, `DPP_DOCUMENT_READ`, `DPP_SUBCONTRACTOR_READ`, `DPP_SERVICE_RECIPIENT_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 + Response 200 (application/json)
   + Attributes (DocumentOwner)
@@ -79,7 +82,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, 
 ### Upload Document linking it to a function  [POST /functions/{functionId}/documents]
 Creates a new document linking it to a function.
 
-This action is available only to `VMP_DOCUMENT_WRITE` role.
+This action is available only to `VMP_DOCUMENT_WRITE`, `DPP_DOCUMENT_WRITE` roles.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
@@ -105,7 +108,8 @@ This action is available only to `VMP_DOCUMENT_WRITE` role.
 ### Upload Document linking it to an entity [POST /functions/{functionId}/{entityId}/documents]
 Creates a new document linking it to an entity.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE` roles.
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE`,
+`DPP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_WRITE`, `DPP_CONTACT_WRITE`, `DPP_CONTRACT_WRITE`, `DPP_DOCUMENT_WRITE`, `DPP_SUBCONTRACTOR_WRITE`, `DPP_SERVICE_RECIPIENT_WRITE`, `DPP_DP_DOCUMENT_WRITE` roles.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function. If this method is not accessed with `VMP_DOCUMENT_WRITE` role, this field must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)
@@ -136,7 +140,6 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`
 ### Download Document linked to a function [GET /functions/{functionId}/documents/{id}]
 Returns the document detail assigned to a function.
 
-This action is available only to `VMP_DOCUMENT_READ` role.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
@@ -156,7 +159,8 @@ This action is available only to `VMP_DOCUMENT_READ` role.
 ### Download Document linked to an entity [GET /functions/{functionId}/{entityId}/documents/{id}]
 Returns the document detail assigned to an entity.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE` roles.
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, `VMP_CONTACT_READ`, `VMP_CONTRACT_READ`, `VMP_DOCUMENT_READ`, `VMP_SUBCONTRACTOR_READ`,
+`DPP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_CONTACT_READ`, `DPP_CONTRACT_READ`, `DPP_DOCUMENT_READ`, `DPP_SUBCONTRACTOR_READ`, `DPP_SERVICE_RECIPIENT_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function. If this method is not accessed with `VMP_DOCUMENT_WRITE` role, this field must match one of the owned roles (eg. `VMP_VND` is available if `VMP_VENDOR_READ` role is owned)
@@ -177,7 +181,6 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`
 ### Delete document linked to a function [DELETE /functions/{functionId}/documents/{id}]
 Deletes a document assigned to a function.
 
-This action is available only to `VMP_DOCUMENT_WRITE` role.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
@@ -201,7 +204,8 @@ This action is available only to `VMP_DOCUMENT_WRITE` role.
 ### Delete document linked to an entity [DELETE /functions/{functionId}/{entityId}/documents/{id}]
 Deletes a document assigned to an entity.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE` roles.
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`, `VMP_CONTACT_WRITE`, `VMP_CONTRACT_WRITE`, `VMP_DOCUMENT_WRITE`, `VMP_SUBCONTRACTOR_WRITE`,
+`DPP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_WRITE`, `DPP_CONTACT_WRITE`, `DPP_CONTRACT_WRITE`, `DPP_DOCUMENT_WRITE`, `DPP_SUBCONTRACTOR_WRITE`, `DPP_SERVICE_RECIPIENT_WRITE`, `DPP_DP_DOCUMENT_WRITE` roles.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
