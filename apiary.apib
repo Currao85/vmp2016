@@ -140,6 +140,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `VMP_VENDOR_WRITE`
 ### Download Document linked to a function [GET /functions/{functionId}/documents/{id}]
 Returns the document detail assigned to a function.
 
+This action is available only to `VMP_DOCUMENT_READ`, `DPP_DOCUMENT_READ` roles.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
@@ -181,6 +182,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_VENDOR_READ`, 
 ### Delete document linked to a function [DELETE /functions/{functionId}/documents/{id}]
 Deletes a document assigned to a function.
 
+This action is available only to `VMP_DOCUMENT_WRITE`, `DPP_DOCUMENT_WRITE` roles.
 
 + Parameters
     + functionId: `VMP_VND` (Function1, required) - id of the function
