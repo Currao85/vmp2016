@@ -249,7 +249,7 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor [GET]
 Returns the vendors list.
 
-This action is available only to `VMP_VENDOR_READ` role.
+This action is available only to `VMP_VENDOR_READ`, `DPP_VENDOR_READ` roles.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -278,7 +278,7 @@ This action is available only to `VMP_VENDOR_READ` role.
 ### Create Vendor [POST]
 Creates a new vendor.
 
-This action is available only to `VMP_VENDOR_WRITE` role.
+This action is available only to `VMP_VENDOR_WRITE`, `DPP_VENDOR_WRITE` roles.
 
 + Request (application/json)
 
@@ -305,7 +305,7 @@ This action is available only to `VMP_VENDOR_WRITE` role.
 ### Create a Temporary Vendor [POST /vendors/temp]
 Creates a new temporary vendor.
 
-This action is available only to `VMP_VENDOR_WRITE` role.
+This action is available only to `VMP_VENDOR_WRITE`, `DPP_VENDOR_WRITE` roles.
 
 + Request (application/json)
 
@@ -367,7 +367,7 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Chain [GET]
 Returns the vendor chain list.
 
-This action is available only to `VMP_VENDOR_READ`, `VMP_VENDOR_EMPLOYEE_READ` roles.
+This action is available only to `VMP_VENDOR_READ`, `VMP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_READ`, `DPP_VENDOR_EMPLOYEE_READ` roles.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -393,7 +393,7 @@ This action is available only to `VMP_VENDOR_READ`, `VMP_VENDOR_EMPLOYEE_READ` r
 ### Read Vendor [GET]
 Used to retrieve vendor detail.
 
-This action is available only to `VMP_VENDOR_READ` role.
+This action is available only to `VMP_VENDOR_READ`, `DPP_VENDOR_READ` roles.
 
 + Response 200 (application/json)
 
@@ -412,7 +412,7 @@ This action is available only to `VMP_VENDOR_READ` role.
 ### Update Vendor [PUT /vendors/{id}]
 Used to update vendor details.
 
-This action is available only to `VMP_VENDOR_WRITE` role.
+This action is available only to `VMP_VENDOR_WRITE`, `DPP_VENDOR_WRITE` roles.
 
 + Parameters
     + id: 1 (required, number) - id of the vendor
@@ -435,7 +435,7 @@ This action is available only to `VMP_VENDOR_WRITE` role.
 ### Delete Vendor [DELETE]
 Used to delete vendors.
 
-This action is available only to `VMP_VENDOR_WRITE` role.
+This action is available only to `VMP_VENDOR_WRITE`, `DPP_VENDOR_READ` roles.
 
 + Response 204
 
@@ -451,9 +451,7 @@ This action is available only to `VMP_VENDOR_WRITE` role.
 
 ### Read Vendor Employees [GET /vendors/{id}/employees]
 Used to retrieve vendor employees list.
-It's the same service used by VendorEmployees but results are filtered by this vendor.
-
-This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
+It's the same service used by VendorEmployees with the same roles required but results are filtered by this vendor.
 
 + Response 200 (application/json)
 
@@ -471,9 +469,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
 
 ### Read Vendor Contacts [GET /vendors/{id}/contacts]
 Used to retrieve vendor contacts list.
-It's the same service used by VendorContacts but results are filtered by this vendor.
-
-This action is available only to `VMP_CONTACT_READ` role.
+It's the same service used by VendorContacts with the same roles required but results are filtered by this vendor.
 
 + Response 200 (application/json)
 
@@ -491,9 +487,7 @@ This action is available only to `VMP_CONTACT_READ` role.
 
 ### Read Vendor Contracts [GET /vendors/{id}/contracts]
 Used to retrieve vendor contracts list.
-It's the same service used by VendorContracts but results are filtered by this vendor.
-
-This action is available only to `VMP_CONTRACT_READ` role.
+It's the same service used by VendorContracts with the same roles required but results are filtered by this vendor.
 
 + Response 200 (application/json)
 
@@ -512,9 +506,7 @@ This action is available only to `VMP_CONTRACT_READ` role.
 
 ### Read Vendor Evaluations [GET /vendors/{id}/evaluations]
 Used to retrieve vendor evaluations list.
-It's the same service used by Evaluations but results are filtered by this vendor.
-
-This action is available only to `VMP_VENDOR_READ` role.
+It's the same service used by Evaluations with the same roles required but results are filtered by this vendor.
 
 + Response 200 (application/json)
 
@@ -548,7 +540,7 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Subcontractor [GET]
 Returns the subcontractors list.
 
-This action is available only to `VMP_SUBCONTRACTOR_READ` role.
+This action is available only to `VMP_SUBCONTRACTOR_READ`, `DPP_SUBCONTRACTOR_READ` roles.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -577,7 +569,7 @@ This action is available only to `VMP_SUBCONTRACTOR_READ` role.
 ### Create Subcontractor [POST]
 Creates a new subcontractor.
 
-This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
+This action is available only to `VMP_SUBCONTRACTOR_WRITE`, `DPP_SUBCONTRACTOR_WRITE` roles.
 
 
 + Request (application/json)
@@ -605,7 +597,7 @@ This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 ### Create a Temporary Subcontractor [POST /subcontractors/temp]
 Creates a new temporary and incomplete subcontractor.
 
-This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
+This action is available only to `VMP_SUBCONTRACTOR_WRITE`, `DPP_SUBCONTRACTOR_WRITE` roles.
 
 + Request (application/json)
 
@@ -637,7 +629,7 @@ This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 ### Read Subcontractor [GET]
 Retrieves subcontractor details.
 
-This action is available only to `VMP_SUBCONTRACTOR_READ` role.
+This action is available only to `VMP_SUBCONTRACTOR_READ`, `DPP_SUBCONTRACTOR_READ` roles.
 
 + Response 200 (application/json)
 
@@ -656,7 +648,7 @@ This action is available only to `VMP_SUBCONTRACTOR_READ` role.
 ### Update Subcontractor [PUT /subcontractors/{id}]
 Updates a subcontractor.
 
-This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
+This action is available only to `VMP_SUBCONTRACTOR_WRITE`, `DPP_SUBCONTRACTOR_WRITE` roles.
 
 + Parameters
     + id: 1 (required, number) - id of the subcontractor
@@ -679,7 +671,7 @@ This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 ### Delete Subcontractor [DELETE]
 Deletes a subcontractor.
 
-This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
+This action is available only to `VMP_SUBCONTRACTOR_WRITE`, `DPP_SUBCONTRACTOR_WRITE` roles.
 
 + Response 204
 
@@ -695,9 +687,7 @@ This action is available only to `VMP_SUBCONTRACTOR_WRITE` role.
 
 ### Read Subcontractors Employees [GET /subcontractors/{id}/employees]
 Used to retrieve subcontractor employees list.
-It's the same service used by VendorEmployees but results are filtered by this subcontractor.
-
-This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
+It's the same service used by VendorEmployees with the same roles required but results are filtered by this subcontractor.
 
 + Response 200 (application/json)
 
@@ -715,9 +705,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
 
 ### Read Subcontractors Contacts [GET /subcontractors/{id}/contacts]
 Used to retrieve subcontractor contacts list.
-It's the same service used by VendorContacts but results are filtered by this subcontractor.
-
-This action is available only to `VMP_CONTACT_READ` role.
+It's the same service used by VendorContacts with the same roles required but results are filtered by this subcontractor.
 
 + Response 200 (application/json)
 
@@ -735,9 +723,7 @@ This action is available only to `VMP_CONTACT_READ` role.
 
 ### Read Subcontractors Contracts [GET /subcontractors/{id}/contracts]
 Used to retrieve subcontractor contracts list.
-It's the same service used by VendorContracts but results are filtered by this subcontractor.
-
-This action is available only to `VMP_CONTRACT_READ` role.
+It's the same service used by VendorContracts with the same roles required but results are filtered by this subcontractor.
 
 + Response 200 (application/json)
 
@@ -770,7 +756,7 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Contact [GET]
 Returns the vendor contacts list.
 
-This action is available only to `VMP_CONTACT_READ`, `VMP_VENDOR_READ`, `VMP_VENDOR_EMPLOYEE_READ` roles.
+This action is available only to `VMP_CONTACT_READ`, `VMP_VENDOR_READ`, `VMP_VENDOR_EMPLOYEE_READ`, `VMP_SUBCONTRACTOR_READ`, `DPP_CONTACT_READ`, `DPP_VENDOR_READ`, `DPP_VENDOR_EMPLOYEE_READ`, `DPP_SUBCONTRACTOR_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 + Parameters
   + searchQuery: {} (object, optional) - json filter
@@ -796,7 +782,7 @@ This action is available only to `VMP_CONTACT_READ`, `VMP_VENDOR_READ`, `VMP_VEN
 ### Create Vendor Contact [POST]
 Creates a new vendor contact.
 
-This action is available only to `VMP_CONTACT_WRITE` role.
+This action is available only to `VMP_CONTACT_WRITE`, `DPP_CONTACT_WRITE` roles.
 
 + Request (application/json)
 
@@ -831,7 +817,7 @@ This action is available only to `VMP_CONTACT_WRITE` role.
 ### Read Vendor Contact [GET]
 Used to retrieve vendor contact detail.
 
-This action is available only to `VMP_CONTACT_READ` role.
+This action is available only to `VMP_CONTACT_READ`, `DPP_CONTACT_READ` roles.
 
 + Response 200 (application/json)
 
@@ -850,7 +836,7 @@ This action is available only to `VMP_CONTACT_READ` role.
 ### Update Vendor Contact [PUT]
 Used to update a vendor contact.
 
-This action is available only to `VMP_CONTACT_WRITE` role.
+This action is available only to `VMP_CONTACT_WRITE`, `DPP_CONTACT_WRITE` roles.
 
 + Parameters
     + id: 1 (required, number) - id of the vendor contact
@@ -874,7 +860,7 @@ This action is available only to `VMP_CONTACT_WRITE` role.
 ### Delete Vendor Contact [DELETE]
 Used to delete a vendor contact.
 
-This action is available only to `VMP_CONTACT_WRITE` role.
+This action is available only to `VMP_CONTACT_WRITE`, `DPP_CONTACT_WRITE` roles.
 
 + Response 204
 
@@ -904,7 +890,7 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Contract [GET]
 Returns the vendor contracts list.
 
-This action is available only to `VMP_CONTRACT_READ` role.
+This action is available only to `VMP_CONTRACT_READ` , `VMP_VENDOR_READ`, `DPP_CONTRACT_READ`, `DPP_VENDOR_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 + Parameters
   + searchQuery: {} (object) - json filter
@@ -930,7 +916,7 @@ This action is available only to `VMP_CONTRACT_READ` role.
 ### Create Vendor Contract [POST]
 Creates a new vendor contract.
 
-This action is available only to `VMP_CONTRACT_WRITE` role.
+This action is available only to `VMP_CONTRACT_WRITE`, `DPP_CONTRACT_WRITE` roles.
 
 + Request (application/json)
 
@@ -965,7 +951,7 @@ This action is available only to `VMP_CONTRACT_WRITE` role.
 ### Read Vendor Contract [GET]
 Used to retrieve vendor contract detail.
 
-This action is available only to `VMP_CONTRACT_READ` role.
+This action is available only to `VMP_CONTRACT_READ`, `DPP_CONTRACT_READ` roles.
 
 + Response 200 (application/json)
 
@@ -984,7 +970,7 @@ This action is available only to `VMP_CONTRACT_READ` role.
 ### Update Vendor Contract [PUT /contracts/{id}]
 Used to update vendor contract details.
 
-This action is available only to `VMP_CONTRACT_WRITE` role.
+This action is available only to `VMP_CONTRACT_WRITE`, `DPP_CONTRACT_WRITE` roles.
 
 + Parameters
     + id: 1 (required, number) - id of the vendor contract
@@ -1009,7 +995,7 @@ This action is available only to `VMP_CONTRACT_WRITE` role.
 ### Delete Vendor Contract [DELETE]
 Used to delete a vendor contract.
 
-This action is available only to `VMP_CONTRACT_WRITE` role.
+This action is available only to `VMP_CONTRACT_WRITE`, `DPP_CONTRACT_WRITE` roles.
 
 + Response 204
 
@@ -1051,7 +1037,7 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Employee [GET]
 Returns the vendor contacts list.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_SUBCONTRACTOR_READ`, `VMP_VENDOR_READ`, `DPP_VENDOR_EMPLOYEE_READ`, `DPP_SUBCONTRACTOR_READ`, `DPP_VENDOR_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 + Parameters
   + searchQuery: {} (object, required) - json filter
@@ -1076,7 +1062,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
 ### Create Vendor Employee DRAFT [POST]
 Creates a new vendor employee.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_EMPLOYEE_WRITE` roles.
 
 + Request (application/json)
 
@@ -1107,7 +1093,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
 ### Read Vendor Employee [GET]
 Used to retrieve vendor employee detail.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
+This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_EMPLOYEE_READ` roles.
 
 + Response 200 (application/json)
 
@@ -1126,7 +1112,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ` role.
 ### Update Vendor Employee [PUT]
 Updates a vendor employee.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_EMPLOYEE_WRITE` roles.
 
 + Request (application/json)
 
@@ -1154,7 +1140,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
 ### Delete Vendor Employee [DELETE]
 Deletes the specified vendor employee.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_EMPLOYEE_WRITE` roles.
 
 + Request (application/json)
 
@@ -1175,7 +1161,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
 ### Dismiss Vendor Employee [PUT /employees/{id}/dismiss]
 Used in Vendor Employee Disposal area to update vendor employee details.
 
-This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE` role.
+This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_EMPLOYEE_WRITE` roles.
 
 + Request (application/json)
 
@@ -1253,7 +1239,7 @@ Takes a `searchQuery` parameter object defined as follows
 ### List Vendor Evaluation [GET]
 Returns the vendor evaluation list.
 
-This action is available only to `VMP_VENDOR_READ` role.
+This action is available only to `VMP_VENDOR_READ`, `DPP_VENDOR_READ`, `DPP_DP_DOCUMENT_READ` roles.
 
 + Parameters
   + vendorId: 100 (required) - id of the requested vendor
@@ -1287,7 +1273,7 @@ This action is available only to `VMP_VENDOR_READ` role.
 ### Create Vendor Evaluation [POST]
 Creates a new vendor evaluation.
 
-This action is available only to `VMP_VENDOR_WRITE` role.
+This action is available only to `VMP_VENDOR_WRITE`, `DPP_VENDOR_WRITE` role.
 
 + Request (application/json)
 
@@ -1323,7 +1309,7 @@ This action is available only to `VMP_VENDOR_WRITE` role.
 ### Read Vendor Evaluation [GET]
 Used to retrieve vendor evaluation detail (active vendor).
 
-This action is available only to `VMP_VENDOR_READ` role.
+This action is available only to `VMP_VENDOR_READ`, `DPP_VENDOR_READ` role.
 
 + Response 200 (application/json)
 
@@ -1343,7 +1329,7 @@ This action is available only to `VMP_VENDOR_READ` role.
 ### Delete Vendor Evaluation [DELETE]
 Used to delete a vendor evaluation.
 
-This action is available only to `VMP_VENDOR_WRITE` role.
+This action is available only to `VMP_VENDOR_WRITE`, `DPP_VENDOR_WRITE` role.
 
 + Response 204
 
