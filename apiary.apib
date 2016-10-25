@@ -1058,7 +1058,7 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_SUBCONTRACTOR_
   + Attributes (VendorEmployeeSearchResult)
 
 
-### Create Vendor Employee DRAFT [POST]
+### Create Vendor Employee [POST]
 Creates a new vendor employee.
 
 This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_EMPLOYEE_WRITE` roles.
@@ -2012,8 +2012,8 @@ This action does not require authentication.
     + description: `vendor` (string, optional)
 + active: `true` (boolean)
 + notes: `aaa bbb ccc` (string, optional)
-+ isManager: : `false` (boolean)
-+ mainManager: : `false` (boolean)
++ isManager: `false` (boolean)
++ mainManager: `false` (boolean)
 + startDate: `2018-06-17` (string, optional)
 + endDate: `2098-06-15` (string, optional)
 + employeeType: `EMP` (string, optional)
@@ -2024,6 +2024,12 @@ This action does not require authentication.
 + vtsReferentLastName: `Fulvio` (string, optional)
 + vtsReferentFirstName: `Simpson` (string, optional)
 + vtsReferentId: `10285` (number, optional)
++ workLocationVts: `true` (boolean)
++ workLocation (object, optional) - VTS location if workLocationVts is true
+    + street: `address`
+    + city: `City`
+    + country: `Slovakia`
+    + id: 608
 + country (object) - VMP country
     + id: `030` (string, optional)
     + descr: `Austria` (string, optional)
