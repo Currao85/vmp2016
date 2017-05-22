@@ -1057,7 +1057,6 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `VMP_SUBCONTRACTOR_
 + Response 200 (application/json)
   + Attributes (VendorEmployeeSearchResult)
 
-
 ### Create Vendor Employee [POST]
 Creates a new vendor employee.
 
@@ -1082,8 +1081,6 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_WRITE`, `DPP_VENDOR_EMPLOY
     + Body when a generic error occours.
     + Body
 
-
-
 ## Vendor Employee [/employees/{id}]
 
 + Parameters
@@ -1107,6 +1104,12 @@ This action is available only to `VMP_VENDOR_EMPLOYEE_READ`, `DPP_VENDOR_EMPLOYE
     Returned when a generic error occours.
 
     + Body
+
+### Vendor Employee Public [GET /employees/{id}/public]
+Return the Schedule information and all public informations.
+
++ Parameters
+  + id: 1 (required) - id of the requested vendor employee
 
 ### Update Vendor Employee [PUT]
 Updates a vendor employee.
@@ -2033,6 +2036,14 @@ This action does not require authentication.
 + country (object) - VMP country
     + id: `030` (string, optional)
     + descr: `Austria` (string, optional)
+
+## PublicProfileDetail1 (object)
++ isMainManager: true (boolean) - is a main manager
++ isManager: true (boolean) - is a manager
++ sched25Status: {"id":"001", "description":"COMPLIANT"} (object) - schedule 25 status of the actual vendor connection
++ sched30Status: {"id":"001", "description":"COMPLIANT"} (object) - schedule 30 statusof the actual vendor connection
++ schedSondrio: {"id":"001", "description":"COMPLIANT"} (object) - schedule Sondrio of the actual vendor connection
++ schedU: {"id":"001", "description":"COMPLIANT"} (object) - schedule U of the actual vendor connection
 
 ## ProfileDetail1 (ProfileDetail)
 + empid: 1 (number) - id of the profile
